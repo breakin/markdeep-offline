@@ -24,7 +24,7 @@ JSDOM.fromFile("metapage.html").then(dom => {
 		// Construct final html
 		str = "<html>\n\t<head>\n" + css + "\n\t</head>\n\t<body>\n" + content + "\t\n</body></html>"
 
-		fs.writeFile('test.html', str, function (err,data2) {
+		fs.writeFile('test_converted.html', str, function (err,data2) {
 			if (err) {
 				return console.log(err);
 			}
