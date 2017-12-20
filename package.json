@@ -1,0 +1,16 @@
+{
+  "name": "offline-markdeep",
+  "version": "1.0.0",
+  "description": "offline-markdeep",
+  "main": "convert.js",
+  "dependencies": {
+    "highlight.js": "^9.12.0",
+    "jsdom": "^11.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
