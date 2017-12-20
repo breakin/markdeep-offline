@@ -3,7 +3,7 @@ fs = require('fs'); // file system
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-dom = JSDOM.fromFile("metapage.html").then(dom => {
+JSDOM.fromFile("metapage.html").then(dom => {
 	window = dom.window;
 	document = window.document;
 
@@ -24,8 +24,14 @@ dom = JSDOM.fromFile("metapage.html").then(dom => {
 		// Construct final html
 		str = "<html>\n\t<head>\n" + css + "\n\t</head>\n\t<body>\n" + content + "\t\n</body></html>"
 
-		fs.writeFile('test.html', str);
+		fs.writeFile('test.html', str, function (err,data2) {
+			if (err) {
+				return console.log(err);
+			}
+		});
 	});
+}, reason => {
+	console.log("Could not read file using JSDOM, reason=" + reason)
 });
 
 
