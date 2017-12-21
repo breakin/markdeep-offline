@@ -1,6 +1,8 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
 The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
 
+NOTE: Currently math formulas are not working.
+
 Usage
 =====
 Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:

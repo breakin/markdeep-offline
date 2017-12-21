@@ -18,7 +18,7 @@ counter-increment: h6;margin-right:10px}</style><style>.hljs{display:block;overf
 <span class="md"><p><title>Magic title</title><div class="title"> Magic title </div>
 
 <div class="subtitle"> Author </div>
-<div class="afterTitles"></div><div class="shortTOC"><a href="#toc1">Introduction</a> &middot; <a href="#toc2">Crazy1</a></div>
+<div class="afterTitles"></div><div class="shortTOC"><a href="#toc1">Introduction</a> &middot; <a href="#toc2">Crazy1</a> &middot; <a href="#toc3">Embedded Math</a></div>
 
 </p><p>
 
@@ -113,5 +113,101 @@ Optimized &ldquo;random point on plane&rdquo; found in <a href="https://twitter.
         <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">RandomPointOnPlane</span><span class="hljs-params">(p)</span></span>;
     <span class="hljs-keyword">return</span> x;
 }</code></pre><p>
+
+And some math formulas:
+
+</p>
+<a class="target" name="embeddedmath">&nbsp;</a><a class="target" name="toc3">&nbsp;</a><h1>Embedded Math</h1>
+<p>
+
+
+Markdeep automatically includes <a href="http://mathjax.org">MathJax</a> if your
+document contains equations and you have an Internet connection. That means
+you get the <strong class="asterisk">full power of LaTeX, TeX, MathML, and AsciiMath notation</strong>.
+Just put math inside single or double dollar signs. 
+
+</p><p>
+
+$$ \Lo(X, \wo) = \Le(X, \wo) + \int_\Omega \Li(X, \wi) ~ f_X(\wi, \wo) ~ | \n \cdot \wi | ~ d\wi $$
+
+</p><p>
+
+You can also use LaTeX equation syntax directly to obtain numbered
+equations:
+
+</p><p>
+
+\begin{equation}
+e^{i \pi} + 1 = 0
+\end{equation}
+
+</p><p>
+
+\begin{equation}
+\mathbf{A}^{-1}\vec{b} = \vec{x}
+\end{equation}
+
+</p><p>
+
+If you don't have equations in your document, then Markdeep won't
+connect to the MathJax server. Either way, it runs MathJax after 
+processing the rest of the document, so there is no delay.
+
+</p><p>
+
+Markdeep is smart enough to distinguish non-math use of dollar signs,
+such as $2.00 and $4.00, US$5, and 3$. Inline
+math requires consistent spaces (or punctuation) either outside or inside
+of the LaTeX dollar signs to distinguish them from
+regular text usage. Thus, the following all work:
+
+</p><p>
+
+<ul>
+<li class="minus">\(x^2\)
+</li>
+<li class="minus">\( x^2 \)
+</li>
+<li class="minus">(\(x^2\))
+</li>
+<li class="minus">(\( x^2 \))
+</li>
+<li class="minus">Variable \(x^2\),
+</li>
+<li class="minus">Variable \( x^2 \)
+</li>
+<li class="minus">Two \(x\) vars \(y\) on the same line
+</li>
+<li class="minus">Different spacing styles: \(\theta_{x}\) vs. \( \theta_{y} \)</li></ul>
+
+</p><p>
+
+Unless you've changed out the default MathJax processor, you can define 
+your own LaTeX macros by executing <code>\newcommand</code> within dollar signs,
+just as you would in LaTeX.  Markdeep provides a handful of commands
+defined this way by default because they're things that I frequently 
+need:
+<div class='table'><table class="table"><tr><th style="text-align:left"> Code </th><th style="text-align:left"> Symbol </th></tr>
+<tr><td style="text-align:left"> <code>\O(n)</code> </td><td style="text-align:left"> \(\O(n)\) </td></tr>
+<tr><td style="text-align:left"> <code>\mathbf{M}^\T</code> </td><td style="text-align:left"> \(\mathbf{M}^\T\) </td></tr>
+<tr><td style="text-align:left"> <code>45\degrees</code> </td><td style="text-align:left"> \(45\degrees\) </td></tr>
+<tr><td style="text-align:left"> <code>x \in \Real</code> </td><td style="text-align:left"> \(x \in \Real\) </td></tr>
+<tr><td style="text-align:left"> <code>x \in \Integer</code> </td><td style="text-align:left"> \(x \in \Integer\) </td></tr>
+<tr><td style="text-align:left"> <code>x \in \Boolean</code> </td><td style="text-align:left"> \(x \in \Boolean\) </td></tr>
+<tr><td style="text-align:left"> <code>x \in \Complex</code> </td><td style="text-align:left"> \(x \in \Complex\) </td></tr>
+<tr><td style="text-align:left"> <code>\n</code> </td><td style="text-align:left"> \(\n\) </td></tr>
+<tr><td style="text-align:left"> <code>\w</code> </td><td style="text-align:left"> \(\w\) </td></tr>
+<tr><td style="text-align:left"> <code>\wo</code> </td><td style="text-align:left"> \(\wo\) </td></tr>
+<tr><td style="text-align:left"> <code>\wi</code> </td><td style="text-align:left"> \(\wi\) </td></tr>
+<tr><td style="text-align:left"> <code>\wh</code> </td><td style="text-align:left"> \(\wh\) </td></tr>
+<tr><td style="text-align:left"> <code>\Li</code> </td><td style="text-align:left"> \(\Li\) </td></tr>
+<tr><td style="text-align:left"> <code>\Lo</code> </td><td style="text-align:left"> \(\Lo\) </td></tr>
+<tr><td style="text-align:left"> <code>\Lr</code> </td><td style="text-align:left"> \(\Lr\) </td></tr>
+<tr><td style="text-align:left"> <code>\Le</code> </td><td style="text-align:left"> \(\Le\) </td></tr>
+<tr><td style="text-align:left"> <code>10\un{m/s^2}</code> </td><td style="text-align:left"> \(10\un{m/s^2}\) </td></tr>
+</table></div>
+
+</p><p>
+
 </p></span>	
 </body></html>
