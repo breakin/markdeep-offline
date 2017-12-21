@@ -21,8 +21,12 @@ Word.
 Word.
 
 [Link-test](https://www.google.com)
+
+Here is an image:
+
 ![Image-test](https://www.google.se/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
 
+Lets try a diagram:
 
 	***********************************************************
 	* -------------.                                          *

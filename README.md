@@ -1,5 +1,5 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
-The generated HTML code mostly works but the stylesheet is not quite hooked up yet.
+The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
 
 Usage
 =====
@@ -22,6 +22,10 @@ Changes I did to markdeep.js
 ============================
 * The minified version of highlight.js is causing some issues so I removed it (line 87 in markdeep.original.js). I provide the full highlight.js via npm instead so hljs exists.
 * The canvas operations in measureFontSize (line 74 markdeep.original.js) requires functionality of JSDOM that is hard to install on windows. Thus I made it so the function always returns 10.
+
+Things I couldn't reach in markdeep
+===================================
+* The body-style (BODY_STYLESHEET) could not be accessed from outside of markdeep.js so I copied it into convert.js.
 
 From scratch
 ============

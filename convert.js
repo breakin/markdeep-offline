@@ -1,6 +1,10 @@
 hljs = require('highlight.js')
 fs = require('fs'); // file system
 
+function entag(tag, content, attribs) {
+    return '<' + tag + (attribs ? ' ' + attribs : '') + '>' + content + '</' + tag + '>';
+}
+
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 JSDOM.fromFile("metapage.html").then(dom => {
@@ -23,10 +27,19 @@ JSDOM.fromFile("metapage.html").then(dom => {
 		data = data.replace(/\r\n/g, "\n"); // Remove window line endings
 
 		css = window.markdeep.stylesheet();
-		content = window.markdeep.format(data, false)
+		content = window.markdeep.format(data, false)		
+
+		var BODY_STYLESHEET = entag('style', 'body{max-width:680px;' +
+		    'margin:auto;' +
+		    'padding:20px;' +
+		    'text-align:justify;' +
+		    'line-height:140%; ' +
+		    '-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-smoothing:antialiased;' +
+		    'color:#222;' +
+		    'font-family:Palatino,Georgia,"Times New Roman",serif}');		
 
 		// Construct final html
-		str = "<html>\n\t<head>\n" + css + "\n\t</head>\n\t<body>\n" + content + "\t\n</body></html>"
+		str = "<html>\n\t<head>\n" + BODY_STYLESHEET + css + "\n\t</head>\n\t<body>\n" + content + "\t\n</body></html>"
 
 		fs.writeFile('test_converted.html', str, function (err,data2) {
 			if (err) {
