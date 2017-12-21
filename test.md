@@ -1,15 +1,15 @@
 **Magic title**
 				Author
 
-Why is there no TOC?
+Notice the nice table of content.
 
 Introduction
 ============
-This one seems broken,
+H1 header using ===.
 
 Intro-introduction
 ------------------
-This one too seems broken,
+H2 header using ---.
 
 # Crazy1
 Word.
