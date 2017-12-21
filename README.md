@@ -1,8 +1,9 @@
-In this repository I try to generate markdeep offline using the markdeep javascript API and node.js. No browser involved.
-The generated HTML code mostly works but the stylesheet is not working quite yet.
+This is an example of one way to generate html from markdeep documents using node.js (without a browser).
+The generated HTML code mostly works but the stylesheet is not quite hooked up yet.
 
 Usage
 =====
+Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:
 ~~~~~~~~~~
 npm update
 node convert.js
