@@ -41,7 +41,7 @@ Word.
 	***********************************************************
 
 
-Optimize "random point on plane" found in [tweet](https://twitter.com/Donzanoid/status/943221772958257154):
+Optimized "random point on plane" found in [tweet](https://twitter.com/Donzanoid/status/943221772958257154):
 
 ~~~~~~~~~~~~~~~~~~~~
 float3 RandomPointOnPlane(plane p)

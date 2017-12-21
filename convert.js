@@ -18,6 +18,10 @@ JSDOM.fromFile("metapage.html").then(dom => {
 		if (err) {
 			return console.log(err);
 		}
+
+		// If we happen to read a file with window line ending we need to remove those!
+		data = data.replace(/\r\n/g, "\n"); // Remove window line endings
+
 		css = window.markdeep.stylesheet();
 		content = window.markdeep.format(data, false)
 
