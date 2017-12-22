@@ -1,7 +1,10 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
 The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
 
-NOTE: Currently math formulas are not working.
+Things not working
+==================
+* Math is not working fully as it is supposed. Note that if math is working it is using MathJax that is using internet to generate things so this aspect is not offline (at least not yet!).
+* I would be happy if someone has suggestions around improving this. One issue is that is seems that latex syntax is broken which suggests my MATHJAX_CONFIG block is not respected.
 
 Usage
 =====
