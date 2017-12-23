@@ -16,29 +16,19 @@ var BODY_STYLESHEET = entag('style', 'body{max-width:680px;' +
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-JSDOM.fromFile("metapage.html").then(dom => {
-	window = dom.window;
-	document = window.document;
 
-	window.markdeepOptions = {tocStyle: 'short', mode: 'script'}
-	window.alreadyProcessedMarkdeep = false;
-
-	// We are ready to require markdeep since we now have global document and window properties
-	// markdeep has no exports. Instead it adds functions on window.markdeep
-	require('./markdeep');
-
-	fs.readFile('test.md', 'utf8', function (err,data) {
+function convert(from_file, to_file, use_math = true) {
+	console.log("Converting from " + from_file + " to " + to_file);
+	fs.readFile(from_file, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
 		}
 
-		// If we happen to read a file with window line ending we need to remove those!
-		data = data.replace(/\r\n/g, "\n"); // Remove window line endings
+		// If we happen to read a file with window line ending we need to remove those or markdeep formatting will be incorrect
+		data = data.replace(/\r\n/g, "\n"); // Remove windows line endings
 
 		css = window.markdeep.stylesheet();
-		content = window.markdeep.format(data, false)		
-
-		var use_math = true;
+		content = window.markdeep.format(data, false);
 
 		// Construct final html
 		str = "<html>\n\t<head>\n";
@@ -60,14 +50,30 @@ JSDOM.fromFile("metapage.html").then(dom => {
 		}
 
 		str = str + "</body></html>";
-		fs.writeFile('test_converted.html', str, function (err,data2) {
+		fs.writeFile(to_file, str, function (err,data2) {
 			if (err) {
 				return console.log(err);
 			}
 		});
 	});
+}
+
+JSDOM.fromFile("metapage.html").then(dom => {
+	window = dom.window;
+	document = window.document;
+	//window.markdeepOptions = {tocStyle: 'short', mode: 'script'};
+	window.markdeepOptions = {mode: 'script'};
+	window.alreadyProcessedMarkdeep = false;
+	// We are ready to require markdeep since we now have global document and window properties
+	// markdeep has no exports. Instead it adds functions on window.markdeep
+
+	require('./markdeep');
+
+	convert("data/test.md", "data/test_converted.html", false);
+	convert("data/math.md", "data/math_converted.html");
+	convert("data/features.md", "data/features_converted.html");
 }, reason => {
-	console.log("Could not read file using JSDOM, reason=" + reason)
+	console.log("Could not read file using JSDOM, reason=" + reason);
 });
 
 
