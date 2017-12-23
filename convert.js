@@ -17,8 +17,7 @@ var BODY_STYLESHEET = entag('style', 'body{max-width:680px;' +
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-function convert(from_file, to_file, use_math = true) {
-	console.log("Converting from " + from_file + " to " + to_file);
+function convert(from_file, to_file, online_file, use_math = true) {
 	fs.readFile(from_file, 'utf8', function (err,data) {
 		if (err) {
 			return console.log(err);
@@ -26,6 +25,17 @@ function convert(from_file, to_file, use_math = true) {
 
 		// If we happen to read a file with window line ending we need to remove those or markdeep formatting will be incorrect
 		data = data.replace(/\r\n/g, "\n"); // Remove windows line endings
+
+		console.log("Converting from " + from_file + " to " + to_file);
+		if (online_file) {
+			console.log("  Saving online version to " + online_file);
+			online_version = "                <meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n" + data + "\n<!-- Markdeep: --><style class=\"fallback\">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src=\"markdeep.min.js\"></script><script src=\"https://casual-effects.com/markdeep/latest/markdeep.min.js?\"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility=\"visible\")</script>";
+			fs.writeFile(online_file, online_version, function (err,data2) {
+				if (err) {
+					return console.log(err);
+				}
+			});
+		}
 
 		css = window.markdeep.stylesheet();
 		content = window.markdeep.format(data, false);
@@ -69,9 +79,9 @@ JSDOM.fromFile("metapage.html").then(dom => {
 
 	require('./markdeep');
 
-	convert("data/test.md", "data/test_converted.html", false);
-	convert("data/math.md", "data/math_converted.html");
-	convert("data/features.md", "data/features_converted.html");
+	convert("data/test.md", "data/test_offline.html", "data/test_online.html", false);
+	convert("data/math.md", "data/math_offline.html", "data/math_online.html");
+	convert("data/features.md", "data/features_offline.html", "data/features_online.html");
 }, reason => {
 	console.log("Could not read file using JSDOM, reason=" + reason);
 });
