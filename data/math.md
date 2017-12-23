@@ -1,4 +1,4 @@
-This is math: $$f(x)=99$$.
+Math: $$f(x)=99$$.
 
 $$ \Lo(X, \wo) = \Le(X, \wo) + \int_\Omega \Li(X, \wi) ~ f_X(\wi, \wo) ~ | \n \cdot \wi | ~ d\wi $$
 
