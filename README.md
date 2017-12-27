@@ -14,7 +14,7 @@ Download node.js. Run the following in a command prompt/shell when standing in t
 npm update
 node convert.js
 ~~~~~~~~~~
-This converts data/*.md into data/*_offline.html and also creates a regular offline version in data/*_online.html for reference. Note that the paths are hard-coded, add more in convert.js.
+This converts data/test.md into data/test_offline.html and also creates a regular offline version in data/test_online.html for reference. Also converts features and math. More tests can be added to convert.js.
 
 To recreate package.json run
 ~~~~~~~~~~
