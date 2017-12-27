@@ -79,9 +79,9 @@ JSDOM.fromFile("metapage.html").then(dom => {
 
 	require('./markdeep');
 
-	convert("data/test.md", "data/test_offline.html", "data/test_online.html", false);
-	convert("data/math.md", "data/math_offline.html", "data/math_online.html");
-	convert("data/features.md", "data/features_offline.html", "data/features_online.html");
+	convert("docs/test.md", "docs/test_offline.html", "docs/test_online.html", false);
+	convert("docs/math.md", "docs/math_offline.html", "docs/math_online.html");
+	convert("docs/features.md", "docs/features_offline.html", "docs/features_online.html");
 }, reason => {
 	console.log("Could not read file using JSDOM, reason=" + reason);
 });

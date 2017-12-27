@@ -6,6 +6,9 @@ Status
 * Works for simpler documents but something is still not working for the full features.md.
 * Note that math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
 * codeFontSize is not correct due to missing canvas operations. Should maybe add javascript to update css dynamically client-side.
+* [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference docs/test_online.html](https://breakin.github.io/markdeep-offline/test_online.html))
+* [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference docs/math_online.html](https://breakin.github.io/markdeep-offline/math_online.html))
+* [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference docs/features_online.html](https://breakin.github.io/markdeep-offline/features_online.html))
 
 Usage
 =====
@@ -14,7 +17,7 @@ Download node.js. Run the following in a command prompt/shell when standing in t
 npm update
 node convert.js
 ~~~~~~~~~~
-This converts data/test.md into data/test_offline.html and also creates a regular offline version in data/test_online.html for reference. Also converts features and math. More tests can be added to convert.js.
+This converts docs/test.md into docs/test_offline.html and also creates a regular offline version in docs/test_online.html for reference. Also converts features and math. More tests can be added to convert.js.
 
 To recreate package.json run
 ~~~~~~~~~~
