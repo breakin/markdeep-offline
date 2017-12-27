@@ -3,12 +3,13 @@ The generated HTML code showns a page looking exactly as if it had been using ma
 
 Status
 ======
-* Works for simpler documents but something is still not working for the full features.md.
-* Note that math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
-* codeFontSize is not correct due to missing canvas operations. Should maybe add javascript to update css dynamically client-side.
+* Math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
+* codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
+	* Should maybe add javascript to update css dynamically client-side.
 * [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference [docs/test_online.html](https://breakin.github.io/markdeep-offline/test_online.html))
 * [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference [docs/math_online.html](https://breakin.github.io/markdeep-offline/math_online.html))
 * [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features_online.html](https://breakin.github.io/markdeep-offline/features_online.html))
+	* This documents starts of well but then something happens. Needs further investigation!
 
 Usage
 =====
