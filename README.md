@@ -1,10 +1,11 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
 The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
-Note that math is still using online MathJAX so result is not fully offline (at least not yet).
 
 Status
 ======
-Works for simpler documents but something is still not working for the full features.md.
+* Works for simpler documents but something is still not working for the full features.md.
+* Note that math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
+* codeFontSize is not correct due to missing canvas operations. Should maybe add javascript to update css dynamically client-side.
 
 Usage
 =====
