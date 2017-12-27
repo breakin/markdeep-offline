@@ -42,12 +42,6 @@ function convert(from_file, to_file, online_file, use_math = true) {
 
 		// Construct final html
 		str = "<html>\n\t<head>\n";
-		if (use_math) {
-			str = str + "\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n";
-		}
-		str = str + "\t" + BODY_STYLESHEET + css + "\n\t</head>\n\t<body>\n";
-
-		str = str + content;
 
 		if (use_math) {
 			// from markdeep.js
@@ -57,7 +51,13 @@ function convert(from_file, to_file, online_file, use_math = true) {
 				'$$NC{\\n}{\\hat{n}}NC{\\w}{\\hat{\\omega}}NC{\\wi}{\\w_\\mathrm{i}}NC{\\wo}{\\w_\\mathrm{o}}NC{\\wh}{\\w_\\mathrm{h}}NC{\\Li}{L_\\mathrm{i}}NC{\\Lo}{L_\\mathrm{o}}NC{\\Le}{L_\\mathrm{e}}NC{\\Lr}{L_\\mathrm{r}}NC{\\Lt}{L_\\mathrm{t}}NC{\\O}{\\mathrm{O}}NC{\\degrees}{{^{\\large\\circ}}}NC{\\T}{\\mathsf{T}}NC{\\mathset}[1]{\\mathbb{#1}}NC{\\Real}{\\mathset{R}}NC{\\Integer}{\\mathset{Z}}NC{\\Boolean}{\\mathset{B}}NC{\\Complex}{\\mathset{C}}NC{\\un}[1]{\\,\\mathrm{#1}}$$\n'.rp(/NC/g, '\\newcommand') +
 				'</span>\n';
 			str = str + "\n\t" + MATHJAX_CONFIG;
+			// from markdeep.js
+			str = str + "\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n";
 		}
+
+		str = str + "\t" + BODY_STYLESHEET + css + "\n\t</head>\n\t<body>\n";
+
+		str = str + content;
 
 		str = str + "</body></html>";
 		fs.writeFile(to_file, str, function (err,data2) {
