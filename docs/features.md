@@ -66,6 +66,8 @@ There are many forms of implicit and explicit links:
 `<http://casual-effects.com>`              | <http://casual-effects.com> 
 `http://casual-effects.com`                | http://casual-effects.com
 `morgan@casual-effects.com`                | morgan@casual-effects.com
+`test@foo.co.uk`                           | test@foo.co.uk
+`<test@foo.co.uk>`                         | <test@foo.co.uk>
 `Lists section`                            | Lists section
 `Tiny Grids subsection`                    | Tiny Grids subsection
 `Section [Lists]`                          | Section [Lists]

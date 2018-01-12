@@ -1,0 +1,755 @@
+<html>
+	<head>
+	<style>body{max-width:680px;margin:auto;padding:20px;text-align:justify;line-height:140%; -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-smoothing:antialiased;color:#222;font-family:Palatino,Georgia,"Times New Roman",serif}</style><style>body{counter-reset: h1 h2 h3 h4 h5 h6 paragraph}.md code,pre{font-family:Menlo,Consolas,monospace;font-size:10.51316178px;line-height:140%}.md div.title{font-size:26px;font-weight:800;line-height:120%;text-align:center}.md div.afterTitles{height:10px}.md div.subtitle{text-align:center}.md .image{display:inline-block}.md div.imagecaption,.md div.tablecaption,.md div.listingcaption{margin:5px 5px 5px 5px;text-align: justify;font-style:italic}.md div.imagecaption{margin-bottom:0}.md img{max-width:100%;page-break-inside:avoid}.md li{text-align:left}.md pre.listing {tab-size:4;-moz-tab-size:4;-o-tab-size:4}.md div.tilde{margin:20px 0 -10px;text-align:center}.md blockquote.fancyquote{margin:25px 0 25px;text-align:left;line-height:160%}.md blockquote.fancyquote::before{content:"“";color:#DDD;font-family:Times New Roman;font-size:45px;line-height:0;margin-right:6px;vertical-align:-0.3em}.md span.fancyquote{font-size:118%;color:#777;font-style:italic}.md span.fancyquote::after{content:"”";font-style:normal;color:#DDD;font-family:Times New Roman;font-size:45px;line-height:0;margin-left:6px;vertical-align:-0.3em}.md blockquote.fancyquote .author{width:100%;margin-top:10px;display:inline-block;text-align:right}.md small{font-size:60%}.md div.title,contents,.md .tocHeader,h1,h2,h3,h4,h5,h6,.md .shortTOC,.md .mediumTOC,.nonumberh1,.nonumberh2,.nonumberh3,.nonumberh4,.nonumberh5,.nonumberh6{font-family:Verdana,Helvetica,Arial,sans-serif;margin:13.4px 0 13.4px;padding:15px 0 3px;border-top:none;clear:both}.md h1,.md h2,.md h3,.md h4,.md h5,.md h6,.md .nonumberh1,.md .nonumberh2,.md .nonumberh3,.md .nonumberh4,.md .nonumberh5,.md .nonumberh6{page-break-after:avoid;break-after:avoid}.md svg.diagram{display:block;font-family:Menlo,Consolas,monospace;font-size:10.51316178px;text-align:center;stroke-linecap:round;stroke-width:2px;page-break-inside:avoid;stroke:#000;fill:#000}.md svg.diagram .opendot{fill:#FFF}.md svg.diagram text{stroke:none}@media print{.md .pagebreak{page-break-after:always;visibility:hidden}}.md a{font-family:Georgia,Palatino,'Times New Roman'}.md h1,.md .tocHeader,.md .nonumberh1{border-bottom:3px solid;font-size:20px;font-weight:bold;}.md h1,.md .nonumberh1{counter-reset: h2 h3 h4 h5 h6}.md h2,.md .nonumberh2{counter-reset: h3 h4 h5 h6;border-bottom:2px solid #999;color:#555;font-weight:bold;font-size:18px;}.md h3,.md h4,.md h5,.md h6,.md .nonumberh3,.md .nonumberh4,.md .nonumberh5,.md .nonumberh6{font-family:Helvetica,Arial,sans-serif;color:#555;font-size:16px;}.md h3{counter-reset:h4 h5 h6}.md h4{counter-reset:h5 h6}.md h5{counter-reset:h6}.md div.table{margin:16px 0 16px 0}.md table{border-collapse:collapse;line-height:140%;page-break-inside:avoid}.md table.table{margin:auto}.md table.calendar{width:100%;margin:auto;font-size:11px;font-family:Helvetica,Arial,sans-serif}.md table.calendar th{font-size:16px}.md .today{background:#ECF8FA}.md .calendar .parenthesized{color:#999;font-style:italic}.md div.tablecaption{text-align:center}.md table.table th{color:#FFF;background-color:#AAA;border:1px solid #888;padding:8px 15px 8px 15px}.md table.table td{padding:5px 15px 5px 15px;border:1px solid #888}.md table.table tr:nth-child(even){background:#EEE}.md pre.tilde{border-top: 1px solid #CCC;border-bottom: 1px solid #CCC;padding: 5px 0 5px 20px;margin:0 0 0 0;background:#FCFCFC;page-break-inside:avoid}.md a.target{width:0px;height:0px;visibility:hidden;font-size:0px;display:inline-block}.md a:link, .md a:visited{color:#38A;text-decoration:none}.md a:link:hover{text-decoration:underline}.md dt{font-weight:700}.md dl>dd{margin-top:-8px; margin-bottom:8px}.md dl>table{margin:35px 0 30px}.md code{white-space:pre;page-break-inside:avoid}.md .endnote{font-size:13px;line-height:15px;padding-left:10px;text-indent:-10px}.md .bib{padding-left:80px;text-indent:-80px;text-align:left}.markdeepFooter{font-size:9px;text-align:right;padding-top:80px;color:#999}.md .mediumTOC{float:right;font-size:12px;line-height:15px;border-left:1px solid #CCC;padding-left:15px;margin:15px 0px 15px 25px}.md .mediumTOC .level1{font-weight:600}.md .longTOC .level1{font-weight:600;display:block;padding-top:12px;margin:0 0 -20px}.md .shortTOC{text-align:center;font-weight:bold;margin-top:15px;font-size:14px}.md .admonition{position:relative;margin:1em 0;padding:.4rem 1rem;border-radius:.2rem;border-left:2.5rem solid rgba(68,138,255,.4);background-color:rgba(68,138,255,.15);}.md .admonition-title{font-weight:bold;border-bottom:solid 1px rgba(68,138,255,.4);padding-bottom:4px;margin-bottom:4px;margin-left: -1rem;padding-left:1rem;margin-right:-1rem;border-color:rgba(68,138,255,.4)}.md .admonition.tip{border-left:2.5rem solid rgba(50,255,90,.4);background-color:rgba(50,255,90,.15)}.md .admonition.tip::before{content:"\24d8";font-weight:bold;font-size:150%;position:relative;top:3px;color:rgba(26,128,46,.8);left:-2.95rem;display:block;width:0;height:0}.md .admonition.tip>.admonition-title{border-color:rgba(50,255,90,.4)}.md .admonition.warn,.md .admonition.warning{border-left:2.5rem solid rgba(255,145,0,.4);background-color:rgba(255,145,0,.15)}.md .admonition.warn::before,.md .admonition.warning::before{content:"\26A0";font-weight:bold;font-size:150%;position:relative;top:2px;color:rgba(128,73,0,.8);left:-2.95rem;display:block;width:0;height:0}.md .admonition.warn>.admonition-title,.md .admonition.warning>.admonition-title{border-color:rgba(255,145,0,.4)}.md .admonition.error{border-left: 2.5rem solid rgba(255,23,68,.4);background-color:rgba(255,23,68,.15)}.md .admonition.error>.admonition-title{border-color:rgba(255,23,68,.4)}.md .admonition.error::before{content: "\2612";font-family:"Arial";font-size:200%;position:relative;color:rgba(128,12,34,.8);top:-2px;left:-3rem;display:block;width:0;height:0}.md .admonition p:last-child{margin-bottom:0}</style><style>.md h1::before {
+content:counter(h1) " ";
+counter-increment: h1;margin-right:10px}.md h2::before {
+content:counter(h1) "."counter(h2) " ";
+counter-increment: h2;margin-right:10px}.md h3::before {
+content:counter(h1) "."counter(h2) "."counter(h3) " ";
+counter-increment: h3;margin-right:10px}.md h4::before {
+content:counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) " ";
+counter-increment: h4;margin-right:10px}.md h5::before {
+content:counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " ";
+counter-increment: h5;margin-right:10px}.md h6::before {
+content:counter(h1) "."counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " ";
+counter-increment: h6;margin-right:10px}</style><style>.hljs{display:block;overflow-x:auto;padding:0.5em;background:#fff;color:#000;-webkit-text-size-adjust:none}.hljs-comment{color:#006a00}.hljs-keyword{color:#02E}.hljs-literal,.nginx .hljs-title{color:#aa0d91}.method,.hljs-list .hljs-title,.hljs-tag .hljs-title,.setting .hljs-value,.hljs-winutils,.tex .hljs-command,.http .hljs-title,.hljs-request,.hljs-status,.hljs-name{color:#008}.hljs-envvar,.tex .hljs-special{color:#660}.hljs-string{color:#c41a16}.hljs-tag .hljs-value,.hljs-cdata,.hljs-filter .hljs-argument,.hljs-attr_selector,.apache .hljs-cbracket,.hljs-date,.hljs-regexp{color:#080}.hljs-sub .hljs-identifier,.hljs-pi,.hljs-tag,.hljs-tag .hljs-keyword,.hljs-decorator,.ini .hljs-title,.hljs-shebang,.hljs-prompt,.hljs-hexcolor,.hljs-rule .hljs-value,.hljs-symbol,.hljs-symbol .hljs-string,.hljs-number,.css .hljs-function,.hljs-function .hljs-title,.coffeescript .hljs-attribute{color:#A0C}.hljs-function .hljs-title{font-weight:bold;color:#000}.hljs-class .hljs-title,.smalltalk .hljs-class,.hljs-type,.hljs-typename,.hljs-tag .hljs-attribute,.hljs-doctype,.hljs-class .hljs-id,.hljs-built_in,.setting,.hljs-params,.clojure .hljs-attribute{color:#5c2699}.hljs-variable{color:#3f6e74}.css .hljs-tag,.hljs-rule .hljs-property,.hljs-pseudo,.hljs-subst{color:#000}.css .hljs-class,.css .hljs-id{color:#9b703f}.hljs-value .hljs-important{color:#ff7700;font-weight:bold}.hljs-rule .hljs-keyword{color:#c5af75}.hljs-annotation,.apache .hljs-sqbracket,.nginx .hljs-built_in{color:#9b859d}.hljs-preprocessor,.hljs-preprocessor *,.hljs-pragma{color:#643820}.tex .hljs-formula{background-color:#eee;font-style:italic}.diff .hljs-header,.hljs-chunk{color:#808080;font-weight:bold}.diff .hljs-change{background-color:#bccff9}.hljs-addition{background-color:#baeeba}.hljs-deletion{background-color:#ffc8bd}.hljs-comment .hljs-doctag{font-weight:bold}.method .hljs-id{color:#000}</style>
+	</head>
+	<body>
+<span class="md"><p><title>Markdeep Feature Demo</title><div class="title"> Markdeep Feature Demo </div>
+
+<div class="subtitle"> Morgan McGuire </div>
+<div class="afterTitles"></div><div class="mediumTOC"><center><b>Contents</b></center><p><a href="#toc1" class="level1"><span class="tocNumber">1&nbsp; </span>Basic Formatting</a><br/>
+&nbsp;&nbsp;<a href="#toc1.1" class="level2"><span class="tocNumber">1.1&nbsp; </span>Links</a><br/>
+&nbsp;&nbsp;<a href="#toc1.2" class="level2"><span class="tocNumber">1.2&nbsp; </span>Lists</a><br/>
+&nbsp;&nbsp;<a href="#toc1.3" class="level2"><span class="tocNumber">1.3&nbsp; </span>Definition Lists</a><br/>
+&nbsp;&nbsp;<a href="#toc1.4" class="level2"><span class="tocNumber">1.4&nbsp; </span>Schedule Lists</a><br/>
+&nbsp;&nbsp;<a href="#toc1.5" class="level2"><span class="tocNumber">1.5&nbsp; </span>Block Quotes</a><br/>
+&nbsp;&nbsp;<a href="#toc1.6" class="level2"><span class="tocNumber">1.6&nbsp; </span>Tables</a><br/>
+&nbsp;&nbsp;<a href="#toc1.7" class="level2"><span class="tocNumber">1.7&nbsp; </span>Page Breaks</a><br/>
+&nbsp;&nbsp;<a href="#toc1.8" class="level2"><span class="tocNumber">1.8&nbsp; </span>Images and Video</a><br/>
+</p></div>
+
+</p><p>
+
+This demonstration documents the features of
+<a href="http://casual-effects.com/markdeep">Markdeep</a> and acts as a test for
+it.  Markdeep is a text formatting syntax that extends Markdown, and a
+Javascript program for making it work in browsers. The two most
+powerful features are its ability to run in any <strong class="asterisk">web browser</strong> on the
+client side and the inclusion of <strong class="asterisk">diagrams</strong>.
+
+</p><p>
+
+<a href="https://casual-effects.com/markdeep/features.md.html?noformat">Click here</a>
+to see this document without automatic formatting.
+
+</p><p>
+
+Markdeep is free and easy to use. It doesn't need a plugin, or
+Internet connection. There's nothing to install. Just start
+writing in Vi, Nodepad, Zed, Emacs, Visual Studio, Atom, or another
+editor! You don't have to export, compile, or otherwise process
+your document.
+
+</p><p>
+
+If you want to support development of Markdeep, just buy my
+<a href="http://graphicscodex.com">Graphics Codex</a> book for $10 on Amazon. Revenue from that funds my
+open source projects.
+
+</p>
+<a class="target" name="basicformatting">&nbsp;</a><a class="target" name="toc1">&nbsp;</a><h1>Basic Formatting</h1>
+<p>
+
+Text formatting: 
+<div class='table'><table class="table"><tr><th style="text-align:left"> Source </th><th style="text-align:left"> Result </th></tr>
+<tr><td style="text-align:left"> <code>**bold**</code> </td><td style="text-align:left"> <strong class="asterisk">bold</strong> </td></tr>
+<tr><td style="text-align:left"> <code>__bold__</code> </td><td style="text-align:left"> <strong class="underscore">bold</strong> </td></tr>
+<tr><td style="text-align:left"> <code>*italic*</code> </td><td style="text-align:left"> <em class="asterisk">italic</em> </td></tr>
+<tr><td style="text-align:left"> <code>_italic_</code> </td><td style="text-align:left"> <em class="underscore">italic</em> </td></tr>
+<tr><td style="text-align:left"> <code>~~strikethrough~~</code> </td><td style="text-align:left"> <del>strikethrough</del> </td></tr>
+<tr><td style="text-align:left"> <code>`inline code`</code> </td><td style="text-align:left"> <code>inline code</code> </td></tr>
+<tr><td style="text-align:left"> <code>5 kg/m^3</code> </td><td style="text-align:left"> 5 kg/m<sup>3</sup> </td></tr>
+</table></div>
+
+</p><p>
+
+You can add CSS to change the styles. See the Custom Formatting section
+for some examples.
+
+</p><p>
+
+Formatted text may <strong class="asterisk">cross
+lines</strong> and be as small as <strong class="asterisk">a</strong> single character. It can <em class="underscore">also
+  be indented and
+  split across lines</em> simultaneously.
+
+</p><p>
+
+Markdeep intelligently does not apply bold or italic formatting to
+math expressions such as x = 3 * y - 2 * z or WORDS_WITH_INTERNAL_UNDERSCORES.
+It also protects HTML <code>&lt;tags&gt;</code> in code blocks from disappearing.
+
+</p><p>
+
+If you <em class="underscore">want</em> italics or bold inside of a word, for example in: SCUBA = <b>S</b>elf <b>C</b>ontained
+<b>U</b>nderwater <b>B</b>reathing <b>A</b>pparatus, then just use HTML <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code>
+tags&mdash;a markdown syntax won't be any more readable in that case.
+
+</p><p>
+
+Exponents only work for positive and negative integers. For arbitrary exponents,
+use LaTeX notation: <code>$x^y$</code> ⇒ \(x^y\), or HTML tags: <code>x&lt;sup&gt;y&lt;/sup&gt;</code> ⇒ x<sup>y</sup>.
+
+</p>
+<a class="target" name="links">&nbsp;</a><a class="target" name="toc1.1">&nbsp;</a><h2>Links</h2>
+<p>
+
+There are many forms of implicit and explicit links:
+
+</p><p>
+
+<div class='table'><table class="table"><tr><th style="text-align:left"> Source </th><th style="text-align:left"> Result </th></tr>
+<tr><td style="text-align:left"> <code>[hyperlink](http://casual-effects.com)</code> </td><td style="text-align:left"> <a href="http://casual-effects.com">hyperlink</a> </td></tr>
+<tr><td style="text-align:left"> <code>[hyperlink](&quot;http://casual-effects.com&quot;)</code> </td><td style="text-align:left"> <a href="http://casual-effects.com">hyperlink</a> </td></tr>
+<tr><td style="text-align:left"> <code>&lt;http://casual-effects.com&gt;</code> </td><td style="text-align:left"> <a href="http://casual-effects.com" class="url">http://casual-effects.com</a> </td></tr>
+<tr><td style="text-align:left"> <code>http://casual-effects.com</code> </td><td style="text-align:left"> <a href="http://casual-effects.com" class="url">http://casual-effects.com</a> </td></tr>
+<tr><td style="text-align:left"> <code>morgan@casual-effects.com</code> </td><td style="text-align:left"> <a href="mailto:morgan@casual-effects.com">morgan@casual-effects.com</a> </td></tr>
+<tr><td style="text-align:left"> <code>test@foo.co.uk</code> </td><td style="text-align:left"> <a href="mailto:test@foo.co.uk">test@foo.co.uk</a> </td></tr>
+<tr><td style="text-align:left"> <code>&lt;test@foo.co.uk&gt;</code> </td><td style="text-align:left"> <a href="mailto:test@foo.co.uk">test@foo.co.uk</a> </td></tr>
+<tr><td style="text-align:left"> <code>Lists section</code> </td><td style="text-align:left"> <a href="#lists">Lists</a> section </td></tr>
+<tr><td style="text-align:left"> <code>Tiny Grids subsection</code> </td><td style="text-align:left"> Tiny Grids subsection </td></tr>
+<tr><td style="text-align:left"> <code>Section [Lists]</code> </td><td style="text-align:left"> Section  <a href="#toc1.2">1.2</a> </td></tr>
+<tr><td style="text-align:left"> <code>sec. [lists]</code> </td><td style="text-align:left"> sec.  <a href="#toc1.2">1.2</a> </td></tr>
+<tr><td style="text-align:left"> <code>subsection [lists]</code> </td><td style="text-align:left"> subsection  <a href="#toc1.2">1.2</a> </td></tr>
+<tr><td style="text-align:left"> <code>table [states]</code> </td><td style="text-align:left"> <a href="#table_states">table&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>tbl. [states]</code> </td><td style="text-align:left"> <a href="#table_states">tbl.&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>Table [states]</code> </td><td style="text-align:left"> <a href="#table_states">Table&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>figure [robot]</code> </td><td style="text-align:left"> <a href="#figure_robot">figure&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>fig. [robot]</code> </td><td style="text-align:left"> <a href="#figure_robot">fig.&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>Figure [robot]</code> </td><td style="text-align:left"> <a href="#figure_robot">Figure&nbsp;1</a> </td></tr>
+<tr><td style="text-align:left"> <code>lst. [sort]</code> </td><td style="text-align:left"> lst. ? </td></tr>
+<tr><td style="text-align:left"> <code>listing [sort]</code> </td><td style="text-align:left"> listing ? </td></tr>
+<tr><td style="text-align:left"> <code>Listing [sort]</code> </td><td style="text-align:left"> Listing ? </td></tr>
+<tr><td style="text-align:left"> <code>[New York Times][nyt]</code> </td><td style="text-align:left"> <a href="http://nytimes.com">New York Times</a> </td></tr>
+<tr><td style="text-align:left"> <code>[Google][]</code> </td><td style="text-align:left"> <a href="http://google.com">Google</a> </td></tr>
+<tr><td style="text-align:left"> <code>footnote [^syntax]</code> </td><td style="text-align:left"> footnote<sup><a href="#endnote-syntax">1</a></sup> </td></tr>
+<tr><td style="text-align:left"> <code>[#Kajiya86]</code> </td><td style="text-align:left"> [<a href="#citation-kajiya86">Kajiya86</a>] </td></tr>
+</table></div>
+
+</p><p>
+
+Any section header name followed by &ldquo;section&rdquo;, &ldquo;subsection&rdquo;, or &ldquo;sec.&rdquo; will automatically be
+linked to that section. To link by number, use one of those key words followed by the section
+name in brackets. This won't work if you use the actual word &ldquo;section&rdquo; <em class="underscore">as the title of a
+section</em>...but it would be unexpected to have a section named &ldquo;section&rdquo; in a real document
+anyway.
+
+</p><p>
+
+You can also insert HTML anchor (<code>&lt;a&gt;</code>) tags to create arbitrary internal links.
+
+</p><p>
+
+Reference-style links include arbitrary formatted text in brackets
+followed by a case-insensitive symbolic name that must be defined
+elsewhere in the document:
+
+</p><p>
+
+<ul>
+<li class="minus">Example using a symbolic name: <a href="http://nytimes.com">New York Times</a>
+</li>
+<li class="minus">Example using the text as its own symbol: <a href="http://google.com">Google</a></li></ul>
+
+</p><p>
+
+Put the definitions at a convenient location elsewhere in the document:
+
+</p><pre class="listing tilde"><code>    [nyt]: http://nytimes.com
+    [google]: http://google.com</code></pre><p>
+
+Markdeep also supports footnotes, endnotes<sup><a href="#endnote-syntax">1</a></sup>, and citations
+[<a href="#citation-kajiya86">Kajiya86</a>] using a similar syntax. The actual notes and bibliography
+may be placed at the bottom of the document:
+
+</p><pre class="listing tilde"><code>    [#Kajiya86]: James T. Kajiya. 1986 ...
+
+    [^syntax]: Endnotes look like ...</code></pre><p>
+
+Regular links may also have attributes, for example,
+<a href="http://casual-effects.com/markdeep/robot.jpg" download>this link will directly download</a>.
+
+</p><p>
+
+URLs in explicit links may be surrounded by optional <code>&quot;</code> quotation <code>&quot;</code> marks. If your URL
+contains parentheses, then it <em class="underscore">must</em> be surrounded in quotation marks to make it unambigious:
+
+</p><p>
+
+<ul>
+<li class="minus"><a href="http://casual-effects.com(bar)">a link with parens</a>
+</li>
+<li class="minus"><a href="http://casual-effects.com(bar)"><a href="http://casual-effects.com(bar)" class="url">http://casual-effects.com(bar)</a></a></li></ul>
+
+</p><p>
+
+URLs with various forms of special characters are handled well even without quotation marks:
+
+</p><p>
+
+<ul>
+<li class="minus"><a href="https://archive.org/stream/Bazin_Andre_What_Is_Cinema_Volume_1/Bazin_Andre_What_Is_Cinema_Volume_1_djvu.txt">hyperlinks to URLs with underscores</a>
+</li>
+<li class="minus"><a href="https://archive.org/stream/Bazin_Andre_What_Is_Cinema_Volume_1/Bazin_Andre_What_Is_Cinema_Volume_1_djvu.txt" class="url">https://archive.org/stream/Bazin_Andre_What_Is_Cinema_Volume_1/Bazin_Andre_What_Is_Cinema_Volume_1_djvu.txt</a></li></ul>
+
+</p><p>
+
+You can also use the CommonMark angle bracket syntax
+<code>&lt;http://foo.com/bar?arg=value&amp;hello&gt;</code> ⇒
+<a href="http://foo.com/bar?arg=value&hello" class="url">http://foo.com/bar?arg=value&hello</a> provided that your URL only
+contains lower-case letters. Otherwise the browser interprets it
+as a tag and converts it to lowercase before Markdeep runs.
+
+</p><p>
+
+<strong class="asterisk">Bibliography</strong>:<div class="bib">[<a class="target" name="citation-kajiya86">&nbsp;</a><b>Kajiya86</b>] James T. Kajiya. 1986. The Rendering Equation. 
+In <em class="underscore">Proceedings of Computer Graphics and Interactive Techniques 
+(SIGGRAPH '86)</em>, ACM, 143-150. <a href="http://dx.doi.org/10.1145/15922.15902" class="url">http://dx.doi.org/10.1145/15922.15902</a>
+</div>
+
+</p><p>
+
+<div class="endnote"><a class="target" name="endnote-syntax">&nbsp;</a><sup>1</sup> Endnotes look like reference-style links with an empty text
+field. Endnotes may not contain multiple paragraphs (sorry, David
+Foster Wallace), although they may refer to <em class="underscore">other</em> endnotes.
+</div>
+</p>
+<a class="target" name="lists">&nbsp;</a><a class="target" name="toc1.2">&nbsp;</a><h2>Lists</h2>
+<p>
+
+
+A blank line or line ending in a colon must precede lists. Lists have lines that begin with a
+number (which is not required to increment) and a period, or a bullet character (-, *, +). They
+can also be nested. Example:
+
+</p><pre class="listing tilde"><code><span class="hljs-number">1.</span> Monday
+<span class="hljs-number">2.</span> Tuesday
+  <span class="hljs-number">1.</span> Morning
+  <span class="hljs-number">2.</span> Afternoon
+<span class="hljs-number">3.</span> Wednesday
+  - Bullets
+  - Bullets
+<span class="hljs-number">1.</span> Thursday
+  + Bullets
+  + Bullets
+<span class="hljs-number">1.</span> Friday
+  * Bullets</code></pre><p>
+
+Examples of lists and floating diagrams:
+<svg class="diagram" xmlns="http://www.w3.org/2000/svg" version="1.1" height="128" width="224" style="float:right;margin:15px 0 15px 30px;"><g transform="translate(8,16 )">
+<path d="M 24,32 L 24,64 " style="fill:none;"/>
+<path d="M 184,16 L 184,48 " style="fill:none;"/>
+<path d="M 32,16 L 96,16 " style="fill:none;"/>
+<path d="M 112,16 L 176,16 " style="fill:none;"/>
+<path d="M 32,64 L 72,64 " style="fill:none;"/>
+<path d="M 88,64 L 120,64 " style="fill:none;"/>
+<path d="M 136,64 L 176,64 " style="fill:none;"/>
+<path d="M 110,28 L 128,64 " style="fill:none;"/>
+<path d="M 86,52 L 104,16 " style="fill:none;"/>
+<polygon points="192,48 180,42.4 180,53.6 "  style="stroke:none" transform="rotate(90,184,48 )"/>
+<polygon points="180,64 168,58.4 168,69.6 "  style="stroke:none" transform="rotate(0,172,64 )"/>
+<polygon points="180,16 168,10.4 168,21.6 "  style="stroke:none" transform="rotate(0,172,16 )"/>
+<polygon points="148,64 136,58.4 136,69.6 "  style="stroke:none" transform="rotate(180,140,64 )"/>
+<polygon points="124,64 112,58.4 112,69.6 "  style="stroke:none" transform="rotate(0,116,64 )"/>
+<polygon points="118,28 106,22.4 106,33.6 "  style="stroke:none" transform="rotate(243.43494882292202,110,28 )"/>
+<polygon points="124,16 112,10.4 112,21.6 "  style="stroke:none" transform="rotate(180,116,16 )"/>
+<polygon points="100,16 88,10.4 88,21.6 "  style="stroke:none" transform="rotate(0,92,16 )"/>
+<polygon points="94,52 82,46.4 82,57.6 "  style="stroke:none" transform="rotate(116.56505117707799,86,52 )"/>
+<polygon points="76,64 64,58.4 64,69.6 "  style="stroke:none" transform="rotate(0,68,64 )"/>
+<polygon points="32,32 20,26.4 20,37.6 "  style="stroke:none" transform="rotate(270,24,32 )"/>
+<circle cx="24" cy="16" r="6" class="closeddot"/><circle cx="24" cy="64" r="6" class="opendot"/><circle cx="80" cy="64" r="6" class="opendot"/><circle cx="104" cy="16" r="6" class="opendot"/><circle cx="128" cy="64" r="6" class="opendot"/><circle cx="184" cy="16" r="6" class="opendot"/><circle cx="184" cy="64" r="6" class="closeddot"/><g transform="translate(0,0)"><text text-anchor="middle" x="24" y="4">A</text><text text-anchor="middle" x="104" y="4">B</text><text text-anchor="middle" x="184" y="4">C</text><text text-anchor="middle" x="24" y="84">D</text><text text-anchor="middle" x="80" y="84">E</text><text text-anchor="middle" x="128" y="84">F</text><text text-anchor="middle" x="184" y="84">G</text></g></g></svg>
+
+</p><p>
+
+<ol start=1>
+<li class="number">Monday 
+</li>
+<li class="number">Tuesday 
+<ol start=1>
+  <li class="number">Morning 
+</li>
+  <li class="number">Afternoon 
+</li></ol>
+<li class="number">Wednesday 
+<ul>
+  <li class="minus">Bullets 
+</li>
+  <li class="minus">Bullets 
+</li></ul>
+<li class="number">Thursday
+</li>
+<li class="number">Friday</li></ol>
+
+</p><p>
+
+A list with just bullets:
+
+</p><p>
+
+<ul>
+<li class="minus">Bread
+</li>
+<li class="minus">Fish
+</li>
+<li class="minus">Milk
+</li>
+<li class="minus">Cheese</li></ul>
+
+</p><p>
+
+A  list containing a code block:
+
+</p><p>
+
+<ol start=1>
+<li class="number">This is the first list item.
+
+</p><pre class="listing tilde"><code><span class="hljs-comment">// This is a code block</span>
+<span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"hello!\n"</span>);</code></pre><p>
+   
+</li>
+<li class="number">This is the second list item.</li></ol>
+
+</p><p>
+
+<ul>
+<li class="minus">Level 1
+<ul>
+ <li class="minus">Level 2
+<ul>
+  <li class="minus">Level 3
+</li></ul>
+</li></ul>
+<li class="minus">Level 1 again</li></ul>
+
+</p><p>
+
+<ul>
+<li class="minus">1
+<ul>
+ <li class="minus">1.a
+<ul>
+  <li class="minus">1.a.i
+</li>
+  <li class="minus">1.a.ii
+</li></ul>
+ <li class="minus">1.b</li></ul></li></ul>
+
+</p><p>
+
+Lists can also:
+
+</p><p>
+
+<ul>
+<li class="asterisk">Use asterisks
+</li>
+<li class="asterisk">Instead of
+</li>
+<li class="asterisk">Minus signs
+</li>
+<li class="asterisk"><code>or have code</code>
+</li>
+<li class="asterisk"><em class="asterisk">and</em> other formatting</li></ul>
+
+</p><p>
+
+or
+
+</p><p>
+
+<ul>
+<li class="plus">Use plus
+</li>
+<li class="plus">Signs</li></ul>
+
+</p><p>
+
+Lists with blank lines between the elements are formatted with more spacing. There's actually
+nothing special about this...that's just the regular paragraph separator.
+
+</p><p>
+
+<ol start=1>
+<li class="number">Here's a list with some large elements that I chose to format by putting a blank line
+   between the elements to make them more visually distinguished.
+
+</p><p>
+
+</li>
+<li class="number">That's necessary with paragraph-sized elements; otherwise the
+   text would appear to run together into a wall of text!
+
+</p><p>
+
+<ul>
+   <li class="minus">You can also
+</li>
+   <li class="minus">Nest lists within lists with spaces</li></ul></li></ol>
+
+</p><p>
+
+Lists that begin with a number other than 1 use that number as the start index. The subsequent
+numbers are irrelevant and automatically replaced with ascending numbers:
+
+</p><p>
+
+<ol start=6>
+<li class="number">A list that starts at six!
+</li>
+<li class="number">and just
+</li>
+<li class="number">keeps going...</li></ol>
+
+</p>
+<a class="target" name="definitionlists">&nbsp;</a><a class="target" name="toc1.3">&nbsp;</a><h2>Definition Lists</h2>
+<p>
+
+
+<dl><dt>Apple</dt><dd><p>    Pomaceous fruit of plants of the genus Malus in 
+    the family Rosaceae.
+
+</p><p>
+
+    Multiple paragraphs are supported.
+
+</p></dd><dt>Orange</dt><dd><p>    The fruit of an evergreen tree of the genus Citrus.
+
+</p><p>
+
+<ul>
+    <li class="minus">Can also
+</li>
+    <li class="minus">Put lists
+</li>
+    <li class="minus">In definitions</li></ul>
+
+</p></dd></dl>Definition lists with short definitions are formatted more tersely:
+
+</p><p>
+
+<dl><table><tr valign=top><td><dt>Grapes</dt></td><td><dd><p>  Available in purple (&ldquo;red&rdquo;) and green (&ldquo;white&rdquo;) varieties.
+
+</p></dd></td></tr><tr valign=top><td><dt>Bananas</dt></td><td><dd><p>  Only yellow.
+
+</p></dd></td></tr></table></dl></p>
+<a class="target" name="schedulelists">&nbsp;</a><a class="target" name="toc1.4">&nbsp;</a><h2>Schedule Lists</h2>
+<p>
+
+
+Schedule lists contain titles that begin with a valid date. After the
+title, arbitrary indented content appears, including lists, text, and
+equations:
+
+</p><pre class="listing tilde"><code>Tuesday Feb 16, 2016: Project Launch
+ - Create specifications
+ - Initialize revision control system
+ 
+Friday Feb 19, 2016: Build Milestone
+ - Build system fully functional
+ - Placeholder unit tests committed
+                  ⋮
+
+(Monday Feb 29, 2016): Office Closed</code></pre><p>
+
+If the schedule is sufficiently long and dense, then a calendar preview
+is shown before it. Entries in parenthesis with no further details
+are formatted with a more subtle style.
+
+</p><p>
+
+Formatted schedule lists
+look like:
+
+</p><p>
+
+<table class="calendar">
+<tr><th colspan="14">February 2016</th></tr><tr><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Monday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Tuesday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Wednesday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Thursday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Friday</td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>1</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>2</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>3</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>4</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>5</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>8</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>9</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>10</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>11</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>12</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>15</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>16</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-2-16">Project Launch</a></td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>17</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>18</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>19</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-2-19">Build Milestone</a></td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>22</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>23</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>24</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-2-24">Site Visit</a></td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>25</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>26</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-2-26">Demo Milestone</a></td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>29</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><span class="parenthesized">Office Closed</span></td><td width="1%" height="30px" style="color:#BBB;text-align:right;">1</td><td>&nbsp</td><td width="1%" height="30px" style="color:#BBB;text-align:right;">2</td><td>&nbsp</td><td width="1%" height="30px" style="color:#BBB;text-align:right;">3</td><td>&nbsp</td><td width="1%" height="30px" style="color:#BBB;text-align:right;">4</td><td>&nbsp</td></tr></table><br/>
+<table class="calendar">
+<tr><th colspan="14">March 2016</th></tr><tr><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Monday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Tuesday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Wednesday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Thursday</td><td colspan="2" width="14%" style="padding-top:5px;text-align:center;font-style:italic">Friday</td></tr><tr valign="top"><td width="1%" height="30px" style="color:#BBB;text-align:right;">29</td><td>&nbsp;</td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>1</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-3-1">Code Freeze</a></td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>2</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>3</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>4</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>7</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-3-7">Beta</a></td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>8</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>9</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>10</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>11</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>14</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>15</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"><b>16</b></td><td width="14%" style="border:1px solid #EEE;border-left:none;"><a href="#schedule1_2016-3-16">Gold</a></td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>17</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>18</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>21</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>22</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>23</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>24</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>25</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td></tr><tr valign="top"><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>28</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>29</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>30</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="text-align:right;border:1px solid #EEE;border-right:none;"></a>31</td><td width="14%" style="border:1px solid #EEE;border-left:none;"> &nbsp; </td><td width="1%" height="30px" style="color:#BBB;text-align:right;">1</td><td>&nbsp</td></tr></table><br/>
+<table class="schedule"><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-2-16">&nbsp;</a>Tuesday<br/>16 Feb 2016</td><td><b>Project Launch</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+<ul>
+ <li class="minus">Create specifications
+</li>
+ <li class="minus">Initialize revision control system</li></ul>
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-2-19">&nbsp;</a>Friday<br/>19 Feb 2016</td><td><b>Build Milestone</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+<ul>
+ <li class="minus">Build system fully functional
+</li>
+ <li class="minus">Placeholder unit tests committed
+
+</p><p>
+
+</li></ul>
+ <em class="underscore">Plan for weekend overtime if we miss this milestone</em>
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-2-24">&nbsp;</a>Wednesday<br/>24 Feb 2016</td><td><b>Site Visit</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+ <strong class="asterisk">Whole team vistits client</strong>. Dress appropriately.
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-2-26">&nbsp;</a>Friday<br/>26 Feb 2016</td><td><b>Demo Milestone</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+<ul>
+ <li class="minus">Internal demonstrations for management
+</li>
+ <li class="minus">QA reports due</li></ul>
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-3-1">&nbsp;</a>Tuesday<br/>1 Mar 2016</td><td><b>Code Freeze</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+<ul>
+ <li class="minus">Commit final features before this date
+</li>
+ <li class="minus">Only priority 1 fixes with issue tracking numbers
+    after this point</li></ul>
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-3-7">&nbsp;</a>Monday<br/>7 Mar 2016</td><td><b>Beta</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+</td></tr><tr valign="top"><td style="width:100px;padding-right:15px" rowspan="2"><a class="target" name="schedule1_2016-3-16">&nbsp;</a>Wednesday<br/>16 Mar 2016</td><td><b>Gold</b></td></tr><tr valign="top"><td style="padding-bottom:25px">
+
+</p><p>
+
+</td></tr></table>
+
+</p><p>
+
+Dates can be in any unambigous format that includes a month, day, and
+four-digit year between 1000 and 2999, such as:
+
+</p><p>
+
+<ul>
+<li class="minus">2001-03-01
+</li>
+<li class="minus">1 Apr. 1999
+</li>
+<li class="minus">4-07-1976
+</li>
+<li class="minus">February 16, 2016
+</li>
+<li class="minus">2020 Jan. 15
+</li>
+<li class="minus">May 15th, 1982</li></ul>
+
+</p><p>
+
+The US date format MM/DD/YYYY is not supported because it is
+ambiguous. The date may include the name of a day of the week
+(e.g., Sunday). It will be replaced with the correct day.
+
+</p><p>
+
+When months are given by name, they must match the localization
+settings.
+
+</p>
+<a class="target" name="blockquotes">&nbsp;</a><a class="target" name="toc1.5">&nbsp;</a><h2>Block Quotes</h2>
+<p>
+
+
+Email-style indenting creates a blockquote:
+<blockquote>
+ This is an indented blockquote: Ut at felis diam. Aliquam massa odio, pharetra ut neque sed, commodo
+ dignissim orci. Curabitur quis velit gravida, blandit diam nec,
+ lacinia quam. Maecenas pharetra, velit in vestibulum auctor, diam
+ ipsum suscipit arcu, non sodales orci nibh sit amet leo. Nulla dictum</blockquote>
+
+</p><p>
+
+Blockquotes formatted in the style of an actual quotation receive
+special treatment for fancy quoting:
+<blockquote class="fancyquote"><span class="fancyquote">You want to make it seem alive and effortless and fun, but that's an
+ art that took me 25 years to really learn. I wanted to do it very much
+ 25 years ago, but I didn't know how.</span><span class="author">
+      &mdash; David O. Russell, director of American Hustle</span></blockquote>
+</p>
+<a class="target" name="tables">&nbsp;</a><a class="target" name="toc1.6">&nbsp;</a><h2>Tables</h2>
+<p>
+
+
+Source:
+</p><pre class="listing tilde"><code> Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+  [Optional caption]
+
+ Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+[Table [states]: Caption with label.]
+
+Item | Type | Cost
+---- |:----:| ----:
+Fish |  F   | 1.00
+Axe  |  W   | 3.25
+Gold |  I   |20.50
+
+
+ | A |
+ |---|
+ | B |
+ | C |
+ | D |
+</code></pre><p>
+
+Result:
+<div class='table'>
+<table class="table"><tr><th style="text-align:left"> Maine </th><th style="text-align:left"> Iowa </th><th style="text-align:left"> Colorado </th></tr>
+<tr><td style="text-align:left"> 1 </td><td style="text-align:left"> 4 </td><td style="text-align:left"> 10 </td></tr>
+<tr><td style="text-align:left"> ME </td><td style="text-align:left"> IA </td><td style="text-align:left"> CO </td></tr>
+<tr><td style="text-align:left"> Blue </td><td style="text-align:left"> Red </td><td style="text-align:left"> Brown </td></tr>
+</table><div class="tablecaption">Optional caption</div></div>
+
+</p><p>
+
+<div class='table'>
+<table class="table"><tr><th style="text-align:left"> Maine </th><th style="text-align:left"> Iowa </th><th style="text-align:left"> Colorado </th></tr>
+<tr><td style="text-align:left"> 1 </td><td style="text-align:left"> 4 </td><td style="text-align:left"> 10 </td></tr>
+<tr><td style="text-align:left"> ME </td><td style="text-align:left"> IA </td><td style="text-align:left"> CO </td></tr>
+<tr><td style="text-align:left"> Blue </td><td style="text-align:left"> Red </td><td style="text-align:left"> Brown </td></tr>
+</table><div class="tablecaption"><a class="target" name="table_states">&nbsp;</a><b style="font-style:normal;">Table&nbsp;1:</b> Caption with label.</div></div>
+
+</p><p>
+
+With alignment:
+<div class='table'><table class="table"><tr><th style="text-align:left"> Item </th><th style="text-align:center"> Type </th><th style="text-align:right"> Cost </th></tr>
+<tr><td style="text-align:left"> Fish </td><td style="text-align:center"> F </td><td style="text-align:right"> 1.00 </td></tr>
+<tr><td style="text-align:left"> Axe </td><td style="text-align:center"> W </td><td style="text-align:right"> 3.25 </td></tr>
+<tr><td style="text-align:left"> Gold </td><td style="text-align:center"> I </td><td style="text-align:right"> 20.50 </td></tr>
+</table></div>
+
+</p><p>
+
+Single-column:
+<div class='table'><table class="table"><tr><th style="text-align:left">  A  </th></tr>
+<tr><td style="text-align:left">  B  </td></tr>
+<tr><td style="text-align:left">  C  </td></tr>
+<tr><td style="text-align:left">  D  </td></tr>
+</table></div>
+
+</p>
+<a class="target" name="pagebreaks">&nbsp;</a><a class="target" name="toc1.7">&nbsp;</a><h2>Page Breaks</h2>
+<p>
+
+
+To support other markdown conventions, <code>\pagebreak</code> and <code>\newpage</code> will insert a page break in
+a document when printed or converted to PDF. You can also use a pattern of a series of five <code>+</code>
+signs on their own line, which will form a horizontal rule on screen and a new page when
+printed.
+
+</p><p>
+
+<hr class="pagebreak"/>
+
+</p><p>
+
+To make top-level section headers also force page breaks, add the following to your
+document or CSS file:
+
+</p><pre class="listing tilde"><code><span class="hljs-variable">&amp;lt</span>;style<span class="hljs-variable">&amp;gt</span>;.md h1, .md .<span class="hljs-class">nonumberh1 </span>{page-break-before:always}<span class="hljs-variable">&amp;lt</span>;/style<span class="hljs-variable">&amp;gt</span>;</code></pre>
+<a class="target" name="imagesandvideo">&nbsp;</a><a class="target" name="toc1.8">&nbsp;</a><h2>Images and Video</h2>
+<p>
+
+
+There's no natural way to embed an image into a document that is also readable as plain
+text. Markdeep follows markdown's somewhat reasonable syntax.  The source
+
+</p><p>
+
+<code>      ![A picture of a robot](robot.jpg)</code> 
+
+</p><p>
+
+becomes:
+
+</p><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" /></a ><div class="imagecaption">A picture of a robot</div></div></center>
+
+</p><p>
+
+Optional labels may be applied:
+
+</p><p>
+
+<code>      ![Figure [robot]: A picture of a robot](robot.jpg)</code> 
+
+</p><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" /></a ><div class="imagecaption"><a class="target" name="figure_robot">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;1:</b> A picture of a robot</div></div></center>
+
+</p><p>
+
+Any text after the URL is used as HTML attributes. If the attributes
+include width or height specifications, then the image is linked to
+the original.
+
+</p><pre class="listing backtick"><code>![Figure [robot2]: A picture of <span class="hljs-selector-tag">a</span> robot with <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">caption</span> larger
+than it.](robot<span class="hljs-selector-class">.jpg</span> <span class="hljs-attribute">width</span>=<span class="hljs-string">"150px"</span> border=<span class="hljs-string">"1"</span>)</code></pre><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width="150px" border="1" /></a ><div class="imagecaption"><a class="target" name="figure_robot2">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;2:</b> A picture of a robot with a caption larger
+than it.</div></div></center>
+
+</p><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width="150px" border="1" /></a ><div class="imagecaption">Really long captions are justified, not centered. This happens automatically when the caption spans multiple lines. You can also use custom CSS to change the formatting of captions.</div></div></center>
+
+</p><p>
+
+<div class="image" style="width:20%;float:right;margin:4px 0px 0px 25px;"><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" style="width:100%"  /></a ><div class="imagecaption">Floating robot with a large caption.</div></div> If the image is embedded in a
+paragraph and has a caption, then it floats right and any width
+specification is propagated to the full captioned image, for example, 
+the image to the right of this paragraph. Use a space as your caption
+if you want this behavior but don't actually want a visible caption.
+
+</p><p>
+
+You can also just use a raw HTML <code>&lt;img&gt;</code> tag: 
+
+</p><p>
+
+<code>       &lt;img src=&quot;robot.jpg&quot; width=&quot;128&quot; border=&quot;2&quot;/&gt;</code>
+
+</p><p>
+
+<img src="robot.jpg" width="128" border="2"/>
+</p></span></body></html>

@@ -29,7 +29,7 @@ function convert(from_file, to_file, online_file, use_math = true) {
 		console.log("Converting from " + from_file + " to " + to_file);
 		if (online_file) {
 			console.log("  Saving online version to " + online_file);
-			online_version = "                <meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n" + data + "\n<!-- Markdeep: --><style class=\"fallback\">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src=\"markdeep.min.js\"></script><script src=\"https://casual-effects.com/markdeep/latest/markdeep.min.js?\"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility=\"visible\")</script>";
+			online_version = "                <meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n" + data + "\n<!-- Markdeep: --><script src=\"markdeep.original.js\"></script>\n";
 			fs.writeFile(online_file, online_version, function (err,data2) {
 				if (err) {
 					return console.log(err);

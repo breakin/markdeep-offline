@@ -1,0 +1,508 @@
+                <meta charset="utf-8" emacsmode="-*- markdown -*-">
+                      **Markdeep Feature Demo**
+                           Morgan McGuire
+
+This demonstration documents the features of
+[Markdeep](http://casual-effects.com/markdeep) and acts as a test for
+it.  Markdeep is a text formatting syntax that extends Markdown, and a
+Javascript program for making it work in browsers. The two most
+powerful features are its ability to run in any **web browser** on the
+client side and the inclusion of **diagrams**.
+
+[Click here](https://casual-effects.com/markdeep/features.md.html?noformat)
+to see this document without automatic formatting.
+
+Markdeep is free and easy to use. It doesn't need a plugin, or
+Internet connection. There's nothing to install. Just start
+writing in Vi, Nodepad, Zed, Emacs, Visual Studio, Atom, or another
+editor! You don't have to export, compile, or otherwise process
+your document.
+
+If you want to support development of Markdeep, just buy my
+[Graphics Codex](http://graphicscodex.com) book for $10 on Amazon. Revenue from that funds my
+open source projects.
+
+Basic Formatting
+=======================================================================================
+Text formatting: 
+
+    Source                               |     Result
+-----------------------------------------|------------------------------
+`**bold**`                               | **bold**
+`__bold__`                               | __bold__
+`*italic*`                               | *italic*
+`_italic_`                               | _italic_
+`~~strikethrough~~`                      | ~~strikethrough~~
+<code>`inline code`</code>               | `inline code`
+`5 kg/m^3`                               | 5 kg/m^3
+
+You can add CSS to change the styles. See the Custom Formatting section
+for some examples.
+
+Formatted text may **cross
+lines** and be as small as **a** single character. It can _also
+  be indented and
+  split across lines_ simultaneously.
+
+Markdeep intelligently does not apply bold or italic formatting to
+math expressions such as x = 3 * y - 2 * z or WORDS_WITH_INTERNAL_UNDERSCORES.
+It also protects HTML `<tags>` in code blocks from disappearing.
+
+If you _want_ italics or bold inside of a word, for example in: SCUBA = <b>S</b>elf <b>C</b>ontained
+<b>U</b>nderwater <b>B</b>reathing <b>A</b>pparatus, then just use HTML `<b>` and `<i>`
+tags---a markdown syntax won't be any more readable in that case.
+
+Exponents only work for positive and negative integers. For arbitrary exponents,
+use LaTeX notation: `$x^y$` ==> $x^y$, or HTML tags: `x<sup>y</sup>` ==> x<sup>y</sup>.
+
+Links
+---------------------------------------------------------------------------------------
+There are many forms of implicit and explicit links:
+
+
+         Source                            |   Result
+-------------------------------------------|---------------------------------------------
+`[hyperlink](http://casual-effects.com)`   | [hyperlink](http://casual-effects.com)
+`[hyperlink]("http://casual-effects.com")` | [hyperlink]("http://casual-effects.com")
+`<http://casual-effects.com>`              | <http://casual-effects.com> 
+`http://casual-effects.com`                | http://casual-effects.com
+`morgan@casual-effects.com`                | morgan@casual-effects.com
+`test@foo.co.uk`                           | test@foo.co.uk
+`<test@foo.co.uk>`                         | <test@foo.co.uk>
+`Lists section`                            | Lists section
+`Tiny Grids subsection`                    | Tiny Grids subsection
+`Section [Lists]`                          | Section [Lists]
+`sec. [lists]`                             | sec. [lists]
+`subsection [lists]`                       | subsection [lists]
+`table [states]`                           | table [states]
+`tbl. [states]`                            | tbl. [states]
+`Table [states]`                           | Table [states]
+`figure [robot]`                           | figure [robot]
+`fig. [robot]`                             | fig. [robot]
+`Figure [robot]`                           | Figure [robot]
+`lst. [sort]`                              | lst. [sort]
+`listing [sort]`                           | listing [sort]
+`Listing [sort]`                           | Listing [sort]
+`[New York Times][nyt]`                    | [New York Times][nyt]
+`[Google][]`                               | [Google][]
+`footnote [^syntax]`                       | footnote [^syntax]
+`[#Kajiya86]`                              | [#Kajiya86]
+
+Any section header name followed by "section", "subsection", or "sec." will automatically be
+linked to that section. To link by number, use one of those key words followed by the section
+name in brackets. This won't work if you use the actual word "section" _as the title of a
+section_...but it would be unexpected to have a section named "section" in a real document
+anyway.
+
+You can also insert HTML anchor (`<a>`) tags to create arbitrary internal links.
+
+Reference-style links include arbitrary formatted text in brackets
+followed by a case-insensitive symbolic name that must be defined
+elsewhere in the document:
+
+- Example using a symbolic name: [New York Times][nyt]
+- Example using the text as its own symbol: [Google][]
+
+Put the definitions at a convenient location elsewhere in the document:
+
+~~~~~~~~~~~~none
+    [nyt]: http://nytimes.com
+    [google]: http://google.com
+~~~~~~~~~~~~
+
+Markdeep also supports footnotes, endnotes [^syntax], and citations
+[#Kajiya86] using a similar syntax. The actual notes and bibliography
+may be placed at the bottom of the document:
+
+~~~~~~~~~~~~~~~~none
+    [#Kajiya86]: James T. Kajiya. 1986 ...
+
+    [^syntax]: Endnotes look like ...
+~~~~~~~~~~~~~~~~
+
+Regular links may also have attributes, for example,
+[this link will directly download](http://casual-effects.com/markdeep/robot.jpg download).
+
+URLs in explicit links may be surrounded by optional `"` quotation `"` marks. If your URL
+contains parentheses, then it _must_ be surrounded in quotation marks to make it unambigious:
+
+- [a link with parens]("http://casual-effects.com(bar)")
+- []("http://casual-effects.com(bar)")
+
+URLs with various forms of special characters are handled well even without quotation marks:
+
+- [hyperlinks to URLs with underscores](https://archive.org/stream/Bazin_Andre_What_Is_Cinema_Volume_1/Bazin_Andre_What_Is_Cinema_Volume_1_djvu.txt)
+- https://archive.org/stream/Bazin_Andre_What_Is_Cinema_Volume_1/Bazin_Andre_What_Is_Cinema_Volume_1_djvu.txt
+
+You can also use the CommonMark angle bracket syntax
+`<http://foo.com/bar?arg=value&hello>` ==>
+<http://foo.com/bar?arg=value&hello> provided that your URL only
+contains lower-case letters. Otherwise the browser interprets it
+as a tag and converts it to lowercase before Markdeep runs.
+
+**Bibliography**:
+[#Kajiya86]: James T. Kajiya. 1986. The Rendering Equation. 
+In _Proceedings of Computer Graphics and Interactive Techniques 
+(SIGGRAPH '86)_, ACM, 143-150. http://dx.doi.org/10.1145/15922.15902
+
+
+[^syntax]: Endnotes look like reference-style links with an empty text
+field. Endnotes may not contain multiple paragraphs (sorry, David
+Foster Wallace), although they may refer to _other_ endnotes.
+
+
+[nyt]: http://nytimes.com
+[google]: http://google.com
+
+
+Lists
+---------------------------------------------------------------------------------------
+
+A blank line or line ending in a colon must precede lists. Lists have lines that begin with a
+number (which is not required to increment) and a period, or a bullet character (-, *, +). They
+can also be nested. Example:
+
+~~~~~~~~~~~~~~~~~~~~~~~
+1. Monday
+2. Tuesday
+  1. Morning
+  2. Afternoon
+3. Wednesday
+  - Bullets
+  - Bullets
+1. Thursday
+  + Bullets
+  + Bullets
+1. Friday
+  * Bullets
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Examples of lists and floating diagrams:
+                                                   *****************************
+1. Monday                                          *   A         B         C   *
+2. Tuesday                                         *   *-------->o<------->o   *
+  1. Morning                                       *   ^        / ^        |   *
+  2. Afternoon                                     *   |       v   \       v   *
+3. Wednesday                                       *   o----->o---->o<---->*   *
+  - Bullets                                        *   D      E     F      G   *
+  - Bullets                                        *****************************
+4. Thursday
+5. Friday
+
+
+A list with just bullets:
+- Bread
+- Fish
+- Milk
+- Cheese
+
+
+A  list containing a code block:
+
+1. This is the first list item.
+
+   ~~~~~~
+   // This is a code block
+   if (x > 0) printf("hello!\n");
+   ~~~~~~
+   
+1. This is the second list item.
+
+
+- Level 1
+ - Level 2
+  - Level 3
+- Level 1 again
+
+
+- 1
+ - 1.a
+  - 1.a.i
+  - 1.a.ii
+ - 1.b
+
+Lists can also:
+
+* Use asterisks
+* Instead of
+* Minus signs
+* `or have code`
+* *and* other formatting
+
+or
+
++ Use plus
++ Signs
+
+
+Lists with blank lines between the elements are formatted with more spacing. There's actually
+nothing special about this...that's just the regular paragraph separator.
+
+
+1. Here's a list with some large elements that I chose to format by putting a blank line
+   between the elements to make them more visually distinguished.
+
+2. That's necessary with paragraph-sized elements; otherwise the
+   text would appear to run together into a wall of text!
+    
+   - You can also
+   - Nest lists within lists with spaces
+
+
+Lists that begin with a number other than 1 use that number as the start index. The subsequent
+numbers are irrelevant and automatically replaced with ascending numbers:
+
+6. A list that starts at six!
+1. and just
+1. keeps going...
+
+Definition Lists
+------------------------------------------------------------------------------
+
+Apple
+:   Pomaceous fruit of plants of the genus Malus in 
+    the family Rosaceae.
+
+    Multiple paragraphs are supported.
+
+Orange
+:   The fruit of an evergreen tree of the genus Citrus.
+
+    - Can also
+    - Put lists
+    - In definitions
+
+Definition lists with short definitions are formatted more tersely:
+
+Grapes
+: Available in purple ("red") and green ("white") varieties.
+
+Bananas
+: Only yellow.
+
+Schedule Lists
+------------------------------------------------------------------------------
+
+Schedule lists contain titles that begin with a valid date. After the
+title, arbitrary indented content appears, including lists, text, and
+equations:
+
+~~~~~~~~~~~~none
+Tuesday Feb 16, 2016: Project Launch
+ - Create specifications
+ - Initialize revision control system
+ 
+Friday Feb 19, 2016: Build Milestone
+ - Build system fully functional
+ - Placeholder unit tests committed
+                  ⋮
+
+(Monday Feb 29, 2016): Office Closed
+~~~~~~~~~~~~
+
+If the schedule is sufficiently long and dense, then a calendar preview
+is shown before it. Entries in parenthesis with no further details
+are formatted with a more subtle style.
+
+Formatted schedule lists
+look like:
+
+Tuesday Feb 16, 2016: Project Launch
+ - Create specifications
+ - Initialize revision control system
+
+Friday Feb 19, 2016: Build Milestone
+ - Build system fully functional
+ - Placeholder unit tests committed
+ 
+ _Plan for weekend overtime if we miss this milestone_
+ 
+Wednesday Feb 24, 2016: Site Visit
+ **Whole team vistits client**. Dress appropriately.
+
+Friday Feb 26, 2016: Demo Milestone
+ - Internal demonstrations for management
+ - QA reports due
+
+(Monday Feb 29, 2016): Office Closed
+
+Tuesday Mar 1, 2016: Code Freeze
+ - Commit final features before this date
+ - Only priority 1 fixes with issue tracking numbers
+   after this point
+
+Monday Mar 7, 2016: Beta
+
+Wednesday Mar 16, 2016: Gold
+
+Dates can be in any unambigous format that includes a month, day, and
+four-digit year between 1000 and 2999, such as:
+
+- 2001-03-01
+- 1 Apr. 1999
+- 4-07-1976
+- February 16, 2016
+- 2020 Jan. 15
+- May 15th, 1982
+
+The US date format MM/DD/YYYY is not supported because it is
+ambiguous. The date may include the name of a day of the week
+(e.g., Sunday). It will be replaced with the correct day.
+
+When months are given by name, they must match the localization
+settings.
+
+
+Block Quotes
+------------------------------------------------------------------------------
+
+Email-style indenting creates a blockquote:
+
+> This is an indented blockquote: Ut at felis diam. Aliquam massa odio, pharetra ut neque sed, commodo
+> dignissim orci. Curabitur quis velit gravida, blandit diam nec,
+> lacinia quam. Maecenas pharetra, velit in vestibulum auctor, diam
+> ipsum suscipit arcu, non sodales orci nibh sit amet leo. Nulla dictum
+
+Blockquotes formatted in the style of an actual quotation receive
+special treatment for fancy quoting:
+
+> "You want to make it seem alive and effortless and fun, but that's an
+> art that took me 25 years to really learn. I wanted to do it very much
+> 25 years ago, but I didn't know how."
+>
+>      -- David O. Russell, director of American Hustle
+
+
+
+Tables
+------------------------------------------------------------------------------
+
+Source:
+~~~~~~~~~~~~none
+ Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+  [Optional caption]
+
+ Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+[Table [states]: Caption with label.]
+
+Item | Type | Cost
+---- |:----:| ----:
+Fish |  F   | 1.00
+Axe  |  W   | 3.25
+Gold |  I   |20.50
+
+
+ | A |
+ |---|
+ | B |
+ | C |
+ | D |
+
+~~~~~~~~~~~~
+
+Result:
+
+ Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+ [Optional caption]
+
+
+ Maine | Iowa | Colorado 
+-------|------|----------
+   1   |  4   |   10
+  ME   |  IA  |   CO
+ Blue  | Red  | Brown
+[Table [states]: Caption with label.]
+
+
+With alignment:
+
+Item | Type | Cost
+---- |:----:| ----:
+Fish |  F   | 1.00
+Axe  |  W   | 3.25
+Gold |  I   |20.50
+
+
+Single-column:
+
+ | A |
+ |---|
+ | B |
+ | C |
+ | D |
+
+
+Page Breaks
+------------------------------------------------------------------------------
+
+To support other markdown conventions, `\pagebreak` and `\newpage` will insert a page break in
+a document when printed or converted to PDF. You can also use a pattern of a series of five `+`
+signs on their own line, which will form a horizontal rule on screen and a new page when
+printed.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To make top-level section headers also force page breaks, add the following to your
+document or CSS file:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+&lt;style&gt;.md h1, .md .nonumberh1 {page-break-before:always}&lt;/style&gt;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Images and Video
+------------------------------------------------------------------------------
+
+There's no natural way to embed an image into a document that is also readable as plain
+text. Markdeep follows markdown's somewhat reasonable syntax.  The source
+
+`      ![A picture of a robot](robot.jpg)` 
+
+becomes:
+
+![A picture of a robot](robot.jpg)
+
+Optional labels may be applied:
+
+`      ![Figure [robot]: A picture of a robot](robot.jpg)` 
+
+![Figure [robot]: A picture of a robot](robot.jpg)
+
+Any text after the URL is used as HTML attributes. If the attributes
+include width or height specifications, then the image is linked to
+the original.
+
+````
+![Figure [robot2]: A picture of a robot with a caption larger
+than it.](robot.jpg width="150px" border="1")
+````
+
+![Figure [robot2]: A picture of a robot with a caption larger
+than it.](robot.jpg width="150px" border="1")
+
+![Really long captions are justified, not centered. This happens automatically when the caption spans multiple lines. You can also use custom CSS to change the formatting of captions.](robot.jpg width="150px" border="1")
+
+![Floating robot with a large caption.](robot.jpg width="20%") If the image is embedded in a
+paragraph and has a caption, then it floats right and any width
+specification is propagated to the full captioned image, for example, 
+the image to the right of this paragraph. Use a space as your caption
+if you want this behavior but don't actually want a visible caption.
+
+You can also just use a raw HTML `<img>` tag: 
+
+`       <img src="robot.jpg" width="128" border="2"/>`
+
+<img src="robot.jpg" width="128" border="2"/>
+
+<!-- Markdeep: --><script src="markdeep.min.js"></script>

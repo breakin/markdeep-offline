@@ -9,7 +9,7 @@ Status
 * [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference [docs/test_online.html](https://breakin.github.io/markdeep-offline/test_online.html))
 * [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference [docs/math_online.html](https://breakin.github.io/markdeep-offline/math_online.html))
 * [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features_online.html](https://breakin.github.io/markdeep-offline/features_online.html))
-	* This documents starts of well but then something happens. Needs further investigation!
+	* Only missing feature afaict is that the external document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
 
 Usage
 =====
@@ -35,6 +35,7 @@ Comments about my approach
 
 Comments about markdeep itself
 ==============================
+* I moved the "img in gravizo" test after the backtick test. See [gist](https://gist.github.com/breakin/9225ccbf631569aff359efb4e5ce97c1).
 * The minified version of highlight.js is causing some issues so I removed it (line 87 in markdeep.original.js). I provide the full highlight.js via npm instead so hljs exists.
 	* The issue could very well be the issue discussed here [https://github.com/isagalaev/highlight.js/issues/1245](https://github.com/isagalaev/highlight.js/issues/1245) but the simple one word fix by entibo did not work for me...
 	* Maybe simply not loading the minified hljs block if hljs is already defined could be a workaround, but making the minified block work would be better. If sometimes using an external hljs block then maybe the set of supported languages could change.
