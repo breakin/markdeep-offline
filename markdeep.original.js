@@ -1,8 +1,8 @@
 /**
   markdeep.js
-  Version 0.23
+  Version 1.00
 
-  Copyright 2015-2017, Morgan McGuire, http://casual-effects.com
+  Copyright 2015-2018, Morgan McGuire, http://casual-effects.com
   All rights reserved.
 
   -------------------------------------------------------------
@@ -28,12 +28,12 @@
   Sagalaev, which is used for code highlighting. (BSD 3-clause license)
 */
 /**See http://casual-effects.com/markdeep for @license and documentation.
-markdeep.min.js 0.23 (C) 2017 Morgan McGuire 
+markdeep.min.js 1.00 (C) 2018 Morgan McGuire 
 highlight.min.js 9.12.0 (C) 2017 Ivan Sagalaev https://highlightjs.org/*/
 (function() {
 'use strict';
 
-var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;0.23&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
+var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.00&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
 
 // For minification. This is admittedly scary.
 var _ = String.prototype;
@@ -1047,14 +1047,14 @@ function nodeToMarkdeepSource(node, leaveEscapes) {
     // will try to close by inserting the matching close tags at the end of the
     // document. Remove anything that looks like that and comes *after*
     // the first fallback style.
-    source = source.rp(/(?:<style class="fallback">[\s\S]*?<\/style>[\s\S]*)<\/\S+@\S+\.\S+?>/gim, '');
+    source = source.rp(/<style class="fallback">[\s\S]*<\/style>/gi, '');
     
-    // Remove artificially inserted close tags
-    source = source.rp(/<\/h?ttps?:.*>/gi, '');
+    // Remove artificially inserted close tags from URLs and
+    source = source.rp(/<\/https?:.*>|<\/ftp:.*>|<\/[^ "\t\n>]+@[^ "\t\n>]+>/gi, '');
     
     // Now try to fix the URLs themselves, which will be 
     // transformed like this: <http: casual-effects.com="" markdeep="">
-    source = source.rp(/<(https?): (.*?)>/gi, function (match, protocol, list) {
+    source = source.rp(/<(https?|ftp): (.*?)>/gi, function (match, protocol, list) {
 
         // Remove any quotes--they wouldn't have been legal in the URL anyway
         var s = '<' + protocol + '://' + list.rp(/=""\s/g, '/');
@@ -2036,7 +2036,7 @@ function markdeepToHTML(str, elementMode) {
     // Replace pre-formatted script tags that are used to protect
     // less-than signs, e.g., in std::vector<Value>
     str = str.rp(/<script\s+type\s*=\s*['"]preformatted['"]\s*>([\s\S]*?)<\/script>/gi, '$1');
-    
+
     function replaceDiagrams(str) {
         var result = extractDiagram(str);
         if (result.diagramString) {
@@ -4092,7 +4092,6 @@ if (! window.alreadyProcessedMarkdeep) {
         // Recompute the source text from the current version of the document
         var source = nodeToMarkdeepSource(document.body);
 
-        source = unescapeHTMLEntities(source);
         var markdeepHTML = markdeepToHTML(source, false);
 
         // console.log(markdeepHTML); // Final processed source 
@@ -4166,11 +4165,11 @@ if (! window.alreadyProcessedMarkdeep) {
             // This message event was for the Markdeep/include.js system
             
             //console.log(location.href + ' received a message from child ' + childID);
-            
+
             // Replace the corresponding node's contents
             var childFrame = document.getElementById(childID);
             childFrame.outerHTML = '\n' + childBody + '\n';
-            
+
             --numIncludeChildrenLeft;
 
             // console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
@@ -4182,7 +4181,7 @@ if (! window.alreadyProcessedMarkdeep) {
                 } else {
                     // The entire document is complete, so run the markdeep processor
                     // as soon as the document has recovered from our replacements
-                    setTimeout(markdeepProcessor, 0);
+                    setTimeout(markdeepProcessor, 1);
                 }
             }
         }
@@ -4203,7 +4202,7 @@ if (! window.alreadyProcessedMarkdeep) {
         // send a message with its contents for use as a replacement.
         var childID = 'inc' + (++includeCounter);
         return '<iframe src="' + src + '?id=' + childID + '&p=' + encodeURIComponent(myBase) + 
-            '"id="' + childID + '"style="' + childFrameStyle + '" content="text/html;charset=UTF-8"></iframe>';
+            '" id="' + childID + '" style="' + childFrameStyle + '" content="text/html;charset=UTF-8"></iframe>';
     });
 
     // console.log("after insert: "+ source);
@@ -4219,7 +4218,7 @@ if (! window.alreadyProcessedMarkdeep) {
     } else {
         // No includes. Run markdeep processing after the rest of this file parses
         // console.log("non-parent, non-child Parent scheduling markdeepProcessor");
-        setTimeout(markdeepProcessor, 0);
+        setTimeout(markdeepProcessor, 1);
     }
 }
 

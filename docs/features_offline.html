@@ -801,11 +801,11 @@ You can also just use a raw HTML <code>&lt;img&gt;</code> tag:
 
 </p><p>
 
-<code>       &lt;img src="robot.jpg" width="128" border="2"/></code>
+<code>       &lt;img src="robot.jpg" width="128" border="2"/>`
 
 <img src="robot.jpg" width="128" border="2"/>
 
-Captionless images work as well. Source <code>![](robot.jpg)</code> becomes:
+Captionless images work as well. Source `![](robot.jpg)` becomes:
 
 ![](robot.jpg)
 
@@ -829,18 +829,18 @@ URLs for Youtube and Vimeo videos will also automatically embed a video player:
 
 ![Figure [fig:boy]: The Boy with a Camera For a Face](https://vimeo.com/channels/staffpicks/151493973)
 
-URLs for images may be surrounded in optional <code>"</code> quotation <code>"</code> marks. If your URL contains
+URLs for images may be surrounded in optional `"` quotation `"` marks. If your URL contains
 parentheses, then it _must_ be surrounded in quotation marks to make it unambigious. 
 
 Recall that URLs are not permitted to contain spaces (by their specification), so to embed
 a local image whose filename has a space, either rename the file or replace the spaces
-with <code>%20</code> in the URL version of the name.
+with `%20` in the URL version of the name.
 
 
 Symbol Substitutions
 ------------------------------------------------------------------------------
 
-Markdeep converts <code><-></code>, <code><==></code>, <code>-></code>, <code>--></code>, <code><-</code>, <code><--</code>, <code>==></code>, and <code><==</code> to arrows if they
+Markdeep converts `<->`, `<==>`, `->`, `-->`, `<-`, `<--`, `==>`, and `<==` to arrows if they
 aren't in a code block or latex expression and are surrounded by whitespace. Examples:
 
 - if this ==> then that
@@ -896,7 +896,7 @@ a ("b") c
 
 Inch or minute markers such as 3' 9" are not converted. Quotation
 marks in <span style="color:#F00"&gt;HTML attributes&lt;/span&gt; and
-in code blocks, e.g., &lt;code&gt;var x = &quot;hello world&quot;</code>, are not converted.
+in code blocks, e.g., </code>var x = &ldquo;hello world&rdquo;`, are not converted.
 
 </p>
 <a class="target" name="admonitions">&nbsp;</a><a class="target" name="toc1.9">&nbsp;</a><h2>Admonitions</h2>

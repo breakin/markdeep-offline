@@ -6,10 +6,10 @@ Status
 * Math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
 * codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
 	* Should maybe add javascript to update css dynamically client-side.
-* [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference [docs/test_online.html](https://breakin.github.io/markdeep-offline/test_online.html))
-* [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference [docs/math_online.html](https://breakin.github.io/markdeep-offline/math_online.html))
-* [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features_online.html](https://breakin.github.io/markdeep-offline/features_online.html))
+* [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
 	* Only missing feature afaict is that the external document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
+* [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference [docs/math.md.html](https://breakin.github.io/markdeep-offline/math.md.html))
+* [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference [docs/test.md.html](https://breakin.github.io/markdeep-offline/test.md.html))
 
 Usage
 =====
