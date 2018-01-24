@@ -1,14 +1,6 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
 The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
 
-Status
-======
-* Math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
-* codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
-	* Should maybe add javascript to update css dynamically client-side.
-* [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
-	* Only missing feature afaict is that the external document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
-
 Usage
 =====
 Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:
@@ -24,6 +16,15 @@ nmp init
 nmp install highlight
 npm install jsdom
 ~~~~~~~~~~
+
+Status
+======
+* Math is still using online MathJAX so result is not fully offline. It would be nice to optionally generate MathJAX locally if that makes sense.
+* codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
+	* Should maybe add javascript to update css dynamically client-side.
+* [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
+	* Only missing feature afaict is that the external document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
+* markdeep.js is modified, see comments below!
 
 Comments about my approach
 ==========================
@@ -48,4 +49,4 @@ Things I couldn't reach in markdeep
 -----------------------------------
 * The body-style (BODY_STYLESHEET) could not be accessed from outside of markdeep.js so I copied it into convert.js.
 * The MATHJAX_CONFIG block was also copied from markdeep.js.
-* It would be nice if format could signal if math was needed or not.
+* It would be nice if format could signal if math was needed or not. Also maybe it could accept encoding of text block?
