@@ -8,8 +8,6 @@ Status
 	* Should maybe add javascript to update css dynamically client-side.
 * [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
 	* Only missing feature afaict is that the external document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
-* [docs/math.md](https://breakin.github.io/markdeep-offline/math.md) -> [docs/math_offline.html](https://breakin.github.io/markdeep-offline/math_offline.html) (reference [docs/math.md.html](https://breakin.github.io/markdeep-offline/math.md.html))
-* [docs/test.md](https://breakin.github.io/markdeep-offline/test.md) -> [docs/test_offline.html](https://breakin.github.io/markdeep-offline/test_offline.html) (reference [docs/test.md.html](https://breakin.github.io/markdeep-offline/test.md.html))
 
 Usage
 =====
@@ -36,12 +34,14 @@ Comments about my approach
 Comments about markdeep itself
 ==============================
 * I moved the "img in gravizo" test after the backtick test. See [gist](https://gist.github.com/breakin/9225ccbf631569aff359efb4e5ce97c1).
+	* This has been reported as a bug to Morgan and a solution will hopefulyl be part of markdeep in the future
 * The minified version of highlight.js is causing some issues so I removed it (line 87 in markdeep.original.js). I provide the full highlight.js via npm instead so hljs exists.
 	* The issue could very well be the issue discussed here [https://github.com/isagalaev/highlight.js/issues/1245](https://github.com/isagalaev/highlight.js/issues/1245) but the simple one word fix by entibo did not work for me...
 	* Maybe simply not loading the minified hljs block if hljs is already defined could be a workaround, but making the minified block work would be better. If sometimes using an external hljs block then maybe the set of supported languages could change.
 * The canvas operations in measureFontSize (line 74 markdeep.original.js) requires functionality of JSDOM that is hard to install on windows. Thus I made it so the function always returns 10. Is is questionable to access a canvas anyway when running in node.js since there is no browser...
+	* It would be nice to turn canvas off since in offline mode we won't know what resolution to use anyway (unless we do markdeep->html conversion for each user)
 * If the string going into window.markdeep.format has window line endings (\r\n instead of \n) section headers are not working. In convert.js this is "fixed" by replacing all windows line endings with unix line endings.
-* The last line of the document will not be processed so make sure there is an empty line. Not sure if this is always the case or just some patterns that doesn't match on last line.
+* The last line of the document will not be processed so make sure there is an empty line. Not sure if this is always the case or just some patterns that doesn't match on last line. Convert.js adds one extra \n at the end.
 
 Things I couldn't reach in markdeep
 -----------------------------------

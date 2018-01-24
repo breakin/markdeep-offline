@@ -2126,6 +2126,13 @@ function markdeepToHTML(str, elementMode) {
         return entag('style', protect(body));
     });
 
+    // INLINE CODE: Surrounded in back ticks on a single line.  Do this before any other
+    // processing to protect code blocks from further interference. Don't process back ticks
+    // inside of code fences. Allow a single newline, but not wrapping further because that
+    // might just pick up quotes used as other punctuation across lines. Explicitly exclude
+    // cases where the second quote immediately preceeds a number, e.g., "the old `97"
+    str = str.rp(/(`)(.+?(?:\n.+?)?)`(?!\d)/g, entag('code', '$2'));
+
     // Protect the very special case of img tags with newlines and
     // breaks in them AND mismatched angle brackets. This happens for
     // gravizo graphs.
@@ -2134,13 +2141,6 @@ function markdeepToHTML(str, elementMode) {
         return "<img " + protect(match.ss(5, match.length - 1)) + ">";
     });
 
-    // INLINE CODE: Surrounded in back ticks on a single line.  Do this before any other
-    // processing to protect code blocks from further interference. Don't process back ticks
-    // inside of code fences. Allow a single newline, but not wrapping further because that
-    // might just pick up quotes used as other punctuation across lines. Explicitly exclude
-    // cases where the second quote immediately preceeds a number, e.g., "the old `97"
-    str = str.rp(/(`)(.+?(?:\n.+?)?)`(?!\d)/g, entag('code', '$2'));
-    
     // CODE: Escape angle brackets inside code blocks (including the ones we just introduced),
     // and then protect the blocks themselves
     str = str.rp(/(<code(?: .*?)?>)([\s\S]*?)<\/code>/gi, function (match, open, inlineCode) {

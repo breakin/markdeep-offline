@@ -74,13 +74,11 @@ JSDOM.fromFile("metapage.html").then(dom => {
 	//window.markdeepOptions = {tocStyle: 'short', mode: 'script'};
 	window.markdeepOptions = {mode: 'script'};
 	window.alreadyProcessedMarkdeep = false;
+
 	// We are ready to require markdeep since we now have global document and window properties
 	// markdeep has no exports. Instead it adds functions on window.markdeep
-
 	require('./markdeep');
 
-	convert("docs/test.md", "docs/test_offline.html", "docs/test.md.html", false);
-	convert("docs/math.md", "docs/math_offline.html", "docs/math.md.html");
 	convert("docs/features.md", "docs/features_offline.html", "docs/features.md.html");
 }, reason => {
 	console.log("Could not read file using JSDOM, reason=" + reason);
