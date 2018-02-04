@@ -32,11 +32,10 @@ Comments about my approach
 * Currently the document that document and window is constructed from is a tiny little page containing meta information. This let me reuse one JSDOM document for multiple pages to be converted. This step feels very pointless for the node.js use-case somehow.
 * It is not possible to pass a DOM element to window.markdeep.format here since JSDOM does not supply innerHTML. This only affects node.js, nothing wrong with format itself.
 * I don't see how external document inclusion could work with the code as-is. Personally I feel that the node.js version could be more of a open-file/paste-content directly instead of doing iframe and mucking about!
+* Browsers change img-tags to be open since they are supposed to be empty/childless. Convert.js does it manually.
 
 Comments about markdeep itself
 ==============================
-* I moved the "img in gravizo" test after the backtick test. See [gist](https://gist.github.com/breakin/9225ccbf631569aff359efb4e5ce97c1).
-	* This has been reported as a bug to Morgan and a solution will hopefulyl be part of markdeep in the future
 * The minified version of highlight.js is causing some issues so I removed it (line 87 in markdeep.original.js). I provide the full highlight.js via npm instead so hljs exists.
 	* The issue could very well be the issue discussed here [https://github.com/isagalaev/highlight.js/issues/1245](https://github.com/isagalaev/highlight.js/issues/1245) but the simple one word fix by entibo did not work for me...
 	* Maybe simply not loading the minified hljs block if hljs is already defined could be a workaround, but making the minified block work would be better. If sometimes using an external hljs block then maybe the set of supported languages could change.

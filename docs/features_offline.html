@@ -62,13 +62,14 @@ open source projects.
 &nbsp;&nbsp;<a href="#toc1.6" class="level2"><span class="tocNumber">1.6&nbsp; </span>Tables</a><br/>
 &nbsp;&nbsp;<a href="#toc1.7" class="level2"><span class="tocNumber">1.7&nbsp; </span>Page Breaks</a><br/>
 &nbsp;&nbsp;<a href="#toc1.8" class="level2"><span class="tocNumber">1.8&nbsp; </span>Images and Video</a><br/>
-&nbsp;&nbsp;<a href="#toc1.9" class="level2"><span class="tocNumber">1.9&nbsp; </span>Admonitions</a><br/>
-&nbsp;&nbsp;<a href="#toc1.10" class="level2"><span class="tocNumber">1.10&nbsp; </span>Fenced Code Blocks</a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.10.1" class="level3"><span class="tocNumber">1.10.1&nbsp; </span>HTML and LaTeX Blocks</a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.10.2" class="level3"><span class="tocNumber">1.10.2&nbsp; </span>Code Blocks with Captions</a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.10.3" class="level3"><span class="tocNumber">1.10.3&nbsp; </span>Multi-code Blocks and Custom CSS</a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.10.4" class="level3"><span class="tocNumber">1.10.4&nbsp; </span>Less-than Signs in Code</a><br/>
-&nbsp;&nbsp;<a href="#toc1.11" class="level2"><span class="tocNumber">1.11&nbsp; </span>Diagrams</a><br/>
+&nbsp;&nbsp;<a href="#toc1.9" class="level2"><span class="tocNumber">1.9&nbsp; </span>Symbol Substitutions</a><br/>
+&nbsp;&nbsp;<a href="#toc1.10" class="level2"><span class="tocNumber">1.10&nbsp; </span>Admonitions</a><br/>
+&nbsp;&nbsp;<a href="#toc1.11" class="level2"><span class="tocNumber">1.11&nbsp; </span>Fenced Code Blocks</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.11.1" class="level3"><span class="tocNumber">1.11.1&nbsp; </span>HTML and LaTeX Blocks</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.11.2" class="level3"><span class="tocNumber">1.11.2&nbsp; </span>Code Blocks with Captions</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.11.3" class="level3"><span class="tocNumber">1.11.3&nbsp; </span>Multi-code Blocks and Custom CSS</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#toc1.11.4" class="level3"><span class="tocNumber">1.11.4&nbsp; </span>Less-than Signs in Code</a><br/>
+&nbsp;&nbsp;<a href="#toc1.12" class="level2"><span class="tocNumber">1.12&nbsp; </span>Diagrams</a><br/>
 <a href="#toc2" class="level1"><span class="tocNumber">2&nbsp; </span>Diagram Examples</a><br/>
 &nbsp;&nbsp;<a href="#toc2.1" class="level2"><span class="tocNumber">2.1&nbsp; </span>Lines with Decorations</a><br/>
 &nbsp;&nbsp;<a href="#toc2.2" class="level2"><span class="tocNumber">2.2&nbsp; </span>Graph with Large Nodes</a><br/>
@@ -801,105 +802,227 @@ You can also just use a raw HTML <code>&lt;img&gt;</code> tag:
 
 </p><p>
 
-<code>       &lt;img src="robot.jpg" width="128" border="2"/></code>
+<code>       &lt;img src="robot.jpg" width="128" border="2"&gt;</code>
 
-<img src="robot.jpg" width="128" border="2"/>
+</p><p>
+
+<img src="robot.jpg" width="128" border="2">
+
+</p><p>
 
 Captionless images work as well. Source <code>![](robot.jpg)</code> becomes:
 
-![](robot.jpg)
+</p><p>
+
+<center><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" /></a ></center>
+
+</p><p>
 
 Images are centered if they appear in their own paragraph block and inlined otherwise. Grids of
 images are recognized and laid out as grids using HTML tables:
 
+</p><p>
 
-![1](robot.jpg width=100) ![2](robot.jpg width=100) ![3](robot.jpg width=100)
-![4](robot.jpg width=100) ![5](robot.jpg width=100) ![This image has a<br/>long caption](robot.jpg width=100)
+<table width="100%"><tr valign="top"><td>
 
+</p><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">1</div></div></center>
+
+</p><p>
+
+</td><td>
+
+</p><p>
+
+ <center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">2</div></div></center>
+
+</p><p>
+
+</td><td>
+
+</p><p>
+
+ <center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">3</div></div></center>
+
+</p><p>
+
+</td></tr><tr valign="top"><td>
+
+</p><p>
+
+<center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">4</div></div></center>
+
+</p><p>
+
+</td><td>
+
+</p><p>
+
+ <center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">5</div></div></center>
+
+</p><p>
+
+</td><td>
+
+</p><p>
+
+ <center><div class="image" style=""><a  href="robot.jpg" target="_blank"><img class="markdeep" src="robot.jpg" width=100 /></a ><div class="imagecaption">This image has a<br/>long caption</div></div></center>
+
+</p><p>
+
+</td></tr></table>
+
+</p><p>
 
 Video file extensions are automatically detected and will embed a small video
 player:
 
-     ![A video](rocket.mp4)
+</p><p>
 
+     <center><div class="image" style=""><video class="markdeep" src="rocket.mp4" width="480px" controls="true"/><div class="imagecaption">A video</div></div></center>
+
+</p><p>
 
 URLs for Youtube and Vimeo videos will also automatically embed a video player:
 
-![State Zero](https://www.youtube.com/watch?v=QgPMyvZMBY0)
+</p><p>
 
-![Figure [fig:boy]: The Boy with a Camera For a Face](https://vimeo.com/channels/staffpicks/151493973)
+<center><div class="image" style=""><iframe class="markdeep" src="https://www.youtube.com/embed/QgPMyvZMBY0" width="480px" height="300px" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe><div class="imagecaption">State Zero</div></div></center>
 
-URLs for images may be surrounded in optional <code>"</code> quotation <code>"</code> marks. If your URL contains
-parentheses, then it _must_ be surrounded in quotation marks to make it unambigious. 
+</p><p>
+
+<center><div class="image" style=""><iframe class="markdeep" src="https://player.vimeo.com/video/151493973" width="480px" height="300px" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe><div class="imagecaption"><a class="target" name="figure_fig:boy">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;3:</b> The Boy with a Camera For a Face</div></div></center>
+
+</p><p>
+
+URLs for images may be surrounded in optional <code>&quot;</code> quotation <code>&quot;</code> marks. If your URL contains
+parentheses, then it <em class="underscore">must</em> be surrounded in quotation marks to make it unambigious. 
+
+</p><p>
 
 Recall that URLs are not permitted to contain spaces (by their specification), so to embed
 a local image whose filename has a space, either rename the file or replace the spaces
 with <code>%20</code> in the URL version of the name.
 
+</p>
+<a class="target" name="symbolsubstitutions">&nbsp;</a><a class="target" name="toc1.9">&nbsp;</a><h2>Symbol Substitutions</h2>
+<p>
 
-Symbol Substitutions
-------------------------------------------------------------------------------
 
-Markdeep converts <code><-></code>, <code><==></code>, <code>-></code>, <code>--></code>, <code><-</code>, <code><--</code>, <code>==></code>, and <code><==</code> to arrows if they
+Markdeep converts <code>&lt;-&gt;</code>, <code>&lt;==&gt;</code>, <code>-&gt;</code>, <code>--&gt;</code>, <code>&lt;-</code>, <code>&lt;--</code>, <code>==&gt;</code>, and <code>&lt;==</code> to arrows if they
 aren't in a code block or latex expression and are surrounded by whitespace. Examples:
 
-- if this ==> then that
-- here <== there
-- this <==> that
-- A <- B
-- X -> Y
-- back <-> forth
-- long --> way
-- back <-- there
+</p><p>
 
-Two or three minus signs are converted to an em dash--like that.
+<ul>
+<li class="minus">if this ⇒ then that
+</li>
+<li class="minus">here ⇐ there
+</li>
+<li class="minus">this ⇔ that
+</li>
+<li class="minus">A &larr; B
+</li>
+<li class="minus">X &rarr; Y
+</li>
+<li class="minus">back ↔ forth
+</li>
+<li class="minus">long &xrarr; way
+</li>
+<li class="minus">back &xlarr; there</li></ul>
 
-An "x" between numbers, such as 1920x1080 or 3 x 4, will be converted to the times
+</p><p>
+
+Two or three minus signs are converted to an em dash&mdash;like that.
+
+</p><p>
+
+An &ldquo;x&rdquo; between numbers, such as 1920&times;1080 or 3 &times; 4, will be converted to the times
 symbol.
 
-Negative numbers, such as -5 and minus signs between numbers such as 
-2 - 1, will have a minus sign instead of a hyphen.
+</p><p>
+
+Negative numbers, such as &minus;5 and minus signs between numbers such as 
+2 &minus; 1, will have a minus sign instead of a hyphen.
+
+</p><p>
 
 Degrees are reformatted to the degree symbol:
 
-- Cold, 37-degree F water.
-- A 45-degree angle.
-- A right angle's measure is 90 degrees. 
+</p><p>
 
-It doesn't reformat the word "degree" when not following digits:
+<ul>
+<li class="minus">Cold, 37&deg; F water.
+</li>
+<li class="minus">A 45&deg; angle.
+</li>
+<li class="minus">A right angle's measure is 90&deg;.</li></ul>
 
-- Don't give me the third degree!
-- I have two degrees from MIT.
+</p><p>
 
-"Smart quotes" are applied for double-quote marks based on position
+It doesn't reformat the word &ldquo;degree&rdquo; when not following digits:
+
+</p><p>
+
+<ul>
+<li class="minus">Don't give me the third degree!
+</li>
+<li class="minus">I have two degrees from MIT.</li></ul>
+
+</p><p>
+
+&ldquo;Smart quotes&rdquo; are applied for double-quote marks based on position
 relative to whitespace:
 
-"a" b c
+</p><p>
 
-a "b" c
+&ldquo;a&rdquo; b c
 
-a b "c"
+</p><p>
 
-a "b!" c
+a &ldquo;b&rdquo; c
 
-a "b," c
+</p><p>
 
-a "b". C
+a b &ldquo;c&rdquo;
 
-a, "b" c
+</p><p>
 
-a---"b"---c
+a &ldquo;b!&rdquo; c
 
-a ("b") c
+</p><p>
 
-"error" ==> "correction"
+a &ldquo;b,&rdquo; c
+
+</p><p>
+
+a &ldquo;b&rdquo;. C
+
+</p><p>
+
+a, &ldquo;b&rdquo; c
+
+</p><p>
+
+a&mdash;&ldquo;b&rdquo;&mdash;c
+
+</p><p>
+
+a (&ldquo;b&rdquo;) c
+
+</p><p>
+
+&ldquo;error&rdquo; ⇒ &ldquo;correction&rdquo;
+
+</p><p>
 
 Inch or minute markers such as 3' 9" are not converted. Quotation
-marks in <span style="color:#F00"&gt;HTML attributes&lt;/span&gt; and
-in code blocks, e.g., &lt;code&gt;var x = &quot;hello world&quot;</code>, are not converted.
+marks in <span style="color:#F00">HTML attributes</span> and
+in code blocks, e.g., <code>var x = &quot;hello world&quot;</code>, are not converted.
 
 </p>
-<a class="target" name="admonitions">&nbsp;</a><a class="target" name="toc1.9">&nbsp;</a><h2>Admonitions</h2>
+<a class="target" name="admonitions">&nbsp;</a><a class="target" name="toc1.10">&nbsp;</a><h2>Admonitions</h2>
 <p>
 
 
@@ -959,7 +1082,7 @@ These are case insensitive and ignore any colon after the CSS class. Here are so
     This is still more error text.</div>
 
 </p>
-<a class="target" name="fencedcodeblocks">&nbsp;</a><a class="target" name="toc1.10">&nbsp;</a><h2>Fenced Code Blocks</h2>
+<a class="target" name="fencedcodeblocks">&nbsp;</a><a class="target" name="toc1.11">&nbsp;</a><h2>Fenced Code Blocks</h2>
 <p>
 
 
@@ -1011,7 +1134,7 @@ Alternative back-tick markup:
             <span class="hljs-class"><span class="hljs-keyword">data</span>[j] = <span class="hljs-keyword">data</span>[j - 1]</span>
             <span class="hljs-class"><span class="hljs-keyword">data</span>[j] = temp</span>
             <span class="hljs-comment">--j</span></code></pre>
-<a class="target" name="htmlandlatexblocks">&nbsp;</a><a class="target" name="toc1.10.1">&nbsp;</a><h3>HTML and LaTeX Blocks</h3>
+<a class="target" name="htmlandlatexblocks">&nbsp;</a><a class="target" name="toc1.11.1">&nbsp;</a><h3>HTML and LaTeX Blocks</h3>
 <p>
 
 
@@ -1033,7 +1156,7 @@ fences:
 </p><pre class="listing tilde"><code>-<span class="ruby"> Do <span class="hljs-keyword">not</span> 
 </span>-<span class="ruby"> Format
 </span>  -<span class="ruby"> this as a **list**!</span></code></pre>
-<a class="target" name="codeblockswithcaptions">&nbsp;</a><a class="target" name="toc1.10.2">&nbsp;</a><h3>Code Blocks with Captions</h3>
+<a class="target" name="codeblockswithcaptions">&nbsp;</a><a class="target" name="toc1.11.2">&nbsp;</a><h3>Code Blocks with Captions</h3>
 <p>
 
 
@@ -1054,7 +1177,7 @@ Code listings may have captions:
 If you don't have a lot of exposition to share, then code blocks can be back to back:
 
 </p><pre class="listing tilde"><code>printf(<span class="hljs-string">"Hello\n"</span>)<span class="hljs-comment">;</span></code></pre><pre class="listing tilde"><code>printf(<span class="hljs-string">"World\n"</span>)<span class="hljs-comment">;</span></code></pre>
-<a class="target" name="multi-codeblocksandcustomcss">&nbsp;</a><a class="target" name="toc1.10.3">&nbsp;</a><h3>Multi-code Blocks and Custom CSS </h3>
+<a class="target" name="multi-codeblocksandcustomcss">&nbsp;</a><a class="target" name="toc1.11.3">&nbsp;</a><h3>Multi-code Blocks and Custom CSS </h3>
 <p>
 
 
@@ -1098,9 +1221,9 @@ And its result:
 </style>
 
 </p>
-<a class="target" name="less-thansignsincode">&nbsp;</a><a class="target" name="toc1.10.4">&nbsp;</a><h3>Less-than Signs in Code </h3>
+<a class="target" name="less-thansignsincode">&nbsp;</a><a class="target" name="toc1.11.4">&nbsp;</a><h3>Less-than Signs in Code </h3>
 
-<a class="target" name="summary">&nbsp;</a><a class="target" name="toc1.10.4.1">&nbsp;</a><h4>Summary </h4>
+<a class="target" name="summary">&nbsp;</a><a class="target" name="toc1.11.4.1">&nbsp;</a><h4>Summary </h4>
 <p>
 
 If you have trouble with less-than signs right next to capitalized
@@ -1122,7 +1245,7 @@ letters in code blocks, do <em class="underscore">one</em> of the following:
 You don't need to do this for legal HTML or XML in code blocks.
 
 </p>
-<a class="target" name="details">&nbsp;</a><a class="target" name="toc1.10.4.2">&nbsp;</a><h4>Details </h4>
+<a class="target" name="details">&nbsp;</a><a class="target" name="toc1.11.4.2">&nbsp;</a><h4>Details </h4>
 <p>
 
 Less-than and greater-than signs are allowed in code blocks
@@ -1184,7 +1307,7 @@ block to avoid the need for marking up each code (and inline code)
 example.
 
 </p>
-<a class="target" name="diagrams">&nbsp;</a><a class="target" name="toc1.11">&nbsp;</a><h2>Diagrams</h2>
+<a class="target" name="diagrams">&nbsp;</a><a class="target" name="toc1.12">&nbsp;</a><h2>Diagrams</h2>
 <p>
 
 
@@ -1401,7 +1524,7 @@ distored by the beautification process.
 <polygon points="136,176 124,170.4 124,181.6 "  style="stroke:none" transform="rotate(180,128,176 )"/>
 <polygon points="136,160 124,154.4 124,165.6 "  style="stroke:none" transform="rotate(0,128,160 )"/>
 <polygon points="48,160 36,154.4 36,165.6 "  style="stroke:none" transform="rotate(180,40,160 )"/>
-<circle cx="536" cy="64" r="6" class="closeddot"/><g transform="translate(0,0)"><text text-anchor="middle" x="40" y="20">A</text><text text-anchor="middle" x="56" y="20">B</text><text text-anchor="middle" x="64" y="20">o</text><text text-anchor="middle" x="72" y="20">x</text><text text-anchor="middle" x="184" y="68">R</text><text text-anchor="middle" x="192" y="68">o</text><text text-anchor="middle" x="200" y="68">u</text><text text-anchor="middle" x="208" y="68">n</text><text text-anchor="middle" x="216" y="68">d</text><text text-anchor="middle" x="40" y="100">M</text><text text-anchor="middle" x="48" y="100">i</text><text text-anchor="middle" x="56" y="100">x</text><text text-anchor="middle" x="64" y="100">e</text><text text-anchor="middle" x="72" y="100">d</text><text text-anchor="middle" x="88" y="100">R</text><text text-anchor="middle" x="96" y="100">o</text><text text-anchor="middle" x="104" y="100">u</text><text text-anchor="middle" x="112" y="100">n</text><text text-anchor="middle" x="120" y="100">d</text><text text-anchor="middle" x="128" y="100">e</text><text text-anchor="middle" x="136" y="100">d</text><text text-anchor="middle" x="296" y="100">D</text><text text-anchor="middle" x="304" y="100">i</text><text text-anchor="middle" x="312" y="100">a</text><text text-anchor="middle" x="320" y="100">g</text><text text-anchor="middle" x="328" y="100">o</text><text text-anchor="middle" x="336" y="100">n</text><text text-anchor="middle" x="344" y="100">a</text><text text-anchor="middle" x="352" y="100">l</text><text text-anchor="middle" x="360" y="100">s</text><text text-anchor="middle" x="24" y="116">&amp;</text><text text-anchor="middle" x="40" y="116">S</text><text text-anchor="middle" x="48" y="116">q</text><text text-anchor="middle" x="56" y="116">u</text><text text-anchor="middle" x="64" y="116">a</text><text text-anchor="middle" x="72" y="116">r</text><text text-anchor="middle" x="80" y="116">e</text><text text-anchor="middle" x="96" y="116">C</text><text text-anchor="middle" x="104" y="116">o</text><text text-anchor="middle" x="112" y="116">r</text><text text-anchor="middle" x="120" y="116">n</text><text text-anchor="middle" x="128" y="116">e</text><text text-anchor="middle" x="136" y="116">r</text><text text-anchor="middle" x="144" y="116">s</text><text text-anchor="middle" x="672" y="132">S</text><text text-anchor="middle" x="680" y="132">e</text><text text-anchor="middle" x="688" y="132">a</text><text text-anchor="middle" x="696" y="132">r</text><text text-anchor="middle" x="704" y="132">c</text><text text-anchor="middle" x="712" y="132">h</text><text text-anchor="middle" x="464" y="164">I</text><text text-anchor="middle" x="472" y="164">n</text><text text-anchor="middle" x="480" y="164">t</text><text text-anchor="middle" x="488" y="164">e</text><text text-anchor="middle" x="496" y="164">r</text><text text-anchor="middle" x="504" y="164">i</text><text text-anchor="middle" x="512" y="164">o</text><text text-anchor="middle" x="520" y="164">r</text><text text-anchor="middle" x="184" y="196">D</text><text text-anchor="middle" x="192" y="196">i</text><text text-anchor="middle" x="200" y="196">a</text><text text-anchor="middle" x="208" y="196">g</text><text text-anchor="middle" x="224" y="196">l</text><text text-anchor="middle" x="232" y="196">i</text><text text-anchor="middle" x="240" y="196">n</text><text text-anchor="middle" x="248" y="196">e</text><text text-anchor="middle" x="40" y="212">i</text><text text-anchor="middle" x="48" y="212">f</text><text text-anchor="middle" x="64" y="212">(</text><text text-anchor="middle" x="72" y="212">a</text><text text-anchor="middle" x="88" y="212">&gt;</text><text text-anchor="middle" x="104" y="212">b</text><text text-anchor="middle" x="112" y="212">)</text><text text-anchor="middle" x="440" y="212">C</text><text text-anchor="middle" x="448" y="212">u</text><text text-anchor="middle" x="456" y="212">r</text><text text-anchor="middle" x="464" y="212">v</text><text text-anchor="middle" x="472" y="212">e</text><text text-anchor="middle" x="480" y="212">d</text><text text-anchor="middle" x="496" y="212">l</text><text text-anchor="middle" x="504" y="212">i</text><text text-anchor="middle" x="512" y="212">n</text><text text-anchor="middle" x="520" y="212">e</text><text text-anchor="middle" x="40" y="228">o</text><text text-anchor="middle" x="48" y="228">b</text><text text-anchor="middle" x="56" y="228">j</text><text text-anchor="middle" x="64" y="228">-</text><text text-anchor="middle" x="72" y="228">&gt;</text><text text-anchor="middle" x="80" y="228">f</text><text text-anchor="middle" x="88" y="228">c</text><text text-anchor="middle" x="96" y="228">n</text><text text-anchor="middle" x="104" y="228">(</text><text text-anchor="middle" x="112" y="228">)</text><text text-anchor="middle" x="648" y="244">D</text><text text-anchor="middle" x="656" y="244">o</text><text text-anchor="middle" x="664" y="244">n</text><text text-anchor="middle" x="672" y="244">e</text><text text-anchor="middle" x="680" y="244">?</text><text text-anchor="middle" x="128" y="276">J</text><text text-anchor="middle" x="136" y="276">o</text><text text-anchor="middle" x="144" y="276">i</text><text text-anchor="middle" x="152" y="276">n</text><text text-anchor="middle" x="360" y="276">C</text><text text-anchor="middle" x="368" y="276">u</text><text text-anchor="middle" x="376" y="276">r</text><text text-anchor="middle" x="384" y="276">v</text><text text-anchor="middle" x="392" y="276">e</text><text text-anchor="middle" x="400" y="276">d</text><text text-anchor="middle" x="360" y="292">V</text><text text-anchor="middle" x="368" y="292">e</text><text text-anchor="middle" x="376" y="292">r</text><text text-anchor="middle" x="384" y="292">t</text><text text-anchor="middle" x="392" y="292">i</text><text text-anchor="middle" x="400" y="292">c</text><text text-anchor="middle" x="408" y="292">a</text><text text-anchor="middle" x="416" y="292">l</text><text text-anchor="middle" x="704" y="308">3</text><text text-anchor="middle" x="416" y="324">n</text><text text-anchor="middle" x="424" y="324">o</text><text text-anchor="middle" x="432" y="324">t</text><text text-anchor="middle" x="440" y="324">:</text><text text-anchor="middle" x="448" y="324">l</text><text text-anchor="middle" x="456" y="324">i</text><text text-anchor="middle" x="464" y="324">n</text><text text-anchor="middle" x="472" y="324">e</text><text text-anchor="middle" x="512" y="324">'</text><text text-anchor="middle" x="520" y="324">q</text><text text-anchor="middle" x="528" y="324">u</text><text text-anchor="middle" x="536" y="324">o</text><text text-anchor="middle" x="544" y="324">t</text><text text-anchor="middle" x="552" y="324">e</text><text text-anchor="middle" x="560" y="324">s</text><text text-anchor="middle" x="568" y="324">'</text><text text-anchor="middle" x="456" y="340">A</text><text text-anchor="middle" x="472" y="340">|</text><text text-anchor="middle" x="480" y="340">|</text><text text-anchor="middle" x="496" y="340">B</text><text text-anchor="middle" x="528" y="340">*</text><text text-anchor="middle" x="536" y="340">b</text><text text-anchor="middle" x="544" y="340">o</text><text text-anchor="middle" x="552" y="340">l</text><text text-anchor="middle" x="560" y="340">d</text><text text-anchor="middle" x="568" y="340">*</text><text text-anchor="middle" x="168" y="356">N</text><text text-anchor="middle" x="176" y="356">o</text><text text-anchor="middle" x="184" y="356">t</text><text text-anchor="middle" x="200" y="356">a</text><text text-anchor="middle" x="216" y="356">d</text><text text-anchor="middle" x="224" y="356">o</text><text text-anchor="middle" x="232" y="356">t</text><text text-anchor="middle" x="432" y="356">A</text><text text-anchor="middle" x="448" y="356">d</text><text text-anchor="middle" x="456" y="356">a</text><text text-anchor="middle" x="464" y="356">s</text><text text-anchor="middle" x="472" y="356">h</text><text text-anchor="middle" x="480" y="356">-</text><text text-anchor="middle" x="488" y="356">-</text><text text-anchor="middle" x="496" y="356">i</text><text text-anchor="middle" x="504" y="356">s</text><text text-anchor="middle" x="520" y="356">n</text><text text-anchor="middle" x="528" y="356">o</text><text text-anchor="middle" x="536" y="356">t</text><text text-anchor="middle" x="552" y="356">a</text><text text-anchor="middle" x="568" y="356">l</text><text text-anchor="middle" x="576" y="356">i</text><text text-anchor="middle" x="584" y="356">n</text><text text-anchor="middle" x="592" y="356">e</text><text text-anchor="middle" x="432" y="372">N</text><text text-anchor="middle" x="440" y="372">o</text><text text-anchor="middle" x="448" y="372">r</text><text text-anchor="middle" x="456" y="372">/</text><text text-anchor="middle" x="464" y="372">i</text><text text-anchor="middle" x="472" y="372">s</text><text text-anchor="middle" x="488" y="372">t</text><text text-anchor="middle" x="496" y="372">h</text><text text-anchor="middle" x="504" y="372">i</text><text text-anchor="middle" x="512" y="372">s</text><text text-anchor="middle" x="520" y="372">.</text></g></g></svg><center><div class="imagecaption"><a class="target" name="figure_diagram">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;3:</b> Diagrams can also have captions</div></center>
+<circle cx="536" cy="64" r="6" class="closeddot"/><g transform="translate(0,0)"><text text-anchor="middle" x="40" y="20">A</text><text text-anchor="middle" x="56" y="20">B</text><text text-anchor="middle" x="64" y="20">o</text><text text-anchor="middle" x="72" y="20">x</text><text text-anchor="middle" x="184" y="68">R</text><text text-anchor="middle" x="192" y="68">o</text><text text-anchor="middle" x="200" y="68">u</text><text text-anchor="middle" x="208" y="68">n</text><text text-anchor="middle" x="216" y="68">d</text><text text-anchor="middle" x="40" y="100">M</text><text text-anchor="middle" x="48" y="100">i</text><text text-anchor="middle" x="56" y="100">x</text><text text-anchor="middle" x="64" y="100">e</text><text text-anchor="middle" x="72" y="100">d</text><text text-anchor="middle" x="88" y="100">R</text><text text-anchor="middle" x="96" y="100">o</text><text text-anchor="middle" x="104" y="100">u</text><text text-anchor="middle" x="112" y="100">n</text><text text-anchor="middle" x="120" y="100">d</text><text text-anchor="middle" x="128" y="100">e</text><text text-anchor="middle" x="136" y="100">d</text><text text-anchor="middle" x="296" y="100">D</text><text text-anchor="middle" x="304" y="100">i</text><text text-anchor="middle" x="312" y="100">a</text><text text-anchor="middle" x="320" y="100">g</text><text text-anchor="middle" x="328" y="100">o</text><text text-anchor="middle" x="336" y="100">n</text><text text-anchor="middle" x="344" y="100">a</text><text text-anchor="middle" x="352" y="100">l</text><text text-anchor="middle" x="360" y="100">s</text><text text-anchor="middle" x="24" y="116">&amp;</text><text text-anchor="middle" x="40" y="116">S</text><text text-anchor="middle" x="48" y="116">q</text><text text-anchor="middle" x="56" y="116">u</text><text text-anchor="middle" x="64" y="116">a</text><text text-anchor="middle" x="72" y="116">r</text><text text-anchor="middle" x="80" y="116">e</text><text text-anchor="middle" x="96" y="116">C</text><text text-anchor="middle" x="104" y="116">o</text><text text-anchor="middle" x="112" y="116">r</text><text text-anchor="middle" x="120" y="116">n</text><text text-anchor="middle" x="128" y="116">e</text><text text-anchor="middle" x="136" y="116">r</text><text text-anchor="middle" x="144" y="116">s</text><text text-anchor="middle" x="672" y="132">S</text><text text-anchor="middle" x="680" y="132">e</text><text text-anchor="middle" x="688" y="132">a</text><text text-anchor="middle" x="696" y="132">r</text><text text-anchor="middle" x="704" y="132">c</text><text text-anchor="middle" x="712" y="132">h</text><text text-anchor="middle" x="464" y="164">I</text><text text-anchor="middle" x="472" y="164">n</text><text text-anchor="middle" x="480" y="164">t</text><text text-anchor="middle" x="488" y="164">e</text><text text-anchor="middle" x="496" y="164">r</text><text text-anchor="middle" x="504" y="164">i</text><text text-anchor="middle" x="512" y="164">o</text><text text-anchor="middle" x="520" y="164">r</text><text text-anchor="middle" x="184" y="196">D</text><text text-anchor="middle" x="192" y="196">i</text><text text-anchor="middle" x="200" y="196">a</text><text text-anchor="middle" x="208" y="196">g</text><text text-anchor="middle" x="224" y="196">l</text><text text-anchor="middle" x="232" y="196">i</text><text text-anchor="middle" x="240" y="196">n</text><text text-anchor="middle" x="248" y="196">e</text><text text-anchor="middle" x="40" y="212">i</text><text text-anchor="middle" x="48" y="212">f</text><text text-anchor="middle" x="64" y="212">(</text><text text-anchor="middle" x="72" y="212">a</text><text text-anchor="middle" x="88" y="212">&gt;</text><text text-anchor="middle" x="104" y="212">b</text><text text-anchor="middle" x="112" y="212">)</text><text text-anchor="middle" x="440" y="212">C</text><text text-anchor="middle" x="448" y="212">u</text><text text-anchor="middle" x="456" y="212">r</text><text text-anchor="middle" x="464" y="212">v</text><text text-anchor="middle" x="472" y="212">e</text><text text-anchor="middle" x="480" y="212">d</text><text text-anchor="middle" x="496" y="212">l</text><text text-anchor="middle" x="504" y="212">i</text><text text-anchor="middle" x="512" y="212">n</text><text text-anchor="middle" x="520" y="212">e</text><text text-anchor="middle" x="40" y="228">o</text><text text-anchor="middle" x="48" y="228">b</text><text text-anchor="middle" x="56" y="228">j</text><text text-anchor="middle" x="64" y="228">-</text><text text-anchor="middle" x="72" y="228">&gt;</text><text text-anchor="middle" x="80" y="228">f</text><text text-anchor="middle" x="88" y="228">c</text><text text-anchor="middle" x="96" y="228">n</text><text text-anchor="middle" x="104" y="228">(</text><text text-anchor="middle" x="112" y="228">)</text><text text-anchor="middle" x="648" y="244">D</text><text text-anchor="middle" x="656" y="244">o</text><text text-anchor="middle" x="664" y="244">n</text><text text-anchor="middle" x="672" y="244">e</text><text text-anchor="middle" x="680" y="244">?</text><text text-anchor="middle" x="128" y="276">J</text><text text-anchor="middle" x="136" y="276">o</text><text text-anchor="middle" x="144" y="276">i</text><text text-anchor="middle" x="152" y="276">n</text><text text-anchor="middle" x="360" y="276">C</text><text text-anchor="middle" x="368" y="276">u</text><text text-anchor="middle" x="376" y="276">r</text><text text-anchor="middle" x="384" y="276">v</text><text text-anchor="middle" x="392" y="276">e</text><text text-anchor="middle" x="400" y="276">d</text><text text-anchor="middle" x="360" y="292">V</text><text text-anchor="middle" x="368" y="292">e</text><text text-anchor="middle" x="376" y="292">r</text><text text-anchor="middle" x="384" y="292">t</text><text text-anchor="middle" x="392" y="292">i</text><text text-anchor="middle" x="400" y="292">c</text><text text-anchor="middle" x="408" y="292">a</text><text text-anchor="middle" x="416" y="292">l</text><text text-anchor="middle" x="704" y="308">3</text><text text-anchor="middle" x="416" y="324">n</text><text text-anchor="middle" x="424" y="324">o</text><text text-anchor="middle" x="432" y="324">t</text><text text-anchor="middle" x="440" y="324">:</text><text text-anchor="middle" x="448" y="324">l</text><text text-anchor="middle" x="456" y="324">i</text><text text-anchor="middle" x="464" y="324">n</text><text text-anchor="middle" x="472" y="324">e</text><text text-anchor="middle" x="512" y="324">'</text><text text-anchor="middle" x="520" y="324">q</text><text text-anchor="middle" x="528" y="324">u</text><text text-anchor="middle" x="536" y="324">o</text><text text-anchor="middle" x="544" y="324">t</text><text text-anchor="middle" x="552" y="324">e</text><text text-anchor="middle" x="560" y="324">s</text><text text-anchor="middle" x="568" y="324">'</text><text text-anchor="middle" x="456" y="340">A</text><text text-anchor="middle" x="472" y="340">|</text><text text-anchor="middle" x="480" y="340">|</text><text text-anchor="middle" x="496" y="340">B</text><text text-anchor="middle" x="528" y="340">*</text><text text-anchor="middle" x="536" y="340">b</text><text text-anchor="middle" x="544" y="340">o</text><text text-anchor="middle" x="552" y="340">l</text><text text-anchor="middle" x="560" y="340">d</text><text text-anchor="middle" x="568" y="340">*</text><text text-anchor="middle" x="168" y="356">N</text><text text-anchor="middle" x="176" y="356">o</text><text text-anchor="middle" x="184" y="356">t</text><text text-anchor="middle" x="200" y="356">a</text><text text-anchor="middle" x="216" y="356">d</text><text text-anchor="middle" x="224" y="356">o</text><text text-anchor="middle" x="232" y="356">t</text><text text-anchor="middle" x="432" y="356">A</text><text text-anchor="middle" x="448" y="356">d</text><text text-anchor="middle" x="456" y="356">a</text><text text-anchor="middle" x="464" y="356">s</text><text text-anchor="middle" x="472" y="356">h</text><text text-anchor="middle" x="480" y="356">-</text><text text-anchor="middle" x="488" y="356">-</text><text text-anchor="middle" x="496" y="356">i</text><text text-anchor="middle" x="504" y="356">s</text><text text-anchor="middle" x="520" y="356">n</text><text text-anchor="middle" x="528" y="356">o</text><text text-anchor="middle" x="536" y="356">t</text><text text-anchor="middle" x="552" y="356">a</text><text text-anchor="middle" x="568" y="356">l</text><text text-anchor="middle" x="576" y="356">i</text><text text-anchor="middle" x="584" y="356">n</text><text text-anchor="middle" x="592" y="356">e</text><text text-anchor="middle" x="432" y="372">N</text><text text-anchor="middle" x="440" y="372">o</text><text text-anchor="middle" x="448" y="372">r</text><text text-anchor="middle" x="456" y="372">/</text><text text-anchor="middle" x="464" y="372">i</text><text text-anchor="middle" x="472" y="372">s</text><text text-anchor="middle" x="488" y="372">t</text><text text-anchor="middle" x="496" y="372">h</text><text text-anchor="middle" x="504" y="372">i</text><text text-anchor="middle" x="512" y="372">s</text><text text-anchor="middle" x="520" y="372">.</text></g></g></svg><center><div class="imagecaption"><a class="target" name="figure_diagram">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;4:</b> Diagrams can also have captions</div></center>
 
 </p><p>
 
@@ -3170,7 +3293,7 @@ the URL itself:
 
 </p><p>
 
-<center><div class="image" style=""><a  href="http://g.gravizo.com/g?%0A%20digraph%20G%20%7B%0A%20%20%20main%20-%3E%20parse%20-%3E%20execute%3B%0A%20%20%20main%20-%3E%20init%3B%0A%20%20%20main%20-%3E%20cleanup%3B%0A%20%20%20execute%20-%3E%20make_string%3B%0A%20%20%20execute%20-%3E%20printf%0A%20%20%20init%20-%3E%20make_string%3B%0A%20%20%20main%20-%3E%20printf%3B%0A%20%20%20execute%20-%3E%20compare%3B%0A%20%7D" target="_blank"><img class="markdeep" src="http://g.gravizo.com/g?%0A%20digraph%20G%20%7B%0A%20%20%20main%20-%3E%20parse%20-%3E%20execute%3B%0A%20%20%20main%20-%3E%20init%3B%0A%20%20%20main%20-%3E%20cleanup%3B%0A%20%20%20execute%20-%3E%20make_string%3B%0A%20%20%20execute%20-%3E%20printf%0A%20%20%20init%20-%3E%20make_string%3B%0A%20%20%20main%20-%3E%20printf%3B%0A%20%20%20execute%20-%3E%20compare%3B%0A%20%7D" /></a ><div class="imagecaption"><a class="target" name="figure_graph">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;4:</b> A more complex graph example</div></div></center>
+<center><div class="image" style=""><a  href="http://g.gravizo.com/g?%0A%20digraph%20G%20%7B%0A%20%20%20main%20-%3E%20parse%20-%3E%20execute%3B%0A%20%20%20main%20-%3E%20init%3B%0A%20%20%20main%20-%3E%20cleanup%3B%0A%20%20%20execute%20-%3E%20make_string%3B%0A%20%20%20execute%20-%3E%20printf%0A%20%20%20init%20-%3E%20make_string%3B%0A%20%20%20main%20-%3E%20printf%3B%0A%20%20%20execute%20-%3E%20compare%3B%0A%20%7D" target="_blank"><img class="markdeep" src="http://g.gravizo.com/g?%0A%20digraph%20G%20%7B%0A%20%20%20main%20-%3E%20parse%20-%3E%20execute%3B%0A%20%20%20main%20-%3E%20init%3B%0A%20%20%20main%20-%3E%20cleanup%3B%0A%20%20%20execute%20-%3E%20make_string%3B%0A%20%20%20execute%20-%3E%20printf%0A%20%20%20init%20-%3E%20make_string%3B%0A%20%20%20main%20-%3E%20printf%3B%0A%20%20%20execute%20-%3E%20compare%3B%0A%20%7D" /></a ><div class="imagecaption"><a class="target" name="figure_graph">&nbsp;</a><b style="font-style:normal;">Figure&nbsp;5:</b> A more complex graph example</div></div></center>
 
 </p>
 <a class="target" name="including/insertingotherdocuments">&nbsp;</a><a class="target" name="toc11">&nbsp;</a><h1>Including/Inserting Other Documents</h1>

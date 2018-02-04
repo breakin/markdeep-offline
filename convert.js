@@ -23,13 +23,24 @@ function convert(from_file, to_file, online_file, use_math = true) {
 			return console.log(err);
 		}
 
+		data_org = data
+
 		// If we happen to read a file with window line ending we need to remove those or markdeep formatting will be incorrect
 		data = data.replace(/\r\n/g, "\n"); // Remove windows line endings
+
+		// Fix closed img-tags. Browsers remove the closing mark itself but we have to do it ourselves
+		// See https://stackoverflow.com/questions/23890716/why-is-the-img-tag-not-closed-in-html/23890817
+		// NOTE: This will change img-tags inside backticks (code sections) as well as inside ""-strings
+		//       which is probably to aggressive. Should be revised!
+		data = data.rp(/<img\s+src=(["'])[\s\S]*?\1\s*\/>/gi, function (match, quote) {
+			// Strip the "<img " and ">", and then protect:
+			return "<img " + match.ss(5, match.length - 2) + ">";
+		});
 
 		console.log("Converting from " + from_file + " to " + to_file);
 		if (online_file) {
 			console.log("  Saving online version to " + online_file);
-			online_version = "                <meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n" + data + "\n<!-- Markdeep: --><script src=\"markdeep.original.js\"></script>\n";
+			online_version = "                <meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n" + data_org + "\n<!-- Markdeep: --><script src=\"markdeep.original.js\"></script>\n";
 			fs.writeFile(online_file, online_version, function (err,data2) {
 				if (err) {
 					return console.log(err);
