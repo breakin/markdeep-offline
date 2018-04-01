@@ -1,5 +1,7 @@
 This is an example of one way to generate html from markdeep documents using node.js (without a browser).
-The generated HTML code showns a page looking exactly as if it had been using markdeep.js at runtime.
+All the work is done on convert.js; all other files are just for testing and documentation purposes.
+
+The generated HTML looks exactly as if it had been using markdeep.js at runtime.
 Math expressions are still "online" but at least markdeep processing is 100% server side.
 
 Usage
