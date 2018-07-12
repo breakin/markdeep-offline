@@ -256,6 +256,50 @@ numbers are irrelevant and automatically replaced with ascending numbers:
 1. and just
 1. keeps going...
 
+
+Task Lists
+------------------------------------------------------------------------------
+
+You can use the strikethrough syntax for task lists:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. ~~completed~~
+  1. ~~subtask~~
+1. uncompleted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+which will format as:
+
+1. ~~completed~~
+  1. ~~subtask~~
+1. uncompleted
+
+or, use github or streamlined checkbox syntax for task lists :
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+github:
+- [x] completed
+  - [x] subtask
+- [ ] uncompleted
+
+streamlined:
+[x] completed
+  [x] subtask
+[ ] uncompleted
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+github:
+- [x] completed
+  - [x] subtask
+- [ ] uncompleted
+
+streamlined:
+[x] completed
+  [x] subtask
+[ ] uncompleted
+
+
+
 Definition Lists
 ------------------------------------------------------------------------------
 
@@ -461,7 +505,7 @@ document or CSS file:
 &lt;style&gt;.md h1, .md .nonumberh1 {page-break-before:always}&lt;/style&gt;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Images and Video
+Images
 ------------------------------------------------------------------------------
 
 There's no natural way to embed an image into a document that is also readable as plain
@@ -501,9 +545,9 @@ if you want this behavior but don't actually want a visible caption.
 
 You can also just use a raw HTML `<img>` tag: 
 
-`       <img src="robot.jpg" width="128" border="2"/>`
+`       <img src="robot.jpg" width="128" border="2">`
 
-<img src="robot.jpg" width="128" border="2"/>
+<img src="robot.jpg" width="128" border="2">
 
 Captionless images work as well. Source `![](robot.jpg)` becomes:
 
@@ -516,6 +560,35 @@ images are recognized and laid out as grids using HTML tables:
 ![1](robot.jpg width=100) ![2](robot.jpg width=100) ![3](robot.jpg width=100)
 ![4](robot.jpg width=100) ![5](robot.jpg width=100) ![This image has a<br/>long caption](robot.jpg width=100)
 
+Reference Images
+----------------------------------------------------------------
+
+Markdeep introduces a new feature called "reference images". These have several features:
+
+* Put long image URLs elsewhere in the document for clarity
+* Indirection so that multiple images can reference a symbolic URL
+* Embed [base64 encoded images as data URIs](https://www.base64-image.de/) directly in a Markdeep text file
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+![This is a bas64 embedded reference image][hasselhoff.png]
+
+<!-- This can appear anywhere in the document. I recommend putting it at the bottom.  -->
+[hasselhoff.png]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![This is a base64 embedded reference image][hasselhoff.png]
+
+The syntax is the same as CommonMark reference _links_, just with square brackets. 
+You can use all of the Markdeep image features with reference images, including 
+image grids, floating images, and images with attributes.
+
+<!-- This can appear anywhere in the document. I recommend putting it at the bottom.  -->
+[hasselhoff.png]: data:image/png;base64,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
+
+
+Videos
+----------------------------------------------------------------
 
 Video file extensions are automatically detected and will embed a small video
 player:
@@ -704,8 +777,14 @@ You can even have HTML in a code block:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <b>Show this</b> HTML as <i>source</i>,
 <code>not code</code>.
+<img src="robot.jpg">
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+`<img src="robot.jpg">`
+
+`````````
+<img src="robot.jpg">
+`````````
 
 LaTeX and other languages that use dollar signs work fine inside code
 fences:
@@ -798,9 +877,14 @@ And its result:
 
 
 
-### Less-than Signs in Code ###
+### Less-than Signs in Code###
 #### Summary ####
-If you have trouble with less-than signs right next to capitalized
+
+Less-than and greater-than signs (`<` and `>`) do not need to be escaped in diagrams or code
+as long as they do not appear immediately adjacent to a letter. Usually adding spaces or
+using inline code backquote escaping will suffice even in those cases.
+
+If you have trouble with less-than and greater-than signs right next to capitalized
 letters in code blocks, do _one_ of the following:
 
 - Put spaces after angle brackets: `std::vector< Capitalized >`
@@ -1222,6 +1306,31 @@ Unicode in Diagram
 ************************************************************************************************
 
 
+Simple Plot Diagram
+-------------------------------------------------------------------------------
+*************************************************
+*        ▲
+*    Uin ┊   .------------------------
+*        ┊   |                        
+*        ┊   |                        
+*        *---'┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄▶
+*              
+*     Udc▲                          
+* Udc_OK ┊      .---------------------
+*        ┊     /  :                   
+*        ┊    /   :                   
+*        *---'┄┄┄┄:┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄▶
+*                 :<----->:           
+*        ▲          500ms :           
+*        ┊                :           
+*Cpu.Qon ┊┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄.-----------
+*        ┊                |  Inactive 
+*        ┊    Active      |  
+*        *----------------'┄┄┄┄┄┄┄┄┄┄┄▶
+*        
+*************************************************
+
+
 Graphics Diagram
 -------------------------------------------------------------------------------
 *************************************************************************************************
@@ -1615,22 +1724,22 @@ can accept a network and third party dependency, you can embed
 direct Markdeep image syntax or an embedded HTML `img` tag:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<img src='http://g.gravizo.com/g?digraph G { A -> B -> C; A -> C; }'>
+<img src='http://g.gravizo.com/svg?digraph G { A -> B -> C; A -> C; }'>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<img src='http://g.gravizo.com/g?digraph G { A -> B -> C; A -> C; }'>
+<img src='http://g.gravizo.com/svg?digraph G { A -> B -> C; A -> C; }'>
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-![](http://g.gravizo.com/g?digraph G { A -> B -> C; A -> C; })
+![](http://g.gravizo.com/svg?digraph G { A -> B -> C; A -> C; })
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-![](http://g.gravizo.com/g?digraph G { A -> B -> C; A -> C; })
+![](http://g.gravizo.com/svg?digraph G { A -> B -> C; A -> C; })
 
 
 Markdeep also allows captions on Gravizo graphs and newlines within
 the URL itself:
 
-![Figure [graph]: A more complex graph example](http://g.gravizo.com/g?
+![Figure [graph]: A more complex graph example](http://g.gravizo.com/svg?
  digraph G {
    main -> parse -> execute;
    main -> init;
@@ -1679,6 +1788,12 @@ them in specific ways:
   indicate code blocks was a poor choice in the original markdown specification because code
   vs. blockquote is ambiguous in plain text and it makes list detection harder.
   
+- Two trailing whitespace characters do not force a hard newline. Use `<br>` or regular
+  paragraph breaks if you need a hard newline. The original markdown specification on this
+  point violates its golden rule that the input look as much as possible like the output,
+  and that rule also ends up requiring special code editors/syntax highlighting to see 
+  invisible characters, which is bad design.
+  
 - No bold/italic/strikethrough inside of words without spaces because they could form an
   equation or technical term. Just use HTML tags.
 
@@ -1706,13 +1821,8 @@ Temporary Limitations
 Future releases likely will address these known bugs, limitations, and
 "missing features":
 
-- Listings have a maximum caption length of three lines.
 - Tables and diagrams in lists create a new list
-- No support for numbered lists that start with a value other than 1.
-- Paragraphs not allowed in lists
-- No dashed lines in diagrams using ASCII characters. Because there's no plain-text
-  floating-dot character, different ASCII diagram styles use different, ambiguous conventions.
-  You can use Unicode characters as a workaround until I introduce a native style.
+- Listings have a maximum caption length of three lines
 
 
 Permanent Limitations
@@ -1722,5 +1832,7 @@ Due to the special protection from formatting that Markdeep affords `<pre>` and 
 that appear in the document, you cannot nest a code tag inside of another code tag, and
 likewise for pre tags.  Fortunately, it is pretty hard to imagine a case where you would want
 nested code tags.
+
+<!-- Markdeep: --><script src="markdeep.min.js"></script>
 
 <!-- Markdeep: --><script src="markdeep.original.js"></script>

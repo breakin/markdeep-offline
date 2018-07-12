@@ -1,6 +1,6 @@
 /**
   markdeep.js
-  Version 1.00
+  Version 1.02
 
   Copyright 2015-2018, Morgan McGuire, http://casual-effects.com
   All rights reserved.
@@ -28,12 +28,12 @@
   Sagalaev, which is used for code highlighting. (BSD 3-clause license)
 */
 /**See http://casual-effects.com/markdeep for @license and documentation.
-markdeep.min.js 1.00 (C) 2018 Morgan McGuire 
+markdeep.min.js 1.02 (C) 2018 Morgan McGuire 
 highlight.min.js 9.12.0 (C) 2017 Ivan Sagalaev https://highlightjs.org/*/
 (function() {
 'use strict';
 
-var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.00&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
+var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.02&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
 
 // For minification. This is admittedly scary.
 var _ = String.prototype;
@@ -72,10 +72,19 @@ function entag(tag, content, attribs) {
 
 
 function measureFontSize(fontStack) {
-    return 10;
+    //try {
+    //    var canvas = document.createElement('canvas');
+    //    var ctx = canvas.getContext('2d');
+    //    ctx.font = '10pt ' + fontStack;
+    //    return ctx.measureText("M").width;
+    //} catch (e) {
+        // Needed for Firefox include...iframe canvas doesn't work for some reason
+        return 10;
+    //}
 }
 
 /*! highlight.js v9.12.0 | BSD3 License | git.io/hljslicense */
+
 // To reduce script size in the minified file, I cut these keywords from less-frequently used languages:
 //abort absolute acc acce accep accept access accessed accessible account acos action activate add addtime admin administer advanced advise aes_decrypt aes_encrypt after agent aggregate ali alia alias allocate allow alter always analyze ancillary and any anydata anydataset anyschema anytype apply archive archived archivelog are as asc ascii asin assembly assertion associate asynchronous at atan atn2 attr attri attrib attribu attribut attribute attributes audit authenticated authentication authid authors auto autoallocate autodblink autoextend automatic availability avg backup badfile basicfile before begin beginning benchmark between bfile bfile_base big bigfile bin binary_double binary_float binlog bit_and bit_count bit_length bit_or bit_xor bitmap blob_base block blocksize body both bound buffer_cache buffer_pool build bulk by byte byteordermark bytes c cache caching call calling cancel capacity cascade cascaded case cast catalog category ceil ceiling chain change changed char_base char_length character_length characters characterset charindex charset charsetform charsetid check checksum checksum_agg child choose chr chunk class cleanup clear client clob clob_base clone close cluster_id cluster_probability cluster_set clustering coalesce coercibility col collate collation collect colu colum column column_value columns columns_updated comment commit compact compatibility compiled complete composite_limit compound compress compute concat concat_ws concurrent confirm conn connec connect connect_by_iscycle connect_by_isleaf connect_by_root connect_time connection consider consistent constant constraint constraints constructor container content contents context contributors controlfile conv convert convert_tz corr corr_k corr_s corresponding corruption cos cost count count_big counted covar_pop covar_samp cpu_per_call cpu_per_session crc32 create creation critical cross cube cume_dist curdate current current_date current_time current_timestamp current_user cursor curtime customdatum cycle d data database databases datafile datafiles datalength date_add date_cache date_format date_sub dateadd datediff datefromparts datename datepart datetime2fromparts day day_to_second dayname dayofmonth dayofweek dayofyear days db_role_change dbtimezone ddl deallocate declare decode decompose decrement decrypt deduplicate def defa defau defaul default defaults deferred defi defin define degrees delayed delegate delete delete_all delimited demand dense_rank depth dequeue des_decrypt des_encrypt des_key_file desc descr descri describ describe descriptor deterministic diagnostics difference dimension direct_load directory disable disable_all disallow disassociate discardfile disconnect diskgroup distinct distinctrow distribute distributed div do document domain dotnet double downgrade drop dumpfile duplicate duration e each edition editionable editions element ellipsis else elsif elt empty enable enable_all enclosed encode encoding encrypt end end-exec endian enforced engine engines enqueue enterprise entityescaping eomonth error errors escaped evalname evaluate event eventdata events except exception exceptions exchange exclude excluding execu execut execute exempt exists exit exp expire explain export export_set extended extent external external_1 external_2 externally extract f failed failed_login_attempts failover failure far fast feature_set feature_value fetch field fields file file_name_convert filesystem_like_logging final finish first first_value fixed flash_cache flashback floor flush following follows for forall force form forma format found found_rows freelist freelists freepools fresh from from_base64 from_days ftp full function g general generated get get_format get_lock getdate getutcdate global global_name globally go goto grant grants greatest group group_concat group_id grouping grouping_id groups gtid_subtract guarantee guard handler hash hashkeys having hea head headi headin heading heap help hex hierarchy high high_priority hosts hour http i id ident_current ident_incr ident_seed identified identity idle_time if ifnull ignore iif ilike ilm immediate import in include including increment index indexes indexing indextype indicator indices inet6_aton inet6_ntoa inet_aton inet_ntoa infile initial initialized initially initrans inmemory inner innodb input insert install instance instantiable instr interface interleaved intersect into invalidate invisible is is_free_lock is_ipv4 is_ipv4_compat is_not is_not_null is_used_lock isdate isnull isolation iterate java join json json_exists k keep keep_duplicates key keys kill l language large last last_day last_insert_id last_value lax lcase lead leading least leaves left len lenght length less level levels library like like2 like4 likec limit lines link list listagg little ln load load_file lob lobs local localtime localtimestamp locate locator lock locked log log10 log2 logfile logfiles logging logical logical_reads_per_call logoff logon logs long loop low low_priority lower lpad lrtrim ltrim m main make_set makedate maketime managed management manual map mapping mask master master_pos_wait match matched materialized max maxextents maximize maxinstances maxlen maxlogfiles maxloghistory maxlogmembers maxsize maxtrans md5 measures median medium member memcompress memory merge microsecond mid migration min minextents minimum mining minus minute minvalue missing mod mode model modification modify module monitoring month months mount move movement multiset mutex n name name_const names nan national native natural nav nchar nclob nested never new newline next nextval no no_write_to_binlog noarchivelog noaudit nobadfile nocheck nocompress nocopy nocycle nodelay nodiscardfile noentityescaping noguarantee nokeep nologfile nomapping nomaxvalue nominimize nominvalue nomonitoring none noneditionable nonschema noorder nopr nopro noprom nopromp noprompt norely noresetlogs noreverse normal norowdependencies noschemacheck noswitch not nothing notice notrim novalidate now nowait nth_value nullif nulls num numb numbe nvarchar nvarchar2 object ocicoll ocidate ocidatetime ociduration ociinterval ociloblocator ocinumber ociref ocirefcursor ocirowid ocistring ocitype oct octet_length of off offline offset oid oidindex old on online only opaque open operations operator optimal optimize option optionally or oracle oracle_date oradata ord ordaudio orddicom orddoc order ordimage ordinality ordvideo organization orlany orlvary out outer outfile outline output over overflow overriding p package pad parallel parallel_enable parameters parent parse partial partition partitions pascal passing password password_grace_time password_lock_time password_reuse_max password_reuse_time password_verify_function patch path patindex pctincrease pctthreshold pctused pctversion percent percent_rank percentile_cont percentile_disc performance period period_add period_diff permanent physical pi pipe pipelined pivot pluggable plugin policy position post_transaction pow power pragma prebuilt precedes preceding precision prediction prediction_cost prediction_details prediction_probability prediction_set prepare present preserve prior priority private private_sga privileges procedural procedure procedure_analyze processlist profiles project prompt protection public publishingservername purge quarter query quick quiesce quota quotename radians raise rand range rank raw read reads readsize rebuild record records recover recovery recursive recycle redo reduced ref reference referenced references referencing refresh regexp_like register regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope regr_sxx regr_sxy reject rekey relational relative relaylog release release_lock relies_on relocate rely rem remainder rename repair repeat replace replicate replication required reset resetlogs resize resource respect restore restricted result result_cache resumable resume retention return returning returns reuse reverse revoke right rlike role roles rollback rolling rollup round row row_count rowdependencies rowid rownum rows rtrim rules safe salt sample save savepoint sb1 sb2 sb4 scan schema schemacheck scn scope scroll sdo_georaster sdo_topo_geometry search sec_to_time second section securefile security seed segment select self sequence sequential serializable server servererror session session_user sessions_per_user set sets settings sha sha1 sha2 share shared shared_pool short show shrink shutdown si_averagecolor si_colorhistogram si_featurelist si_positionalcolor si_stillimage si_texture siblings sid sign sin size size_t sizes skip slave sleep smalldatetimefromparts smallfile snapshot some soname sort soundex source space sparse spfile split sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_small_result sql_variant_property sqlcode sqldata sqlerror sqlname sqlstate sqrt square standalone standby start starting startup statement static statistics stats_binomial_test stats_crosstab stats_ks_test stats_mode stats_mw_test stats_one_way_anova stats_t_test_ stats_t_test_indep stats_t_test_one stats_t_test_paired stats_wsr_test status std stddev stddev_pop stddev_samp stdev stop storage store stored str str_to_date straight_join strcmp strict string struct stuff style subdate subpartition subpartitions substitutable substr substring subtime subtring_index subtype success sum suspend switch switchoffset switchover sync synchronous synonym sys sys_xmlagg sysasm sysaux sysdate sysdatetimeoffset sysdba sysoper system system_user sysutcdatetime t table tables tablespace tan tdo template temporary terminated tertiary_weights test than then thread through tier ties time time_format time_zone timediff timefromparts timeout timestamp timestampadd timestampdiff timezone_abbr timezone_minute timezone_region to to_base64 to_date to_days to_seconds todatetimeoffset trace tracking transaction transactional translate translation treat trigger trigger_nestlevel triggers trim truncate try_cast try_convert try_parse type ub1 ub2 ub4 ucase unarchived unbounded uncompress under undo unhex unicode uniform uninstall union unique unix_timestamp unknown unlimited unlock unpivot unrecoverable unsafe unsigned until untrusted unusable unused update updated upgrade upped upper upsert url urowid usable usage use use_stored_outlines user user_data user_resources users using utc_date utc_timestamp uuid uuid_short validate validate_password_strength validation valist value values var var_samp varcharc vari varia variab variabl variable variables variance varp varraw varrawc varray verify version versions view virtual visible void wait wallet warning warnings week weekday weekofyear wellformed when whene whenev wheneve whenever where while whitespace with within without work wrapped xdb xml xmlagg xmlattributes xmlcast xmlcolattval xmlelement xmlexists xmlforest xmlindex xmlnamespaces xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable xmltype xor year year_to_month years yearweek
 
@@ -99,6 +108,9 @@ var STYLESHEET = entag('style',
     'body{' +
     'counter-reset: h1 h2 h3 h4 h5 h6 paragraph' +
     '}' +
+
+    // Avoid header/footer in print to PDF. See https://productforums.google.com/forum/#!topic/chrome/LBMUDtGqr-0
+    '@page{margin:0;size:auto}' +
                        
     '.md code,pre{' +
     'font-family:' + codeFontStack + ';' +
@@ -452,7 +464,26 @@ var STYLESHEET = entag('style',
     'height:0' +
    '}' +
                        
-   '.md .admonition p:last-child{margin-bottom:0}' 
+   '.md .admonition p:last-child{margin-bottom:0}'  +
+
+   '.md li.checked,.md li.unchecked{'+
+    'list-style:none;'+
+    'overflow:visible;'+
+    'text-indent:-1.2em'+
+                       '}' +
+                       
+   '.md li.checked:before,.md li.unchecked:before{' +
+   'content:"\\2611";' +
+   'display:block;'+
+   'float:left;' +
+   'width:1em;' +
+   'font-size:120%'+
+                       '}'+
+                       
+   '.md li.unchecked:before{'+
+   'content:"\\2610"' +
+   '}'
+
 );
 
 var MARKDEEP_LINE = '<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>';
@@ -509,6 +540,59 @@ var FRENCH = {
     }
 };
 
+// Translated by "Warmist"
+var LITHUANIAN = {
+    keyword: {
+        table:     'lentelė',
+        figure:    'paveikslėlis',
+        listing:   'sąrašas',
+        diagram:   'diagrama',
+        contents:  'Turinys',
+
+        sec:       'sk',
+        section:   'skyrius',
+        subsection: 'poskyris',
+
+        Monday:    'pirmadienis',
+        Tuesday:   'antradienis',
+        Wednesday: 'trečiadienis',
+        Thursday:  'ketvirtadienis',
+        Friday:    'penktadienis',
+        Saturday:  'šeštadienis',
+        Sunday:    'sekmadienis',
+
+        January:   'Sausis',
+        February:  'Vasaris',
+        March:     'Kovas',
+        April:     'Balandis',
+        May:       'Gegužė',
+        June:      'Birželis',
+        July:      'Liepa',
+        August:    'Rugpjūtis',
+        September: 'Rugsėjis',
+        October:   'Spalis',
+        November:  'Lapkritis',
+        December:  'Gruodis',
+
+        jan: 'saus',
+        feb: 'vas',
+        mar: 'kov',
+        apr: 'bal',
+        may: 'geg',
+        jun: 'birž',
+        jul: 'liep',
+        aug: 'rugpj',
+        sep: 'rugs',
+        oct: 'spal',
+        nov: 'lapkr',
+        dec: 'gruod',
+
+        '&ldquo;': '&bdquo;',
+        '&rtquo;': '&ldquo;'
+    }
+};
+
+    
 // Translated by Zdravko Velinov
 var BULGARIAN = {
     keyword: {
@@ -562,6 +646,164 @@ var BULGARIAN = {
     }
 };
 
+
+// Translated by Tiago Antão
+var PORTUGUESE = {
+    keyword: {
+        table:     'tabela',
+        figure:    'figura',
+        listing:   'lista',
+        diagram:   'diagrama',
+        contents:  'conteúdo',
+
+        sec:       'sec',
+        section:   'secção',
+        subsection: 'subsecção',
+
+        Monday:    'Segunda-feira',
+        Tuesday:   'Terça-feira',
+        Wednesday: 'Quarta-feira',
+        Thursday:  'Quinta-feira',
+        Friday:    'Sexta-feira',
+        Saturday:  'Sábado',
+        Sunday:    'Domingo',
+
+        January:   'Janeiro',
+        February:  'Fevereiro',
+        March:     'Março',
+        April:     'Abril',
+        May:       'Maio',
+        June:      'Junho', 
+        July:      'Julho',
+        August:    'Agosto', 
+        September: 'Setembro', 
+        October:   'Outubro', 
+        November:  'Novembro',
+        December:  'Dezembro',
+
+        jan: 'jan',
+        feb: 'fev',
+        mar: 'mar',
+        apr: 'abr',
+        may: 'mai',
+        jun: 'jun',
+        jul: 'jul',
+        aug: 'ago',
+        sep: 'set',
+        oct: 'oct',
+        nov: 'nov',
+        dec: 'dez',
+
+        '&ldquo;': '&laquo;',
+        '&rtquo;': '&raquo;'
+    }
+};
+
+
+// Translated by Jan Toušek
+var CZECH = {
+    keyword: {
+        table:     'Tabulka',
+        figure:    'Obrázek',
+        listing:   'Seznam',
+        diagram:   'Diagram',
+
+        contents:  'Obsah',
+
+        sec:       'kap.',  // Abbreviation for section
+        section:   'kapitola',
+        subsection:'podkapitola',
+
+        Monday:    'pondělí',
+        Tuesday:   'úterý',
+        Wednesday: 'středa',
+        Thursday:  'čtvrtek',
+        Friday:    'pátek',
+        Saturday:  'sobota',
+        Sunday:    'neděle',
+
+        January:   'leden',
+        February:  'únor',
+        March:     'březen',
+        April:     'duben',
+        May:       'květen',
+        June:      'červen',
+        July:      'červenec',
+        August:    'srpen',
+        September: 'září',
+        October:   'říjen',
+        November:  'listopad',
+        December:  'prosinec',
+
+        jan: 'led',
+        feb: 'úno',
+        mar: 'bře',
+        apr: 'dub',
+        may: 'kvě',
+        jun: 'čvn',
+        jul: 'čvc',
+        aug: 'srp',
+        sep: 'zář',
+        oct: 'říj',
+        nov: 'lis',
+        dec: 'pro',
+
+        '&ldquo;': '&bdquo;',
+        '&rdquo;': '&ldquo;'
+    }
+};
+
+    
+var ITALIAN = {
+    keyword: {
+        table:     'tabella',
+        figure:    'figura',
+        listing:   'lista',
+        diagram:   'diagramma',
+        contents:  'indice',
+
+        sec:       'sez',
+        section:   'sezione',
+        subsection: 'paragrafo',
+
+        Monday:    'lunedì',
+        Tuesday:   'martedì',
+        Wednesday: 'mercoledì',
+        Thursday:  'giovedì',
+        Friday:    'venerdì',
+        Saturday:  'sabato',
+        Sunday:    'domenica',
+
+        January:   'Gennaio',
+        February:  'Febbraio',
+        March:     'Marzo',
+        April:     'Aprile',
+        May:       'Maggio',
+        June:      'Giugno', 
+        July:      'Luglio',
+        August:    'Agosto', 
+        September: 'Settembre', 
+        October:   'Ottobre', 
+        November:  'Novembre',
+        December:  'Dicembre',
+
+        jan: 'gen',
+        feb: 'feb',
+        mar: 'mar',
+        apr: 'apr',
+        may: 'mag',
+        jun: 'giu',
+        jul: 'lug',
+        aug: 'ago',
+        sep: 'set',
+        oct: 'ott',
+        nov: 'nov',
+        dec: 'dic',
+
+        '&ldquo;': '&ldquo;',
+        '&rtquo;': '&rdquo;'
+    }
+};
 
 var RUSSIAN = {
     keyword: {
@@ -901,7 +1143,11 @@ var LANG_TABLE = {
     de: GERMAN,
     hu: HUNGARIAN,
     sv: SWEDISH,
-    ja: JAPANESE
+    pt: PORTUGUESE,
+    ja: JAPANESE,
+    it: ITALIAN,
+    lt: LITHUANIAN,
+    cz: CZECH
 // Awaiting localization by a native speaker:
 //    es: SPANISH
 //    ...
@@ -1038,7 +1284,7 @@ function nodeToMarkdeepSource(node, leaveEscapes) {
     // will try to close by inserting the matching close tags at the end of the
     // document. Remove anything that looks like that and comes *after*
     // the first fallback style.
-    source = source.rp(/<style class="fallback">[\s\S]*<\/style>/gi, '');
+    //source = source.rp(/<style class="fallback">[\s\S]*?<\/style>/gi, '');
     
     // Remove artificially inserted close tags from URLs and
     source = source.rp(/<\/https?:.*>|<\/ftp:.*>|<\/[^ "\t\n>]+@[^ "\t\n>]+>/gi, '');
@@ -1101,8 +1347,10 @@ function extractDiagram(sourceString) {
         nextLineBeginning = sourceString.indexOf('\n', lineBeginning) + 1;
         wideCharacters = unicodeSyms(sourceString, lineBeginning + xMin, lineBeginning + xMax);
         textOnLeft  = textOnLeft  || /\S/.test(sourceString.ss(lineBeginning, lineBeginning + xMin));
-        // Text on the right ... if the line is not all '*'        
-        textOnRight = textOnRight || /[^ *\t\n\r]/.test(sourceString.ss(lineBeginning + xMax + wideCharacters + 1, nextLineBeginning));
+        noRightBorder = noRightBorder || (sourceString[lineBeginning + xMax + wideCharacters] !== '*');
+        
+        // Text on the right ... if the line is not all '*'
+        textOnRight = ! noRightBorder && (textOnRight || /[^ *\t\n\r]/.test(sourceString.ss(lineBeginning + xMax + wideCharacters + 1, nextLineBeginning)));
     }
 
     var noDiagramResult = {beforeString: sourceString, diagramString: '', alignmentHint: '', afterString: ''};
@@ -1138,6 +1386,7 @@ function extractDiagram(sourceString) {
 
         var nextLineBeginning = 0, wideCharacters = 0;
         var textOnLeft = false, textOnRight = false;
+        var noRightBorder = false;
 
         advance();
                                   
@@ -1314,20 +1563,28 @@ function replaceTables(s, protect) {
 
 
 function replaceLists(s, protect) {
+    // Identify task list bullets in a few patterns and reformat them to a standard format for
+    // easier processing.
+    s = s.rp(/^(\s*)(?:-\s*)?(?:\[ \]|\u2610)(\s+)/mg, '$1\u2610$2');
+    s = s.rp(/^(\s*)(?:-\s*)?(?:\[x\]|\u2611)(\s+)/mg, '$1\u2611$2');
+        
     // Identify list blocks:
-    // Blank line or line ending in colon, line that starts with #., *, +, or -,
+    // Blank line or line ending in colon, line that starts with #., *, +, -, ☑, or ☐
     // and then any number of lines until another blank line
     var BLANK_LINES = /\n\s*\n/.source;
 
     // Preceding line ending in a colon
+
+    // \u2610 is the ballot box (unchecked box) character
     var PREFIX     = /[:,]\s*\n/.source;
     var LIST_BLOCK_REGEXP = 
         new RegExp('(' + PREFIX + '|' + BLANK_LINES + '|<p>\s*\n|<br/>\s*\n?)' +
-                   /((?:[ \t]*(?:\d+\.|-|\+|\*)(?:[ \t]+.+\n(?:[ \t]*\n)?)+)+)/.source, 'gm');
+                   /((?:[ \t]*(?:\d+\.|-|\+|\*|\u2611|\u2610)(?:[ \t]+.+\n(?:[ \t]*\n)?)+)+)/.source, 'gm');
 
     var keepGoing = true;
 
-    var ATTRIBS = {'+': protect('class="plus"'), '-': protect('class="minus"'), '*': protect('class="asterisk"')};
+    var ATTRIBS = {'+': protect('class="plus"'), '-': protect('class="minus"'), '*': protect('class="asterisk"'),
+                   '\u2611': protect('class="checked"'), '\u2610': protect('class="unchecked"')};
     var NUMBER_ATTRIBS = protect('class="number"');
 
     // Sometimes the list regexp grabs too much because subsequent lines are indented *less*
@@ -1397,7 +1654,7 @@ function replaceLists(s, protect) {
                     
                     if (current) {
                         // Add the list item
-                        result += '\n' + current.indentChars + '<li ' + attribs + '>' + trimmed.rp(/^(\d+\.|-|\+|\*) /, '');
+                        result += '\n' + current.indentChars + '<li ' + attribs + '>' + trimmed.rp(/^(\d+\.|-|\+|\*|\u2611|\u2610) /, '');
                     } else {
                         // Just reached something that is *less* indented than the root--
                         // copy forward and then re-process that list
@@ -1826,6 +2083,9 @@ function insertTableOfContents(s, protect) {
 
         table[removeHTMLTags(text).trim().toLowerCase()] = number;
 
+        // Remove links from the title itself
+        text = text.rp(/<a\s.*>(.*?)<\/a>/g, '$1');
+
         // Only insert for the first three levels
         if (level <= 3) {
             // Indent and append (the Array() call generates spaces)
@@ -1837,7 +2097,7 @@ function insertTableOfContents(s, protect) {
                 ++numAboveLevel1;
             }
         }
-        
+
         return entag('a', '&nbsp;', protect('class="target" name="' + name + '"')) + header;
     });
 
@@ -2043,6 +2303,7 @@ function markdeepToHTML(str, elementMode) {
 
             var diagramSVG = diagramToSVG(result.diagramString, result.alignmentHint);
             var captionAbove = option('captionAbove', 'diagram')
+
             return result.beforeString +
                 (result.caption && captionAbove ? result.caption : '') +
                 diagramSVG +
@@ -2126,21 +2387,21 @@ function markdeepToHTML(str, elementMode) {
         return entag('style', protect(body));
     });
 
+    // Protect the very special case of img tags with newlines and
+    // breaks in them AND mismatched angle brackets. This happens for
+    // Gravizo graphs.
+    str = str.rp(/<img\s+src=(["'])[\s\S]*?\1\s*>/gi, function (match, quote) {
+        // Strip the "<img " and ">", and then protect the interior:
+        return "<img " + protect(match.ss(5, match.length - 1)) + ">";
+    });
+
     // INLINE CODE: Surrounded in back ticks on a single line.  Do this before any other
     // processing to protect code blocks from further interference. Don't process back ticks
     // inside of code fences. Allow a single newline, but not wrapping further because that
     // might just pick up quotes used as other punctuation across lines. Explicitly exclude
     // cases where the second quote immediately preceeds a number, e.g., "the old `97"
     str = str.rp(/(`)(.+?(?:\n.+?)?)`(?!\d)/g, entag('code', '$2'));
-
-    // Protect the very special case of img tags with newlines and
-    // breaks in them AND mismatched angle brackets. This happens for
-    // gravizo graphs.
-    str = str.rp(/<img\s+src=(["'])[\s\S]*?\1\s*>/gi, function (match, quote) {
-        // Strip the "<img " and ">", and then protect:
-        return "<img " + protect(match.ss(5, match.length - 1)) + ">";
-    });
-
+    
     // CODE: Escape angle brackets inside code blocks (including the ones we just introduced),
     // and then protect the blocks themselves
     str = str.rp(/(<code(?: .*?)?>)([\s\S]*?)<\/code>/gi, function (match, open, inlineCode) {
@@ -2283,7 +2544,8 @@ function markdeepToHTML(str, elementMode) {
     // (process before reference links to avoid ambiguity on the captions)
     str = replaceTables(str, protect);
 
-    // REFERENCE-LINKS: [foo][] or [bar][foo] + [foo]: http://foo.com
+    // REFERENCE-LINK TABLE: [foo]: http://foo.com
+    // (must come before reference images and reference links in processing)
     str = str.rp(/^\[([^\^#].*?)\]:(.*?)$/gm, function (match, symbolicName, url) {
         referenceLinkTable[symbolicName.toLowerCase().trim()] = {link: url.trim(), used: false};
         return '';
@@ -2301,7 +2563,7 @@ function markdeepToHTML(str, elementMode) {
         var hash;
 
         // Detect videos
-        if (/(.mp4|.m4v|.avi|.mpg|.mov)$/i.test(url)) {
+        if (/(\.mp4|\.m4v|\.avi|\.mpg|\.mov|\.webm)$/i.test(url)) {
             // This is video. Any attributes provided will override the defaults given here
             img = '<video ' + protect('class="markdeep" src="' + url + '"' + attribs + ' width="480px" controls="true"') + '/>';
         } else if (hash = url.match(/^https:\/\/(?:www\.)?(?:youtube\.com\/\S*?v=|youtu\.be\/)([\w\d-]+)(&.*)?$/i)) {
@@ -2341,8 +2603,8 @@ function markdeepToHTML(str, elementMode) {
     // a really special case needed to handle the newlines and potential
     // nested parentheses. Use the pattern from http://blog.stevenlevithan.com/archives/regex-recursion
     // (could be extended to multiple nested parens if needed)
-    str = str.rp(/\(http:\/\/g.gravizo.com\/g\?((?:[^\(\)]|\([^\(\)]*\))*)\)/gi, function(match, url) {
-        return "(http://g.gravizo.com/g?" + encodeURIComponent(url) + ")";
+    str = str.rp(/\(http:\/\/g.gravizo.com\/(.*g)\?((?:[^\(\)]|\([^\(\)]*\))*)\)/gi, function(match, protocol, url) {
+        return "(http://g.gravizo.com/" + protocol + "?" + encodeURIComponent(url) + ")";
     });
 
     // HYPERLINKS: [text](url attribs)
@@ -2355,6 +2617,22 @@ function markdeepToHTML(str, elementMode) {
     str = str.rp(/(^|[^!])\[[ \t]*?\]\(("?)([^<>\s"]+?)\2\)/g, function (match, pre, maybeQuote, url) {
         return pre + '<a ' + protect('href="' + url + '"') + '>' + url + '</a>';
     });
+
+    // REFERENCE IMAGE: ![...][ref attribs]
+    // Rewrite as a regular image for further processing
+    str = str.rp(/(!\[[^\[\]]*?\])\[("?)([^"<>\s]+?)\2(\s[^\]]*?)?\]/, function (match, caption, maybeQuote, symbolicName, attribs) {
+        symbolicName = symbolicName.toLowerCase().trim();
+        var t = referenceLinkTable[symbolicName];
+        if (! t) {
+            console.log("Reference image '" + symbolicName + "' never defined");
+            return '?';
+        } else {
+            t.used = true;
+            var s = caption + '(' + t.link + (t.attribs || '') + ')';
+            return s;
+        }
+    });
+
 
     // IMAGE GRID: Rewrite rows and grids of images into a grid
     var imageGridAttribs = protect('width="100%"');
@@ -2493,7 +2771,7 @@ function markdeepToHTML(str, elementMode) {
     str = str.rp(/\^([-+]?\d+)\b/g, '<sup>$1</sup>');
 
     // PAGE BREAK:
-    str = str.rp(/\b\\(pagebreak|newpage)\b/gi, protect('<div style="page-break-after:always"> </div>\n'))
+    str = str.rp(/(^|\s|\b)\\(pagebreak|newpage)(\b|\s|$)/gi, protect('<div style="page-break-after:always"> </div>\n'))
     
     // SCHEDULE LISTS: date : title followed by indented content
     str = replaceScheduleLists(str, protect);
@@ -2520,8 +2798,8 @@ function markdeepToHTML(str, elementMode) {
     // Remove empty paragraphs (mostly avoided by the above, but some can still occur)
     str = str.rp(/<p>[\s\n]*<\/p>/gi, '');
     
-    // Reference links
-    str = str.rp(/\[(.+?)\]\[(.*?)\]/g, function (match, text, symbolicName) {
+    // REFERENCE LINK
+    str = str.rp(/(^|[^!])\[([^\[\]]+?)\]\[(.*?)\]/g, function (match, pre, text, symbolicName) {
         // Empty symbolic name is replaced by the text
         if (! symbolicName.trim()) {
             symbolicName = text;
@@ -2534,7 +2812,7 @@ function markdeepToHTML(str, elementMode) {
             return '?';
         } else {
             t.used = true;
-            return '<a ' + protect('href="' + t.link + '"') + '>' + text + '</a>';
+            return pre + '<a ' + protect('href="' + t.link + '"') + '>' + text + '</a>';
         }
     });
 
@@ -2562,10 +2840,13 @@ function markdeepToHTML(str, elementMode) {
         allHeaders.forEach(function (header) {
             header = removeHTMLTags(header.ss(4, header.length - 5)).trim();
             var link = '<a ' + protect('href="#' + mangle(header) + '"') + '>';
+
+            var sectionExp = '(' + keyword('section') + '|' + keyword('subsection') + ')';
+            var headerExp = '(\\b' + escapeRegExpCharacters(header) + ')';
+            
             // Search for links to this section
-            str = str.rp(RegExp("(\\b" + escapeRegExpCharacters(header) + ")(?=\\s" + keyword('subsection') + "|\\s" + 
-                                keyword('section') + ")", 'gi'),
-                         link + "$1</a>"); 
+            str = str.rp(RegExp(headerExp + '\\s+' + sectionExp, 'gi'), link + "$1</a> $2");
+            str = str.rp(RegExp(sectionExp + '\\s+' + headerExp, 'gi'), '$1 ' + link + "$2</a>");
         });
     }
 
@@ -2592,15 +2873,15 @@ function markdeepToHTML(str, elementMode) {
                maybeShowLabel(_ref);
     });
 
-    // FIGURE, TABLE, and LISTING references:
+    // FIGURE, TABLE, DIAGRAM, and LISTING references:
     // (must come after figure/table/listing processing, obviously)
-    str = str.rp(/\b(figure|fig\.|table|tbl\.|listing|lst\.)\s+\[([^\s\]]+)\]/gi, function (match, _type, _ref) {
+    str = str.rp(RegExp('\\b(fig\\.|tbl\\.|lst\\.|' + keyword('figure') + '|' + keyword('table') + '|' + keyword('listing') + '|' + keyword('diagram') + ')\\s+\\[([^\\s\\]]+)\\]', 'gi'), function (match, _type, _ref) {
         // Fix abbreviations
         var type = _type.toLowerCase();
         switch (type) {
-        case 'fig.': type = 'figure'; break;
-        case 'tbl.': type = 'table'; break;
-        case 'lst.': type = 'listing'; break;
+        case 'fig.': type = keyword('figure').toLowerCase(); break;
+        case 'tbl.': type = keyword('table').toLowerCase(); break;
+        case 'lst.': type = keyword('listing').toLowerCase(); break;
         }
 
         // Clean up the reference
@@ -2657,6 +2938,7 @@ function markdeepToHTML(str, elementMode) {
     // Remove any bogus leading close-paragraph tag inserted by our extra newlines
     str = str.rp(/^\s*<\/p>/, '');
 
+
     // If not in element mode and not an INSERT child, maybe add a TOC
     if (! elementMode) {// && ! myURLParse[2]) {
         var temp = insertTableOfContents(str, protect);
@@ -2696,6 +2978,18 @@ function markdeepToHTML(str, elementMode) {
     return '<span class="md">' + entag('p', str) + '</span>';
 }
 
+/** Workaround for IE11 */
+function strToArray(s) {
+    if (Array.from) {
+        return Array.from(s);
+    } else {
+        var a = [];
+        for (var i = 0; i < s.length; ++i) {
+            a[i] = s[i];
+        }
+        return a;
+    }
+}
 
 /**
    Adds whitespace at the end of each line of str, so that all lines have equal length in
@@ -2706,7 +3000,7 @@ function equalizeLineLengths(str) {
     var lineArray = str.split('\n');
     var longest = 0;
     lineArray.forEach(function(line) {
-        longest = max(longest, Array.from(line).length);
+        longest = max(longest, strToArray(line).length);
     });
 
     // Worst case spaces needed for equalizing lengths
@@ -2717,7 +3011,7 @@ function equalizeLineLengths(str) {
     lineArray.forEach(function(line) {
         // Append the needed number of spaces onto each line, and
         // reconstruct the output with newlines
-        result += line + spaces.ss(Array.from(line).length) + '\n';
+        result += line + spaces.ss(strToArray(line).length) + '\n';
     });
 
     return result;
@@ -2874,7 +3168,7 @@ function diagramToSVG(diagramString, alignmentHint) {
         // Convert the string to an array to better handle greater-than 16-bit unicode
         // characters, which JavaScript does not process correctly with indices. Do this after
         // the above string processing.
-        str = Array.from(str);
+        str = strToArray(str);
         grid.width = str.indexOf('\n');
 
         /** Mark this location. Takes a Vec2 or (x, y) */
@@ -4082,7 +4376,6 @@ if (! window.alreadyProcessedMarkdeep) {
     var markdeepProcessor = function() {
         // Recompute the source text from the current version of the document
         var source = nodeToMarkdeepSource(document.body);
-
         var markdeepHTML = markdeepToHTML(source, false);
 
         // console.log(markdeepHTML); // Final processed source 
@@ -4163,7 +4456,7 @@ if (! window.alreadyProcessedMarkdeep) {
 
             --numIncludeChildrenLeft;
 
-            // console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
+            //console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
             
             if (numIncludeChildrenLeft <= 0) {
                 if (IAmAChild) {
@@ -4187,7 +4480,7 @@ if (! window.alreadyProcessedMarkdeep) {
         }
 
         ++numIncludeChildrenLeft;
-        // console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
+        //console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
         
         // Replace this tag with a frame that loads the document.  Once loaded, it will
         // send a message with its contents for use as a replacement.

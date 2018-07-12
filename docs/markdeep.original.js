@@ -1,6 +1,6 @@
 /**
   markdeep.js
-  Version 1.00
+  Version 1.02
 
   Copyright 2015-2018, Morgan McGuire, http://casual-effects.com
   All rights reserved.
@@ -28,12 +28,12 @@
   Sagalaev, which is used for code highlighting. (BSD 3-clause license)
 */
 /**See http://casual-effects.com/markdeep for @license and documentation.
-markdeep.min.js 1.00 (C) 2018 Morgan McGuire 
+markdeep.min.js 1.02 (C) 2018 Morgan McGuire 
 highlight.min.js 9.12.0 (C) 2017 Ivan Sagalaev https://highlightjs.org/*/
 (function() {
 'use strict';
 
-var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.00&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
+var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.02&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
 
 // For minification. This is admittedly scary.
 var _ = String.prototype;
@@ -108,6 +108,9 @@ var STYLESHEET = entag('style',
     'body{' +
     'counter-reset: h1 h2 h3 h4 h5 h6 paragraph' +
     '}' +
+
+    // Avoid header/footer in print to PDF. See https://productforums.google.com/forum/#!topic/chrome/LBMUDtGqr-0
+    '@page{margin:0;size:auto}' +
                        
     '.md code,pre{' +
     'font-family:' + codeFontStack + ';' +
@@ -461,7 +464,26 @@ var STYLESHEET = entag('style',
     'height:0' +
    '}' +
                        
-   '.md .admonition p:last-child{margin-bottom:0}' 
+   '.md .admonition p:last-child{margin-bottom:0}'  +
+
+   '.md li.checked,.md li.unchecked{'+
+    'list-style:none;'+
+    'overflow:visible;'+
+    'text-indent:-1.2em'+
+                       '}' +
+                       
+   '.md li.checked:before,.md li.unchecked:before{' +
+   'content:"\\2611";' +
+   'display:block;'+
+   'float:left;' +
+   'width:1em;' +
+   'font-size:120%'+
+                       '}'+
+                       
+   '.md li.unchecked:before{'+
+   'content:"\\2610"' +
+   '}'
+
 );
 
 var MARKDEEP_LINE = '<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>';
@@ -518,6 +540,59 @@ var FRENCH = {
     }
 };
 
+// Translated by "Warmist"
+var LITHUANIAN = {
+    keyword: {
+        table:     'lentelė',
+        figure:    'paveikslėlis',
+        listing:   'sąrašas',
+        diagram:   'diagrama',
+        contents:  'Turinys',
+
+        sec:       'sk',
+        section:   'skyrius',
+        subsection: 'poskyris',
+
+        Monday:    'pirmadienis',
+        Tuesday:   'antradienis',
+        Wednesday: 'trečiadienis',
+        Thursday:  'ketvirtadienis',
+        Friday:    'penktadienis',
+        Saturday:  'šeštadienis',
+        Sunday:    'sekmadienis',
+
+        January:   'Sausis',
+        February:  'Vasaris',
+        March:     'Kovas',
+        April:     'Balandis',
+        May:       'Gegužė',
+        June:      'Birželis',
+        July:      'Liepa',
+        August:    'Rugpjūtis',
+        September: 'Rugsėjis',
+        October:   'Spalis',
+        November:  'Lapkritis',
+        December:  'Gruodis',
+
+        jan: 'saus',
+        feb: 'vas',
+        mar: 'kov',
+        apr: 'bal',
+        may: 'geg',
+        jun: 'birž',
+        jul: 'liep',
+        aug: 'rugpj',
+        sep: 'rugs',
+        oct: 'spal',
+        nov: 'lapkr',
+        dec: 'gruod',
+
+        '&ldquo;': '&bdquo;',
+        '&rtquo;': '&ldquo;'
+    }
+};
+
+    
 // Translated by Zdravko Velinov
 var BULGARIAN = {
     keyword: {
@@ -571,6 +646,164 @@ var BULGARIAN = {
     }
 };
 
+
+// Translated by Tiago Antão
+var PORTUGUESE = {
+    keyword: {
+        table:     'tabela',
+        figure:    'figura',
+        listing:   'lista',
+        diagram:   'diagrama',
+        contents:  'conteúdo',
+
+        sec:       'sec',
+        section:   'secção',
+        subsection: 'subsecção',
+
+        Monday:    'Segunda-feira',
+        Tuesday:   'Terça-feira',
+        Wednesday: 'Quarta-feira',
+        Thursday:  'Quinta-feira',
+        Friday:    'Sexta-feira',
+        Saturday:  'Sábado',
+        Sunday:    'Domingo',
+
+        January:   'Janeiro',
+        February:  'Fevereiro',
+        March:     'Março',
+        April:     'Abril',
+        May:       'Maio',
+        June:      'Junho', 
+        July:      'Julho',
+        August:    'Agosto', 
+        September: 'Setembro', 
+        October:   'Outubro', 
+        November:  'Novembro',
+        December:  'Dezembro',
+
+        jan: 'jan',
+        feb: 'fev',
+        mar: 'mar',
+        apr: 'abr',
+        may: 'mai',
+        jun: 'jun',
+        jul: 'jul',
+        aug: 'ago',
+        sep: 'set',
+        oct: 'oct',
+        nov: 'nov',
+        dec: 'dez',
+
+        '&ldquo;': '&laquo;',
+        '&rtquo;': '&raquo;'
+    }
+};
+
+
+// Translated by Jan Toušek
+var CZECH = {
+    keyword: {
+        table:     'Tabulka',
+        figure:    'Obrázek',
+        listing:   'Seznam',
+        diagram:   'Diagram',
+
+        contents:  'Obsah',
+
+        sec:       'kap.',  // Abbreviation for section
+        section:   'kapitola',
+        subsection:'podkapitola',
+
+        Monday:    'pondělí',
+        Tuesday:   'úterý',
+        Wednesday: 'středa',
+        Thursday:  'čtvrtek',
+        Friday:    'pátek',
+        Saturday:  'sobota',
+        Sunday:    'neděle',
+
+        January:   'leden',
+        February:  'únor',
+        March:     'březen',
+        April:     'duben',
+        May:       'květen',
+        June:      'červen',
+        July:      'červenec',
+        August:    'srpen',
+        September: 'září',
+        October:   'říjen',
+        November:  'listopad',
+        December:  'prosinec',
+
+        jan: 'led',
+        feb: 'úno',
+        mar: 'bře',
+        apr: 'dub',
+        may: 'kvě',
+        jun: 'čvn',
+        jul: 'čvc',
+        aug: 'srp',
+        sep: 'zář',
+        oct: 'říj',
+        nov: 'lis',
+        dec: 'pro',
+
+        '&ldquo;': '&bdquo;',
+        '&rdquo;': '&ldquo;'
+    }
+};
+
+    
+var ITALIAN = {
+    keyword: {
+        table:     'tabella',
+        figure:    'figura',
+        listing:   'lista',
+        diagram:   'diagramma',
+        contents:  'indice',
+
+        sec:       'sez',
+        section:   'sezione',
+        subsection: 'paragrafo',
+
+        Monday:    'lunedì',
+        Tuesday:   'martedì',
+        Wednesday: 'mercoledì',
+        Thursday:  'giovedì',
+        Friday:    'venerdì',
+        Saturday:  'sabato',
+        Sunday:    'domenica',
+
+        January:   'Gennaio',
+        February:  'Febbraio',
+        March:     'Marzo',
+        April:     'Aprile',
+        May:       'Maggio',
+        June:      'Giugno', 
+        July:      'Luglio',
+        August:    'Agosto', 
+        September: 'Settembre', 
+        October:   'Ottobre', 
+        November:  'Novembre',
+        December:  'Dicembre',
+
+        jan: 'gen',
+        feb: 'feb',
+        mar: 'mar',
+        apr: 'apr',
+        may: 'mag',
+        jun: 'giu',
+        jul: 'lug',
+        aug: 'ago',
+        sep: 'set',
+        oct: 'ott',
+        nov: 'nov',
+        dec: 'dic',
+
+        '&ldquo;': '&ldquo;',
+        '&rtquo;': '&rdquo;'
+    }
+};
 
 var RUSSIAN = {
     keyword: {
@@ -910,7 +1143,11 @@ var LANG_TABLE = {
     de: GERMAN,
     hu: HUNGARIAN,
     sv: SWEDISH,
-    ja: JAPANESE
+    pt: PORTUGUESE,
+    ja: JAPANESE,
+    it: ITALIAN,
+    lt: LITHUANIAN,
+    cz: CZECH
 // Awaiting localization by a native speaker:
 //    es: SPANISH
 //    ...
@@ -1047,7 +1284,7 @@ function nodeToMarkdeepSource(node, leaveEscapes) {
     // will try to close by inserting the matching close tags at the end of the
     // document. Remove anything that looks like that and comes *after*
     // the first fallback style.
-    source = source.rp(/<style class="fallback">[\s\S]*<\/style>/gi, '');
+    //source = source.rp(/<style class="fallback">[\s\S]*?<\/style>/gi, '');
     
     // Remove artificially inserted close tags from URLs and
     source = source.rp(/<\/https?:.*>|<\/ftp:.*>|<\/[^ "\t\n>]+@[^ "\t\n>]+>/gi, '');
@@ -1110,8 +1347,10 @@ function extractDiagram(sourceString) {
         nextLineBeginning = sourceString.indexOf('\n', lineBeginning) + 1;
         wideCharacters = unicodeSyms(sourceString, lineBeginning + xMin, lineBeginning + xMax);
         textOnLeft  = textOnLeft  || /\S/.test(sourceString.ss(lineBeginning, lineBeginning + xMin));
-        // Text on the right ... if the line is not all '*'        
-        textOnRight = textOnRight || /[^ *\t\n\r]/.test(sourceString.ss(lineBeginning + xMax + wideCharacters + 1, nextLineBeginning));
+        noRightBorder = noRightBorder || (sourceString[lineBeginning + xMax + wideCharacters] !== '*');
+        
+        // Text on the right ... if the line is not all '*'
+        textOnRight = ! noRightBorder && (textOnRight || /[^ *\t\n\r]/.test(sourceString.ss(lineBeginning + xMax + wideCharacters + 1, nextLineBeginning)));
     }
 
     var noDiagramResult = {beforeString: sourceString, diagramString: '', alignmentHint: '', afterString: ''};
@@ -1147,6 +1386,7 @@ function extractDiagram(sourceString) {
 
         var nextLineBeginning = 0, wideCharacters = 0;
         var textOnLeft = false, textOnRight = false;
+        var noRightBorder = false;
 
         advance();
                                   
@@ -1323,20 +1563,28 @@ function replaceTables(s, protect) {
 
 
 function replaceLists(s, protect) {
+    // Identify task list bullets in a few patterns and reformat them to a standard format for
+    // easier processing.
+    s = s.rp(/^(\s*)(?:-\s*)?(?:\[ \]|\u2610)(\s+)/mg, '$1\u2610$2');
+    s = s.rp(/^(\s*)(?:-\s*)?(?:\[x\]|\u2611)(\s+)/mg, '$1\u2611$2');
+        
     // Identify list blocks:
-    // Blank line or line ending in colon, line that starts with #., *, +, or -,
+    // Blank line or line ending in colon, line that starts with #., *, +, -, ☑, or ☐
     // and then any number of lines until another blank line
     var BLANK_LINES = /\n\s*\n/.source;
 
     // Preceding line ending in a colon
+
+    // \u2610 is the ballot box (unchecked box) character
     var PREFIX     = /[:,]\s*\n/.source;
     var LIST_BLOCK_REGEXP = 
         new RegExp('(' + PREFIX + '|' + BLANK_LINES + '|<p>\s*\n|<br/>\s*\n?)' +
-                   /((?:[ \t]*(?:\d+\.|-|\+|\*)(?:[ \t]+.+\n(?:[ \t]*\n)?)+)+)/.source, 'gm');
+                   /((?:[ \t]*(?:\d+\.|-|\+|\*|\u2611|\u2610)(?:[ \t]+.+\n(?:[ \t]*\n)?)+)+)/.source, 'gm');
 
     var keepGoing = true;
 
-    var ATTRIBS = {'+': protect('class="plus"'), '-': protect('class="minus"'), '*': protect('class="asterisk"')};
+    var ATTRIBS = {'+': protect('class="plus"'), '-': protect('class="minus"'), '*': protect('class="asterisk"'),
+                   '\u2611': protect('class="checked"'), '\u2610': protect('class="unchecked"')};
     var NUMBER_ATTRIBS = protect('class="number"');
 
     // Sometimes the list regexp grabs too much because subsequent lines are indented *less*
@@ -1406,7 +1654,7 @@ function replaceLists(s, protect) {
                     
                     if (current) {
                         // Add the list item
-                        result += '\n' + current.indentChars + '<li ' + attribs + '>' + trimmed.rp(/^(\d+\.|-|\+|\*) /, '');
+                        result += '\n' + current.indentChars + '<li ' + attribs + '>' + trimmed.rp(/^(\d+\.|-|\+|\*|\u2611|\u2610) /, '');
                     } else {
                         // Just reached something that is *less* indented than the root--
                         // copy forward and then re-process that list
@@ -1835,6 +2083,9 @@ function insertTableOfContents(s, protect) {
 
         table[removeHTMLTags(text).trim().toLowerCase()] = number;
 
+        // Remove links from the title itself
+        text = text.rp(/<a\s.*>(.*?)<\/a>/g, '$1');
+
         // Only insert for the first three levels
         if (level <= 3) {
             // Indent and append (the Array() call generates spaces)
@@ -1846,7 +2097,7 @@ function insertTableOfContents(s, protect) {
                 ++numAboveLevel1;
             }
         }
-        
+
         return entag('a', '&nbsp;', protect('class="target" name="' + name + '"')) + header;
     });
 
@@ -2052,6 +2303,7 @@ function markdeepToHTML(str, elementMode) {
 
             var diagramSVG = diagramToSVG(result.diagramString, result.alignmentHint);
             var captionAbove = option('captionAbove', 'diagram')
+
             return result.beforeString +
                 (result.caption && captionAbove ? result.caption : '') +
                 diagramSVG +
@@ -2137,9 +2389,9 @@ function markdeepToHTML(str, elementMode) {
 
     // Protect the very special case of img tags with newlines and
     // breaks in them AND mismatched angle brackets. This happens for
-    // gravizo graphs.
+    // Gravizo graphs.
     str = str.rp(/<img\s+src=(["'])[\s\S]*?\1\s*>/gi, function (match, quote) {
-        // Strip the "<img " and ">", and then protect:
+        // Strip the "<img " and ">", and then protect the interior:
         return "<img " + protect(match.ss(5, match.length - 1)) + ">";
     });
 
@@ -2292,7 +2544,8 @@ function markdeepToHTML(str, elementMode) {
     // (process before reference links to avoid ambiguity on the captions)
     str = replaceTables(str, protect);
 
-    // REFERENCE-LINKS: [foo][] or [bar][foo] + [foo]: http://foo.com
+    // REFERENCE-LINK TABLE: [foo]: http://foo.com
+    // (must come before reference images and reference links in processing)
     str = str.rp(/^\[([^\^#].*?)\]:(.*?)$/gm, function (match, symbolicName, url) {
         referenceLinkTable[symbolicName.toLowerCase().trim()] = {link: url.trim(), used: false};
         return '';
@@ -2310,7 +2563,7 @@ function markdeepToHTML(str, elementMode) {
         var hash;
 
         // Detect videos
-        if (/(.mp4|.m4v|.avi|.mpg|.mov)$/i.test(url)) {
+        if (/(\.mp4|\.m4v|\.avi|\.mpg|\.mov|\.webm)$/i.test(url)) {
             // This is video. Any attributes provided will override the defaults given here
             img = '<video ' + protect('class="markdeep" src="' + url + '"' + attribs + ' width="480px" controls="true"') + '/>';
         } else if (hash = url.match(/^https:\/\/(?:www\.)?(?:youtube\.com\/\S*?v=|youtu\.be\/)([\w\d-]+)(&.*)?$/i)) {
@@ -2350,8 +2603,8 @@ function markdeepToHTML(str, elementMode) {
     // a really special case needed to handle the newlines and potential
     // nested parentheses. Use the pattern from http://blog.stevenlevithan.com/archives/regex-recursion
     // (could be extended to multiple nested parens if needed)
-    str = str.rp(/\(http:\/\/g.gravizo.com\/g\?((?:[^\(\)]|\([^\(\)]*\))*)\)/gi, function(match, url) {
-        return "(http://g.gravizo.com/g?" + encodeURIComponent(url) + ")";
+    str = str.rp(/\(http:\/\/g.gravizo.com\/(.*g)\?((?:[^\(\)]|\([^\(\)]*\))*)\)/gi, function(match, protocol, url) {
+        return "(http://g.gravizo.com/" + protocol + "?" + encodeURIComponent(url) + ")";
     });
 
     // HYPERLINKS: [text](url attribs)
@@ -2364,6 +2617,22 @@ function markdeepToHTML(str, elementMode) {
     str = str.rp(/(^|[^!])\[[ \t]*?\]\(("?)([^<>\s"]+?)\2\)/g, function (match, pre, maybeQuote, url) {
         return pre + '<a ' + protect('href="' + url + '"') + '>' + url + '</a>';
     });
+
+    // REFERENCE IMAGE: ![...][ref attribs]
+    // Rewrite as a regular image for further processing
+    str = str.rp(/(!\[[^\[\]]*?\])\[("?)([^"<>\s]+?)\2(\s[^\]]*?)?\]/, function (match, caption, maybeQuote, symbolicName, attribs) {
+        symbolicName = symbolicName.toLowerCase().trim();
+        var t = referenceLinkTable[symbolicName];
+        if (! t) {
+            console.log("Reference image '" + symbolicName + "' never defined");
+            return '?';
+        } else {
+            t.used = true;
+            var s = caption + '(' + t.link + (t.attribs || '') + ')';
+            return s;
+        }
+    });
+
 
     // IMAGE GRID: Rewrite rows and grids of images into a grid
     var imageGridAttribs = protect('width="100%"');
@@ -2502,7 +2771,7 @@ function markdeepToHTML(str, elementMode) {
     str = str.rp(/\^([-+]?\d+)\b/g, '<sup>$1</sup>');
 
     // PAGE BREAK:
-    str = str.rp(/\b\\(pagebreak|newpage)\b/gi, protect('<div style="page-break-after:always"> </div>\n'))
+    str = str.rp(/(^|\s|\b)\\(pagebreak|newpage)(\b|\s|$)/gi, protect('<div style="page-break-after:always"> </div>\n'))
     
     // SCHEDULE LISTS: date : title followed by indented content
     str = replaceScheduleLists(str, protect);
@@ -2529,8 +2798,8 @@ function markdeepToHTML(str, elementMode) {
     // Remove empty paragraphs (mostly avoided by the above, but some can still occur)
     str = str.rp(/<p>[\s\n]*<\/p>/gi, '');
     
-    // Reference links
-    str = str.rp(/\[(.+?)\]\[(.*?)\]/g, function (match, text, symbolicName) {
+    // REFERENCE LINK
+    str = str.rp(/(^|[^!])\[([^\[\]]+?)\]\[(.*?)\]/g, function (match, pre, text, symbolicName) {
         // Empty symbolic name is replaced by the text
         if (! symbolicName.trim()) {
             symbolicName = text;
@@ -2543,7 +2812,7 @@ function markdeepToHTML(str, elementMode) {
             return '?';
         } else {
             t.used = true;
-            return '<a ' + protect('href="' + t.link + '"') + '>' + text + '</a>';
+            return pre + '<a ' + protect('href="' + t.link + '"') + '>' + text + '</a>';
         }
     });
 
@@ -2571,10 +2840,13 @@ function markdeepToHTML(str, elementMode) {
         allHeaders.forEach(function (header) {
             header = removeHTMLTags(header.ss(4, header.length - 5)).trim();
             var link = '<a ' + protect('href="#' + mangle(header) + '"') + '>';
+
+            var sectionExp = '(' + keyword('section') + '|' + keyword('subsection') + ')';
+            var headerExp = '(\\b' + escapeRegExpCharacters(header) + ')';
+            
             // Search for links to this section
-            str = str.rp(RegExp("(\\b" + escapeRegExpCharacters(header) + ")(?=\\s" + keyword('subsection') + "|\\s" + 
-                                keyword('section') + ")", 'gi'),
-                         link + "$1</a>"); 
+            str = str.rp(RegExp(headerExp + '\\s+' + sectionExp, 'gi'), link + "$1</a> $2");
+            str = str.rp(RegExp(sectionExp + '\\s+' + headerExp, 'gi'), '$1 ' + link + "$2</a>");
         });
     }
 
@@ -2601,15 +2873,15 @@ function markdeepToHTML(str, elementMode) {
                maybeShowLabel(_ref);
     });
 
-    // FIGURE, TABLE, and LISTING references:
+    // FIGURE, TABLE, DIAGRAM, and LISTING references:
     // (must come after figure/table/listing processing, obviously)
-    str = str.rp(/\b(figure|fig\.|table|tbl\.|listing|lst\.)\s+\[([^\s\]]+)\]/gi, function (match, _type, _ref) {
+    str = str.rp(RegExp('\\b(fig\\.|tbl\\.|lst\\.|' + keyword('figure') + '|' + keyword('table') + '|' + keyword('listing') + '|' + keyword('diagram') + ')\\s+\\[([^\\s\\]]+)\\]', 'gi'), function (match, _type, _ref) {
         // Fix abbreviations
         var type = _type.toLowerCase();
         switch (type) {
-        case 'fig.': type = 'figure'; break;
-        case 'tbl.': type = 'table'; break;
-        case 'lst.': type = 'listing'; break;
+        case 'fig.': type = keyword('figure').toLowerCase(); break;
+        case 'tbl.': type = keyword('table').toLowerCase(); break;
+        case 'lst.': type = keyword('listing').toLowerCase(); break;
         }
 
         // Clean up the reference
@@ -2666,6 +2938,7 @@ function markdeepToHTML(str, elementMode) {
     // Remove any bogus leading close-paragraph tag inserted by our extra newlines
     str = str.rp(/^\s*<\/p>/, '');
 
+
     // If not in element mode and not an INSERT child, maybe add a TOC
     if (! elementMode) {// && ! myURLParse[2]) {
         var temp = insertTableOfContents(str, protect);
@@ -2705,6 +2978,18 @@ function markdeepToHTML(str, elementMode) {
     return '<span class="md">' + entag('p', str) + '</span>';
 }
 
+/** Workaround for IE11 */
+function strToArray(s) {
+    if (Array.from) {
+        return Array.from(s);
+    } else {
+        var a = [];
+        for (var i = 0; i < s.length; ++i) {
+            a[i] = s[i];
+        }
+        return a;
+    }
+}
 
 /**
    Adds whitespace at the end of each line of str, so that all lines have equal length in
@@ -2715,7 +3000,7 @@ function equalizeLineLengths(str) {
     var lineArray = str.split('\n');
     var longest = 0;
     lineArray.forEach(function(line) {
-        longest = max(longest, Array.from(line).length);
+        longest = max(longest, strToArray(line).length);
     });
 
     // Worst case spaces needed for equalizing lengths
@@ -2726,7 +3011,7 @@ function equalizeLineLengths(str) {
     lineArray.forEach(function(line) {
         // Append the needed number of spaces onto each line, and
         // reconstruct the output with newlines
-        result += line + spaces.ss(Array.from(line).length) + '\n';
+        result += line + spaces.ss(strToArray(line).length) + '\n';
     });
 
     return result;
@@ -2883,7 +3168,7 @@ function diagramToSVG(diagramString, alignmentHint) {
         // Convert the string to an array to better handle greater-than 16-bit unicode
         // characters, which JavaScript does not process correctly with indices. Do this after
         // the above string processing.
-        str = Array.from(str);
+        str = strToArray(str);
         grid.width = str.indexOf('\n');
 
         /** Mark this location. Takes a Vec2 or (x, y) */
@@ -4091,7 +4376,6 @@ if (! window.alreadyProcessedMarkdeep) {
     var markdeepProcessor = function() {
         // Recompute the source text from the current version of the document
         var source = nodeToMarkdeepSource(document.body);
-
         var markdeepHTML = markdeepToHTML(source, false);
 
         // console.log(markdeepHTML); // Final processed source 
@@ -4172,7 +4456,7 @@ if (! window.alreadyProcessedMarkdeep) {
 
             --numIncludeChildrenLeft;
 
-            // console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
+            //console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
             
             if (numIncludeChildrenLeft <= 0) {
                 if (IAmAChild) {
@@ -4196,7 +4480,7 @@ if (! window.alreadyProcessedMarkdeep) {
         }
 
         ++numIncludeChildrenLeft;
-        // console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
+        //console.log(window.location.pathname, 'numIncludeChildrenLeft = ' + numIncludeChildrenLeft);
         
         // Replace this tag with a frame that loads the document.  Once loaded, it will
         // send a message with its contents for use as a replacement.
