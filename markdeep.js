@@ -2203,7 +2203,21 @@ function isolated(preSpaces, postSpaces) {
     Set elementMode = false if processing a whole document instead of an internal node.
 
  */
-function markdeepToHTML(str, elementMode) {
+function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
+    // If a local file handler is specified, resolve '(insert src here)' directly when possible'
+    // Only expected to be used when run as script via node.js
+    if (local_file_handler !== undefined) {
+        str = str.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, filename) {
+          var content = local_file_handler(filename);
+          if (content === undefined) {
+            // Leave unchanged!
+            return match;
+          } else {
+            return content;
+          }
+        });
+    }
+
     // Map names to the number used for end notes, in the order
     // encountered in the text.
     var endNoteTable = {}, endNoteCount = 0;
@@ -4472,6 +4486,7 @@ if (! window.alreadyProcessedMarkdeep) {
     };
 
     source = source.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, src) {
+
         if (numIncludeChildrenLeft === 0) {
             // This is the first child observed. Prepare to receive messages from the
             // embedded children.

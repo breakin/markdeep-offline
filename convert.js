@@ -1,6 +1,23 @@
 hljs = require('highlight.js')
 fs = require('fs'); // file system
 
+function local_file_handler(filename) {
+	var fn = 'docs/' + filename;
+	try {
+		var content = fs.readFileSync('docs/' + filename, 'utf8');
+
+		content = content.rp(/<!-- Markdeep: -->[^\n]+/g, function(match, filename) {
+			return '\n'
+		})
+
+		console.log('  Successfully inserted ' + fn);
+		return content;
+	} catch (err) {
+		console.log('  Failed to insert ' + fn + ', error ' + err);
+		return undefined;
+	}
+}
+
 function entag(tag, content, attribs) {
 	return '<' + tag + (attribs ? ' ' + attribs : '') + '>' + content + '</' + tag + '>';
 }
@@ -49,7 +66,7 @@ function convert(from_file, to_file, online_file, use_math = true) {
 		}
 
 		css = window.markdeep.stylesheet();
-		content = window.markdeep.format(data, false);
+		content = window.markdeep.format(data, false, local_file_handler);
 
 		// Construct final html
 		str = "<html>\n\t<head>\n";
