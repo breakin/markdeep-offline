@@ -1831,5 +1831,3 @@ Due to the special protection from formatting that Markdeep affords `<pre>` and 
 that appear in the document, you cannot nest a code tag inside of another code tag, and
 likewise for pre tags.  Fortunately, it is pretty hard to imagine a case where you would want
 nested code tags.
-
-<!-- Markdeep: --><script src="markdeep.min.js"></script>
