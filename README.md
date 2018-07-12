@@ -36,7 +36,7 @@ Comments about my approach
 * Markdeep needs the global properties document and window. We provide it this by parsing a document using JSDOM.
 * Currently the document that document and window is constructed from is a tiny little page containing meta information. This let me reuse one JSDOM document for multiple pages to be converted. This step feels very pointless for the node.js use-case somehow.
 * It is not possible to pass a DOM element to window.markdeep.format here since JSDOM does not supply innerHTML. This only affects node.js, nothing wrong with format itself.
-* I don't see how external document inclusion could work with the code as-is. Personally I feel that the node.js version could be more of a open-file/paste-content directly instead of doing iframe and mucking about! I've talked a little with Morgan about this but nothing has been done yet.
+* I modified markdeep.js so that the user can pass in a custom file handler to do server-side file inclusion. This bypasses the iframe-mucking that happens client-side when possible.
 
 Comments about markdeep itself
 ==============================
