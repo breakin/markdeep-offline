@@ -6,8 +6,8 @@ function local_file_handler(filename) {
 	try {
 		var content = fs.readFileSync('docs/' + filename, 'utf8');
 
-		content = content.rp(/<!-- Markdeep: -->[^\n]+/g, function(match, filename) {
-			return '\n'
+		content = content.rp(/<!-- Markdeep: -->[^\n]+\n/g, function(match, filename) {
+			return ''
 		})
 
 		console.log('  Successfully inserted ' + fn);
