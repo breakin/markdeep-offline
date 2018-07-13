@@ -2190,6 +2190,18 @@ function isolated(preSpaces, postSpaces) {
     }
 }
 
+function resolve_local_files(str, local_file_handler) {
+  str = str.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, filename) {
+    var content = local_file_handler(filename);
+    if (content) {
+      return resolve_local_files(content, local_file_handler);
+    } else {
+      // Leave this insert to be handled client-side
+      return match;
+    }
+  });
+  return str;
+}
 
 /**
     Performs Markdeep processing on str, which must be a string or a
@@ -2204,20 +2216,6 @@ function isolated(preSpaces, postSpaces) {
 
  */
 function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
-    // If a local file handler is specified, resolve '(insert src here)' directly when possible'
-    // Only expected to be used when run as script via node.js
-    if (local_file_handler !== undefined) {
-        str = str.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, filename) {
-          var content = local_file_handler(filename);
-          if (content === undefined) {
-            // Leave unchanged!
-            return match;
-          } else {
-            return content;
-          }
-        });
-    }
-
     // Map names to the number used for end notes, in the order
     // encountered in the text.
     var endNoteTable = {}, endNoteCount = 0;
@@ -2297,6 +2295,12 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     // Prefix a newline so that blocks beginning at the top of the
     // document are processed correctly
     str = '\n\n' + str;
+
+    // If a local file handler is specified, resolve '(insert file here)' directly when possible'
+    // Only expected to be used when run as script via node.js
+    if (local_file_handler) {
+      str = resolve_local_files(str, local_file_handler);
+    }
 
     // Replace pre-formatted script tags that are used to protect
     // less-than signs, e.g., in std::vector<Value>
