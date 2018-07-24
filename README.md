@@ -9,15 +9,15 @@ Usage
 Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:
 ~~~~~~~~~~
 npm update
-node convert.js
+node convert.js --input docs/features.html --output docs/features_offline.html --html
 ~~~~~~~~~~
-This converts docs/test.md into docs/test_offline.html and also creates a regular offline version in docs/test_online.html for reference. Also converts features and math. More tests can be added to convert.js.
 
 To recreate package.json run
 ~~~~~~~~~~
 nmp init
 nmp install highlight
 npm install jsdom
+npm install minimist
 ~~~~~~~~~~
 
 Status
@@ -26,7 +26,6 @@ Status
 * codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
 	* markdeep updated to still work
 	* Should maybe add javascript to update css dynamically client-side.
-* External document inclusion in section 11 is not doing anything (and not causing an error when not doing so)
 * markdeep.js is modified, see comments below!
 	* codeFontSize is not correct due to missing canvas operations. Removed detection and hardcoded a value.
 	* Should maybe add javascript to update css dynamically client-side.
@@ -36,7 +35,7 @@ Comments about my approach
 * Markdeep needs the global properties document and window. We provide it this by parsing a document using JSDOM.
 * Currently the document that document and window is constructed from is a tiny little page containing meta information. This let me reuse one JSDOM document for multiple pages to be converted. This step feels very pointless for the node.js use-case somehow.
 * It is not possible to pass a DOM element to window.markdeep.format here since JSDOM does not supply innerHTML. This only affects node.js, nothing wrong with format itself.
-* I modified markdeep.js so that the user can pass in a custom file handler to do server-side file inclusion. This bypasses the iframe-mucking that happens client-side when possible.
+* I modified markdeep.js so that the user can pass in a custom file handler to do server-side file inclusion. This bypasses the iframe-mucking that happens client-side when possible. I later realized that I could pre-process data so markdeep doesn't need to be edited, might change to that later.
 
 Comments about markdeep itself
 ==============================
