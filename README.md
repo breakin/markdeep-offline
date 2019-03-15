@@ -9,7 +9,7 @@ Usage
 Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:
 ~~~~~~~~~~
 npm update
-node convert.js --input docs/features.html --output docs/features_offline.html --html
+node convert.js --input docs/features.md.html --output docs/features_offline.html --html
 ~~~~~~~~~~
 
 To recreate package.json run

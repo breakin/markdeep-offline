@@ -1,8 +1,8 @@
 /**
-  markdeep.js
-  Version 1.02
+  Markdeep.js
+  Version 1.04
 
-  Copyright 2015-2018, Morgan McGuire, http://casual-effects.com
+  Copyright 2015-2019, Morgan McGuire, http://casual-effects.com
   All rights reserved.
 
   -------------------------------------------------------------
@@ -28,12 +28,12 @@
   Sagalaev, which is used for code highlighting. (BSD 3-clause license)
 */
 /**See http://casual-effects.com/markdeep for @license and documentation.
-markdeep.min.js 1.02 (C) 2018 Morgan McGuire 
-highlight.min.js 9.12.0 (C) 2017 Ivan Sagalaev https://highlightjs.org/*/
+markdeep.min.js 1.04 (C) 2019 Morgan McGuire 
+highlight.min.js 9.13.1 (C) 2017 Ivan Sagalaev https://highlightjs.org/*/
 (function() {
 'use strict';
 
-var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.02&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
+var MARKDEEP_FOOTER = '<div class="markdeepFooter"><i>formatted by <a href="http://casual-effects.com/markdeep" style="color:#999">Markdeep&nbsp;1.04&nbsp;&nbsp;</a></i><div style="display:inline-block;font-size:13px;font-family:\'Times New Roman\',serif;vertical-align:middle;transform:translate(-3px,-1px)rotate(135deg);">&#x2712;</div></div>';
 
 // For minification. This is admittedly scary.
 var _ = String.prototype;
@@ -72,23 +72,22 @@ function entag(tag, content, attribs) {
 
 
 function measureFontSize(fontStack) {
-    //try {
-    //    var canvas = document.createElement('canvas');
-    //    var ctx = canvas.getContext('2d');
-    //    ctx.font = '10pt ' + fontStack;
-    //    return ctx.measureText("M").width;
-    //} catch (e) {
-        // Needed for Firefox include...iframe canvas doesn't work for some reason
-        return 10;
-    //}
+    return 10
+
+
+
+
+
+
+
+
 }
 
-/*! highlight.js v9.12.0 | BSD3 License | git.io/hljslicense */
-
-// To reduce script size in the minified file, I cut these keywords from less-frequently used languages:
-//abort absolute acc acce accep accept access accessed accessible account acos action activate add addtime admin administer advanced advise aes_decrypt aes_encrypt after agent aggregate ali alia alias allocate allow alter always analyze ancillary and any anydata anydataset anyschema anytype apply archive archived archivelog are as asc ascii asin assembly assertion associate asynchronous at atan atn2 attr attri attrib attribu attribut attribute attributes audit authenticated authentication authid authors auto autoallocate autodblink autoextend automatic availability avg backup badfile basicfile before begin beginning benchmark between bfile bfile_base big bigfile bin binary_double binary_float binlog bit_and bit_count bit_length bit_or bit_xor bitmap blob_base block blocksize body both bound buffer_cache buffer_pool build bulk by byte byteordermark bytes c cache caching call calling cancel capacity cascade cascaded case cast catalog category ceil ceiling chain change changed char_base char_length character_length characters characterset charindex charset charsetform charsetid check checksum checksum_agg child choose chr chunk class cleanup clear client clob clob_base clone close cluster_id cluster_probability cluster_set clustering coalesce coercibility col collate collation collect colu colum column column_value columns columns_updated comment commit compact compatibility compiled complete composite_limit compound compress compute concat concat_ws concurrent confirm conn connec connect connect_by_iscycle connect_by_isleaf connect_by_root connect_time connection consider consistent constant constraint constraints constructor container content contents context contributors controlfile conv convert convert_tz corr corr_k corr_s corresponding corruption cos cost count count_big counted covar_pop covar_samp cpu_per_call cpu_per_session crc32 create creation critical cross cube cume_dist curdate current current_date current_time current_timestamp current_user cursor curtime customdatum cycle d data database databases datafile datafiles datalength date_add date_cache date_format date_sub dateadd datediff datefromparts datename datepart datetime2fromparts day day_to_second dayname dayofmonth dayofweek dayofyear days db_role_change dbtimezone ddl deallocate declare decode decompose decrement decrypt deduplicate def defa defau defaul default defaults deferred defi defin define degrees delayed delegate delete delete_all delimited demand dense_rank depth dequeue des_decrypt des_encrypt des_key_file desc descr descri describ describe descriptor deterministic diagnostics difference dimension direct_load directory disable disable_all disallow disassociate discardfile disconnect diskgroup distinct distinctrow distribute distributed div do document domain dotnet double downgrade drop dumpfile duplicate duration e each edition editionable editions element ellipsis else elsif elt empty enable enable_all enclosed encode encoding encrypt end end-exec endian enforced engine engines enqueue enterprise entityescaping eomonth error errors escaped evalname evaluate event eventdata events except exception exceptions exchange exclude excluding execu execut execute exempt exists exit exp expire explain export export_set extended extent external external_1 external_2 externally extract f failed failed_login_attempts failover failure far fast feature_set feature_value fetch field fields file file_name_convert filesystem_like_logging final finish first first_value fixed flash_cache flashback floor flush following follows for forall force form forma format found found_rows freelist freelists freepools fresh from from_base64 from_days ftp full function g general generated get get_format get_lock getdate getutcdate global global_name globally go goto grant grants greatest group group_concat group_id grouping grouping_id groups gtid_subtract guarantee guard handler hash hashkeys having hea head headi headin heading heap help hex hierarchy high high_priority hosts hour http i id ident_current ident_incr ident_seed identified identity idle_time if ifnull ignore iif ilike ilm immediate import in include including increment index indexes indexing indextype indicator indices inet6_aton inet6_ntoa inet_aton inet_ntoa infile initial initialized initially initrans inmemory inner innodb input insert install instance instantiable instr interface interleaved intersect into invalidate invisible is is_free_lock is_ipv4 is_ipv4_compat is_not is_not_null is_used_lock isdate isnull isolation iterate java join json json_exists k keep keep_duplicates key keys kill l language large last last_day last_insert_id last_value lax lcase lead leading least leaves left len lenght length less level levels library like like2 like4 likec limit lines link list listagg little ln load load_file lob lobs local localtime localtimestamp locate locator lock locked log log10 log2 logfile logfiles logging logical logical_reads_per_call logoff logon logs long loop low low_priority lower lpad lrtrim ltrim m main make_set makedate maketime managed management manual map mapping mask master master_pos_wait match matched materialized max maxextents maximize maxinstances maxlen maxlogfiles maxloghistory maxlogmembers maxsize maxtrans md5 measures median medium member memcompress memory merge microsecond mid migration min minextents minimum mining minus minute minvalue missing mod mode model modification modify module monitoring month months mount move movement multiset mutex n name name_const names nan national native natural nav nchar nclob nested never new newline next nextval no no_write_to_binlog noarchivelog noaudit nobadfile nocheck nocompress nocopy nocycle nodelay nodiscardfile noentityescaping noguarantee nokeep nologfile nomapping nomaxvalue nominimize nominvalue nomonitoring none noneditionable nonschema noorder nopr nopro noprom nopromp noprompt norely noresetlogs noreverse normal norowdependencies noschemacheck noswitch not nothing notice notrim novalidate now nowait nth_value nullif nulls num numb numbe nvarchar nvarchar2 object ocicoll ocidate ocidatetime ociduration ociinterval ociloblocator ocinumber ociref ocirefcursor ocirowid ocistring ocitype oct octet_length of off offline offset oid oidindex old on online only opaque open operations operator optimal optimize option optionally or oracle oracle_date oradata ord ordaudio orddicom orddoc order ordimage ordinality ordvideo organization orlany orlvary out outer outfile outline output over overflow overriding p package pad parallel parallel_enable parameters parent parse partial partition partitions pascal passing password password_grace_time password_lock_time password_reuse_max password_reuse_time password_verify_function patch path patindex pctincrease pctthreshold pctused pctversion percent percent_rank percentile_cont percentile_disc performance period period_add period_diff permanent physical pi pipe pipelined pivot pluggable plugin policy position post_transaction pow power pragma prebuilt precedes preceding precision prediction prediction_cost prediction_details prediction_probability prediction_set prepare present preserve prior priority private private_sga privileges procedural procedure procedure_analyze processlist profiles project prompt protection public publishingservername purge quarter query quick quiesce quota quotename radians raise rand range rank raw read reads readsize rebuild record records recover recovery recursive recycle redo reduced ref reference referenced references referencing refresh regexp_like register regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope regr_sxx regr_sxy reject rekey relational relative relaylog release release_lock relies_on relocate rely rem remainder rename repair repeat replace replicate replication required reset resetlogs resize resource respect restore restricted result result_cache resumable resume retention return returning returns reuse reverse revoke right rlike role roles rollback rolling rollup round row row_count rowdependencies rowid rownum rows rtrim rules safe salt sample save savepoint sb1 sb2 sb4 scan schema schemacheck scn scope scroll sdo_georaster sdo_topo_geometry search sec_to_time second section securefile security seed segment select self sequence sequential serializable server servererror session session_user sessions_per_user set sets settings sha sha1 sha2 share shared shared_pool short show shrink shutdown si_averagecolor si_colorhistogram si_featurelist si_positionalcolor si_stillimage si_texture siblings sid sign sin size size_t sizes skip slave sleep smalldatetimefromparts smallfile snapshot some soname sort soundex source space sparse spfile split sql sql_big_result sql_buffer_result sql_cache sql_calc_found_rows sql_small_result sql_variant_property sqlcode sqldata sqlerror sqlname sqlstate sqrt square standalone standby start starting startup statement static statistics stats_binomial_test stats_crosstab stats_ks_test stats_mode stats_mw_test stats_one_way_anova stats_t_test_ stats_t_test_indep stats_t_test_one stats_t_test_paired stats_wsr_test status std stddev stddev_pop stddev_samp stdev stop storage store stored str str_to_date straight_join strcmp strict string struct stuff style subdate subpartition subpartitions substitutable substr substring subtime subtring_index subtype success sum suspend switch switchoffset switchover sync synchronous synonym sys sys_xmlagg sysasm sysaux sysdate sysdatetimeoffset sysdba sysoper system system_user sysutcdatetime t table tables tablespace tan tdo template temporary terminated tertiary_weights test than then thread through tier ties time time_format time_zone timediff timefromparts timeout timestamp timestampadd timestampdiff timezone_abbr timezone_minute timezone_region to to_base64 to_date to_days to_seconds todatetimeoffset trace tracking transaction transactional translate translation treat trigger trigger_nestlevel triggers trim truncate try_cast try_convert try_parse type ub1 ub2 ub4 ucase unarchived unbounded uncompress under undo unhex unicode uniform uninstall union unique unix_timestamp unknown unlimited unlock unpivot unrecoverable unsafe unsigned until untrusted unusable unused update updated upgrade upped upper upsert url urowid usable usage use use_stored_outlines user user_data user_resources users using utc_date utc_timestamp uuid uuid_short validate validate_password_strength validation valist value values var var_samp varcharc vari varia variab variabl variable variables variance varp varraw varrawc varray verify version versions view virtual visible void wait wallet warning warnings week weekday weekofyear wellformed when whene whenev wheneve whenever where while whitespace with within without work wrapped xdb xml xmlagg xmlattributes xmlcast xmlcolattval xmlelement xmlexists xmlforest xmlindex xmlnamespaces xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable xmltype xor year year_to_month years yearweek
 
 
+
+
+ 
 // Lucida Console on Windows has capital V's that look like lower case, so don't use it
 var codeFontStack = "Menlo,Consolas,monospace";
 var codeFontSize  = 105.1316178 / measureFontSize(codeFontStack) + 'px';
@@ -111,10 +110,11 @@ var STYLESHEET = entag('style',
 
     // Avoid header/footer in print to PDF. See https://productforums.google.com/forum/#!topic/chrome/LBMUDtGqr-0
     '@page{margin:0;size:auto}' +
-                       
-    '.md code,pre{' +
+
+    '.md code,.md pre{' +
     'font-family:' + codeFontStack + ';' +
     'font-size:' + codeFontSize + ';' +
+    'text-align:left;' +
     'line-height:140%' + 
     '}' +
 
@@ -132,32 +132,38 @@ var STYLESHEET = entag('style',
     '}' +
 
     '.md .image{display:inline-block}' +
-    '.md div.imagecaption,.md div.tablecaption,.md div.listingcaption{' +
-    'margin:5px 5px 5px 5px;' +
-    'text-align: justify;' +
-    'font-style:italic' +
-    '}' +
-
-    '.md div.imagecaption{' +
-    'margin-bottom:0' +
-    '}' +
 
     '.md img{' +
     'max-width:100%;' +
     'page-break-inside:avoid' +
     '}' +
 
-     // Justification tends to handle URLs and code blocks poorly
-     // when inside of a bullet, so disable it there
-    '.md li{text-align:left}' +
+    // Justification tends to handle URLs and code blocks poorly
+    // when inside of a bullet, so disable it there
+    '.md li{text-align:left;text-indent:0}' +
 
-     // Make code blocks use 4-space tabs
-    '.md pre.listing {tab-size:4;-moz-tab-size:4;-o-tab-size:4}' +
+    // Make code blocks use 4-space tabs.
+    // Set up a line number counter. Do NOT use "overflow: scroll" or it will force scrollbars even when unused on Windows.
+    // Don't use text-overflow:ellipsis; which on mac just makes the line short even when scrolled
+    '.md pre.listing {width:100%;tab-size:4;-moz-tab-size:4;-o-tab-size:4;counter-reset:line;overflow-x:auto;resize:horizontal}' +
+
+    '.md pre.listing .linenumbers span.line:before{width:30px;margin-left:-28px;font-size:80%;text-align:right;counter-increment:line;' +
+    'content:counter(line);display:inline-block;padding-right:13px;margin-right:8px;color:#ccc}' +
 
      // Force captions on line listings down close and then center them
     '.md div.tilde{' +
     'margin:20px 0 -10px;' +
     'text-align:center' + 
+    '}' +
+
+    '.md div.imagecaption,.md div.tablecaption,.md div.listingcaption{' +
+    'margin:7px 5px 12px;' +
+    'text-align: justify;' +
+    'font-style:italic' +
+    '}' +
+
+    '.md div.imagecaption{' +
+    'margin-bottom:0' +
     '}' +
 
     '.md blockquote.fancyquote{' + 
@@ -201,6 +207,7 @@ var STYLESHEET = entag('style',
     '}' +
 
     '.md small{font-size:60%}' +
+    '.md big{font-size:150%}' +
 
     '.md div.title,contents,.md .tocHeader,h1,h2,h3,h4,h5,h6,.md .shortTOC,.md .mediumTOC,.nonumberh1,.nonumberh2,.nonumberh3,.nonumberh4,.nonumberh5,.nonumberh6{' +
     'font-family:Verdana,Helvetica,Arial,sans-serif;' +
@@ -209,6 +216,8 @@ var STYLESHEET = entag('style',
     'border-top:none;' +
     'clear:both' +
     '}' +
+                       
+    '.md .tocTop {display:none}' +
 
     '.md h1,.md h2,.md h3,.md h4,.md h5,.md h6,.md .nonumberh1,.md .nonumberh2,.md .nonumberh3,.md .nonumberh4,.md .nonumberh5,.md .nonumberh6{' +
      'page-break-after:avoid;break-after:avoid' +
@@ -234,6 +243,9 @@ var STYLESHEET = entag('style',
     'stroke:none' +
     '}' +
 
+    // printing scale and margins
+    '@media print{@page{margin:1in 5mm;transform: scale(150%)}}' +
+                       
     // pagebreak hr
     '@media print{.md .pagebreak{page-break-after:always;visibility:hidden}}' +
 
@@ -351,9 +363,8 @@ var STYLESHEET = entag('style',
     '}' +
 
     '.md code{' +
-    'white-space:pre;' +
-    'page-break-inside:avoid' +
-    '}' +
+    'page-break-inside:avoid;' +
+    '} @media print{.md .listing code{white-space:pre-wrap}}' +
 
     '.md .endnote{' +
     'font-size:13px;' +
@@ -753,7 +764,7 @@ var CZECH = {
     }
 };
 
-    
+
 var ITALIAN = {
     keyword: {
         table:     'tabella',
@@ -1067,6 +1078,58 @@ var GERMAN = {
     }
 };
 
+// Translated by Marcelo Arroyo
+var SPANISH = {
+    keyword: {
+        table:     'Tabla',
+        figure:    'Figura',
+        listing:   'Listado',
+        diagram:   'Diagrama',
+        contents:  'Tabla de Contenidos',
+
+        sec:       'sec',
+        section:   'Sección',
+        subsection: 'Subsección',
+
+        Monday:    'Lunes',
+        Tuesday:   'Martes',
+        Wednesday: 'Miércoles',
+        Thursday:  'Jueves',
+        Friday:    'Viernes',
+        Saturday:  'Sábado',
+        Sunday:    'Domingo',
+
+        January:   'Enero',
+        February:  'Febrero',
+        March:     'Marzo',
+        April:     'Abril',
+        May:       'Mayo',
+        June:      'Junio',
+        July:      'Julio',
+        August:    'Agosto',
+        September: 'Septiembre',
+        October:   'Octubre',
+        November:  'Noviembre',
+        December:  'Diciembre',
+
+        jan: 'ene',
+        feb: 'feb',
+        mar: 'mar',
+        apr: 'abr',
+        may: 'may',
+        jun: 'jun',
+        jul: 'jul',
+        aug: 'ago',
+        sep: 'sept',
+        oct: 'oct',
+        nov: 'nov',
+        dec: 'dic',
+
+        '&ldquo;': '&laquo;&nbsp;',
+        '&rtquo;': '&nbsp;&raquo;'
+    }
+};
+
 // Translated by Nils Nilsson
 var SWEDISH = {
     keyword: {
@@ -1075,9 +1138,10 @@ var SWEDISH = {
         listing:   'lista',
         diagram:   'diagram',
 
-        contents:  'innehållsförteckning',
+        contents:  'Innehållsförteckning',
         sec:       'sek',
-        subsection:'undersektion',
+        section:   'avsnitt',
+        subsection:'underavsnitt',
 
         Monday:    'måndag',
         Tuesday:   'tisdag',
@@ -1126,6 +1190,8 @@ var DEFAULT_OPTIONS = {
     hideEmptyWeekends:  true,
     showLabels:         false,
     sortScheduleLists:  true,
+    definitionStyle:    'auto',
+    scrollThreshold:    90,
     captionAbove:       {diagram: false,
                          image:   false,
                          table:   false,
@@ -1147,10 +1213,10 @@ var LANG_TABLE = {
     ja: JAPANESE,
     it: ITALIAN,
     lt: LITHUANIAN,
-    cz: CZECH
-// Awaiting localization by a native speaker:
-//    es: SPANISH
-//    ...
+    cz: CZECH,
+    es: SPANISH
+    // Contribute your language here! I only accept translations
+    // from native speakers.
 };
 
 [].slice.call(document.getElementsByTagName('meta')).forEach(function(elt) {
@@ -1211,7 +1277,7 @@ function maybeShowLabel(url, tag) {
 
 // Returns the localized version of word, defaulting to the word itself
 function keyword(word) {
-    return option('lang').keyword[word.toLowerCase()] || word;
+    return option('lang').keyword[word] || option('lang').keyword[word.toLowerCase()] || word;
 }
 
 
@@ -1348,7 +1414,7 @@ function extractDiagram(sourceString) {
         wideCharacters = unicodeSyms(sourceString, lineBeginning + xMin, lineBeginning + xMax);
         textOnLeft  = textOnLeft  || /\S/.test(sourceString.ss(lineBeginning, lineBeginning + xMin));
         noRightBorder = noRightBorder || (sourceString[lineBeginning + xMax + wideCharacters] !== '*');
-        
+
         // Text on the right ... if the line is not all '*'
         textOnRight = ! noRightBorder && (textOnRight || /[^ *\t\n\r]/.test(sourceString.ss(lineBeginning + xMax + wideCharacters + 1, nextLineBeginning)));
     }
@@ -1778,7 +1844,7 @@ function replaceScheduleLists(str, protect) {
                                        }
                                        
                                        // Reconstruct standardized date format
-                                       date = day + ' ' + month + ' ' + year;
+                                       date = day + ' ' + keyword(month) + ' ' + year;
                                        
                                        // Detect the month
                                        var monthNumber = parseInt(month) - 1;
@@ -2021,7 +2087,8 @@ function replaceDefinitionLists(s, protect) {
                  });
 
                  var result = '';
-                 if (longestDefinition < 160) {
+                 var definitionStyle = option('definitionStyle');
+                 if ((definitionStyle === 'short') || ((definitionStyle !== 'long') && (longestDefinition < 160))) {
                      var rowAttribs = protect('valign=top');
                      // This list has short definitions. Format it as a table
                      list.forEach(function (entry) {
@@ -2051,13 +2118,16 @@ function replaceDefinitionLists(s, protect) {
 
 /** Inserts a table of contents in the document and then returns
     [string, table], where the table maps strings to levels. */
-function insertTableOfContents(s, protect) {
+function insertTableOfContents(s, protect, exposer) {
 
     // Gather headers for table of contents (TOC). We
     // accumulate a long and short TOC and then choose which
     // to insert at the end.
-    var fullTOC = '';
+    var fullTOC = '<a href="#" class="tocTop">(Top)</a><br/>\n';
     var shortTOC = '';
+
+    // names of parent sections
+    var nameStack = [];
     
     // headerCounter[i] is the current counter for header level (i - 1)
     var headerCounter = [0];
@@ -2068,23 +2138,37 @@ function insertTableOfContents(s, protect) {
     s = s.rp(/<h([1-6])>(.*?)<\/h\1>/gi, function (header, level, text) {
         level = parseInt(level)
         text = text.trim();
+        
         // If becoming more nested:
-        for (var i = currentLevel; i < level; ++i) { headerCounter[i] = 0; }
+        for (var i = currentLevel; i < level; ++i) {
+            nameStack[i] = '';
+            headerCounter[i] = 0;
+        }
         
         // If becoming less nested:
         headerCounter.splice(level, currentLevel - level);
+        nameStack.splice(level, currentLevel - level);
         currentLevel = level;
-        
+
         ++headerCounter[currentLevel - 1];
         
         // Generate a unique name for this element
         var number = headerCounter.join('.');
-        var name = 'toc' + number;
 
-        table[removeHTMLTags(text).trim().toLowerCase()] = number;
+        // legacy, for when toc links were based on
+        // numbers instead of mangled names
+        var oldname = 'toc' + number;
+
+        var cleanText = removeHTMLTags(exposer(text)).trim().toLowerCase();
+        
+        table[cleanText] = number;
 
         // Remove links from the title itself
         text = text.rp(/<a\s.*>(.*?)<\/a>/g, '$1');
+
+        nameStack[currentLevel - 1] = mangle(cleanText);
+
+        var name = nameStack.join('/');
 
         // Only insert for the first three levels
         if (level <= 3) {
@@ -2098,7 +2182,9 @@ function insertTableOfContents(s, protect) {
             }
         }
 
-        return entag('a', '&nbsp;', protect('class="target" name="' + name + '"')) + header;
+        return entag('a', '&nbsp;', protect('class="target" name="' + name + '"')) +
+            entag('a', '&nbsp;', protect('class="target" name="' + oldname + '"')) +
+            header;
     });
 
     if (shortTOC.length > 0) {
@@ -2190,19 +2276,6 @@ function isolated(preSpaces, postSpaces) {
     }
 }
 
-function resolve_local_files(str, local_file_handler) {
-  str = str.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, filename) {
-    var content = local_file_handler(filename);
-    if (content) {
-      return resolve_local_files(content, local_file_handler);
-    } else {
-      // Leave this insert to be handled client-side
-      return match;
-    }
-  });
-  return str;
-}
-
 /**
     Performs Markdeep processing on str, which must be a string or a
     DOM element.  Returns a string that is the HTML to display for the
@@ -2215,7 +2288,7 @@ function resolve_local_files(str, local_file_handler) {
     Set elementMode = false if processing a whole document instead of an internal node.
 
  */
-function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
+function markdeepToHTML(str, elementMode) {
     // Map names to the number used for end notes, in the order
     // encountered in the text.
     var endNoteTable = {}, endNoteCount = 0;
@@ -2255,12 +2328,14 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
         return PROTECT_CHARACTER + i + PROTECT_CHARACTER;
     }
 
+    var exposeRan = false;
     /** Given the escaped identifier string from protect(), returns
         the orginal string. */
     function expose(i) {
         // Strip the escape character and parse, then look up in the
         // dictionary.
         var j = parseInt(i.ss(1, i.length - 1).rp(/z/g, 'x'), PROTECT_RADIX);
+        exposeRan = true;
         return protectedStringArray[j];
     }
 
@@ -2275,11 +2350,11 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     }
 
     // SECTION HEADERS
-    // This is common code for numbered headers. Nno-number ATX headers are processed
+    // This is common code for numbered headers. No-number ATX headers are processed
     // separately
     function makeHeaderFunc(level) {
         return function (match, header) {
-            return '\n\n</p>\n<a ' + protect('class="target" name="' + mangle(removeHTMLTags(header)) + '"') + 
+            return '\n\n</p>\n<a ' + protect('class="target" name="' + mangle(removeHTMLTags(header.rp(PROTECT_REGEXP, expose))) + '"') + 
                 '>&nbsp;</a>' + entag('h' + level, header) + '\n<p>\n\n';
         }
     }
@@ -2295,12 +2370,6 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     // Prefix a newline so that blocks beginning at the top of the
     // document are processed correctly
     str = '\n\n' + str;
-
-    // If a local file handler is specified, resolve '(insert file here)' directly when possible'
-    // Only expected to be used when run as script via node.js
-    if (local_file_handler) {
-      str = resolve_local_files(str, local_file_handler);
-    }
 
     // Replace pre-formatted script tags that are used to protect
     // less-than signs, e.g., in std::vector<Value>
@@ -2342,9 +2411,6 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
                 caption = caption.trim();
                 caption = '<div ' + protect('class="listingcaption ' + cssClass + '"') + '>' + caption.ss(1, caption.length - 1) + '</div>\n';
             }
-            lang = lang ? lang.trim() : lang;
-            lang = lang ? [lang] : undefined;
-            
             // Remove the block's own indentation from each line of sourceCode
             sourceCode = sourceCode.rp(new RegExp('(^|\n)' + indent, 'g'), '$1');
 
@@ -2357,17 +2423,37 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
                 nextSourceCode = nextLang = nextCssSubClass = undefined;
                 sourceCode = sourceCode.rp(new RegExp('\\n([ \\t]*)' + symbol + '{3,}([ \\t]*\\S+)([ \\t]+.+)?\n([\\s\\S]*)'),
                                            function (match, indent, lang, cssSubClass, everythingElse) {
-                                               nextLang = [lang];
+                                               nextLang = lang;
                                                nextCssSubClass = cssSubClass;
                                                nextSourceCode = everythingElse;
                                                return '';
                                            });
 
                 // Highlight and append this block
-                var highlighted = hljs.highlightAuto(sourceCode, lang).value;
+                lang = lang ? lang.trim() : undefined;
+                var result;
+                if (lang === 'none') {
+                    result = hljs.highlightAuto(sourceCode, []);
+                } else if (lang === undefined) {
+                    result = hljs.highlightAuto(sourceCode);
+                } else {
+                    try {
+                        result = hljs.highlight(lang, sourceCode, true);
+                    } catch (e) {
+                        // Some unknown language specified. Force to no formatting.
+                        result = hljs.highlightAuto(sourceCode, []);
+                    }
+                }
+                
+                var highlighted = result.value;
+
+                // Mark each line as a span to support line numbers
+                highlighted = highlighted.rp(/^(.*)$/gm, entag('span', '$1', 'class="line"'));
+
                 if (cssSubClass) {
                     highlighted = entag('div', highlighted, 'class="' + cssSubClass + '"');
                 }
+
                 body += highlighted;
 
                 // Advance the next nested block
@@ -2467,8 +2553,10 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     str = str.rp(/(\\begin\{eqnarray\}[\s\S]*?\\end\{eqnarray\})/g, protector);
     str = str.rp(/(\\begin\{equation\*\}[\s\S]*?\\end\{equation\*\})/g, protector);
 
-    // For headers, we consume leading and trailing whitespace to avoid creating an
-    // extra paragraph tag around the header itself.
+    // HEADERS
+    //
+    // We consume leading and trailing whitespace to avoid creating an extra paragraph tag
+    // around the header itself.
 
     // Setext-style H1: Text with ======== right under it
     str = str.rp(/(?:^|\s*\n)(.+?)\n[ \t]*={3,}[ \t]*\n/g, makeHeaderFunc(1));
@@ -2477,12 +2565,20 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     str = str.rp(/(?:^|\s*\n)(.+?)\n[ \t]*-{3,}[ \t]*\n/g, makeHeaderFunc(2));
 
     // ATX-style headers:
+    //
+    //  # Foo #
+    //  # Foo
+    //  (# Bar)
+    //
+    // If note that '#' in the title are only stripped if they appear at the end, in
+    // order to allow headers with # in the title.
+
     for (var i = 6; i > 0; --i) {
-        str = str.rp(new RegExp(/^\s*/.source + '#{' + i + ',' + i +'}(?:[ \t])([^\n#]+)#*[ \t]*\n', 'gm'), 
+        str = str.rp(new RegExp(/^\s*/.source + '#{' + i + ',' + i +'}(?:[ \t])([^\n]+?)#*[ \t]*\n', 'gm'), 
                  makeHeaderFunc(i));
 
         // No-number headers
-        str = str.rp(new RegExp(/^\s*/.source + '\\(#{' + i + ',' + i +'}\\)(?:[ \t])([^\n#]+)\\(?#*\\)?\\n[ \t]*\n', 'gm'), 
+        str = str.rp(new RegExp(/^\s*/.source + '\\(#{' + i + ',' + i +'}\\)(?:[ \t])([^\n]+?)\\(?#*\\)?\\n[ \t]*\n', 'gm'), 
                      '\n</p>\n' + entag('div', '$1', protect('class="nonumberh' + i + '"')) + '\n<p>\n\n');
     }
 
@@ -2581,9 +2677,11 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
         var hash;
 
         // Detect videos
-        if (/(\.mp4|\.m4v|\.avi|\.mpg|\.mov|\.webm)$/i.test(url)) {
+        if (/\.(mp4|m4v|avi|mpg|mov|webm)$/i.test(url)) {
             // This is video. Any attributes provided will override the defaults given here
             img = '<video ' + protect('class="markdeep" src="' + url + '"' + attribs + ' width="480px" controls="true"') + '/>';
+        } else if (/\.(mp3|mp2|ogg|wav|m4a|aac|flac)$/i.test(url)) {
+            img = '<audio ' + protect('class="markdeep" controls ' + attribs + '><source src="' + url + '">') + '</audio>';
         } else if (hash = url.match(/^https:\/\/(?:www\.)?(?:youtube\.com\/\S*?v=|youtu\.be\/)([\w\d-]+)(&.*)?$/i)) {
             // Youtube video
             img = '<iframe ' + protect('class="markdeep" src="https://www.youtube.com/embed/' + hash[1] + '"' + attribs + ' width="480px" height="300px" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen') + '></iframe>';
@@ -2606,6 +2704,13 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
 
         return img;
     };
+
+    // Reformat equation links that have brackets: eqn [foo] --> eqn \ref{foo} so that
+    // mathjax can process them.
+    str = str.rp(/\b(equation|eqn\.|eq\.)\s*\[([^\s\]]+)\]/gi, function (match, eq, label) {
+        return eq + ' \\ref{' + label + '}';
+    });
+
 
     // Reformat figure links that have subfigure labels in parentheses, to avoid them being
     // processed as links
@@ -2637,8 +2742,8 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
     });
 
     // REFERENCE IMAGE: ![...][ref attribs]
-    // Rewrite as a regular image for further processing
-    str = str.rp(/(!\[[^\[\]]*?\])\[("?)([^"<>\s]+?)\2(\s[^\]]*?)?\]/, function (match, caption, maybeQuote, symbolicName, attribs) {
+    // Rewrite as a regular image for further processing below
+    str = str.rp(/(!\[(?:[\s\S]+?)?\])\[("?)([^"<>\s]+?)\2(\s[^\]]*?)?\]/g, function (match, caption, maybeQuote, symbolicName, attribs) {
         symbolicName = symbolicName.toLowerCase().trim();
         var t = referenceLinkTable[symbolicName];
         if (! t) {
@@ -2650,7 +2755,6 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
             return s;
         }
     });
-
 
     // IMAGE GRID: Rewrite rows and grids of images into a grid
     var imageGridAttribs = protect('width="100%"');
@@ -2946,8 +3050,13 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
                 var subtitles = match.ss(match.indexOf('\n', match.indexOf('</strong>')));
                 subtitles = subtitles ? subtitles.rp(/[ \t]*(\S.*?)\n/g, '<div class="subtitle"> $1 </div>\n') : '';
                 
-                // Remove all tags from the title when inside the <TITLE> tag
-                return entag('title', removeHTMLTags(title)) + maybeShowLabel(window.location.href, 'center') +
+                // Remove all tags from the title when inside the <TITLE> tag, as well
+                // as unicode characters that don't render well in tabs and window bars.
+                // These regexps look like they are full of spaces but are actually various
+                // unicode space characters. http://jkorpela.fi/chars/spaces.html
+                title = removeHTMLTags(title).replace(/[     ]/g, '').replace(/[         　]/g, ' ');
+                
+                return entag('title', title) + maybeShowLabel(window.location.href, 'center') +
                     '<div class="title"> ' + title + 
                     ' </div>\n' + subtitles + '<div class="afterTitles"></div>\n';
             });
@@ -2959,7 +3068,7 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
 
     // If not in element mode and not an INSERT child, maybe add a TOC
     if (! elementMode) {// && ! myURLParse[2]) {
-        var temp = insertTableOfContents(str, protect);
+        var temp = insertTableOfContents(str, protect, function (text) {return text.rp(PROTECT_REGEXP, expose)});
         str = temp[0];
         var toc = temp[1];
         // SECTION LINKS: Replace sec. [X], section [X], subsection [X]
@@ -2976,9 +3085,16 @@ function markdeepToHTML(str, elementMode, local_file_handler = undefined) {
 
     // Expose all protected values. We may need to do this
     // recursively, because pre and code blocks can be nested.
-    while (str.indexOf(PROTECT_CHARACTER) + 1) {
+    var maxIterations = 50;
+
+    exposeRan = true;
+    while ((str.indexOf(PROTECT_CHARACTER) + 1) && exposeRan && (maxIterations > 0)) {
+        exposeRan = false;
         str = str.rp(PROTECT_REGEXP, expose);
+        --maxIterations;
     }
+    
+    if (maxIterations <= 0) { console.log('WARNING: Ran out of iterations while expanding protected substrings'); }
 
     // Warn about unused references
     Object.keys(referenceLinkTable).forEach(function (key) {
@@ -3016,6 +3132,12 @@ function strToArray(s) {
 */
 function equalizeLineLengths(str) {
     var lineArray = str.split('\n');
+
+    if ((lineArray.length > 0) && (lineArray[lineArray.length - 1] === '')) {
+        // Remove the empty last line generated by split on a trailing newline
+        lineArray.pop();
+    }
+        
     var longest = 0;
     lineArray.forEach(function(line) {
         longest = max(longest, strToArray(line).length);
@@ -3111,7 +3233,7 @@ function diagramToSVG(diagramString, alignmentHint) {
     var VERTEX_CHARACTERS                = UNDIRECTED_VERTEX_CHARACTERS + ".'";
 
     // GRAY[i] is the Unicode block character for (i+1)/4 level gray
-    var GRAY_CHARACTERS = '\u2591\u2592\u2593\u2594\u2589';
+    var GRAY_CHARACTERS = '\u2591\u2592\u2593\u2588';
 
     // TRI[i] is a right-triangle rotated by 90*i
     var TRI_CHARACTERS  = '\u25E2\u25E3\u25E4\u25E5';
@@ -4287,7 +4409,7 @@ if (! window.alreadyProcessedMarkdeep) {
     var MATHJAX_CONFIG ='<script type="text/x-mathjax-config">MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });</script>' +
         '<span style="display:none">' +
         // Custom definitions (NC == \newcommand)
-        '$$NC{\\n}{\\hat{n}}NC{\\w}{\\hat{\\omega}}NC{\\wi}{\\w_\\mathrm{i}}NC{\\wo}{\\w_\\mathrm{o}}NC{\\wh}{\\w_\\mathrm{h}}NC{\\Li}{L_\\mathrm{i}}NC{\\Lo}{L_\\mathrm{o}}NC{\\Le}{L_\\mathrm{e}}NC{\\Lr}{L_\\mathrm{r}}NC{\\Lt}{L_\\mathrm{t}}NC{\\O}{\\mathrm{O}}NC{\\degrees}{{^{\\large\\circ}}}NC{\\T}{\\mathsf{T}}NC{\\mathset}[1]{\\mathbb{#1}}NC{\\Real}{\\mathset{R}}NC{\\Integer}{\\mathset{Z}}NC{\\Boolean}{\\mathset{B}}NC{\\Complex}{\\mathset{C}}NC{\\un}[1]{\\,\\mathrm{#1}}$$\n'.rp(/NC/g, '\\newcommand') +
+        '$$NC{\\n}{\\hat{n}}NC{\\thetai}{\\theta_\\mathrm{i}}NC{\\thetao}{\\theta_\\mathrm{o}}NC{\\d}[1]{\\mathrm{d}#1}NC{\\w}{\\hat{\\omega}}NC{\\wi}{\\w_\\mathrm{i}}NC{\\wo}{\\w_\\mathrm{o}}NC{\\wh}{\\w_\\mathrm{h}}NC{\\Li}{L_\\mathrm{i}}NC{\\Lo}{L_\\mathrm{o}}NC{\\Le}{L_\\mathrm{e}}NC{\\Lr}{L_\\mathrm{r}}NC{\\Lt}{L_\\mathrm{t}}NC{\\O}{\\mathrm{O}}NC{\\degrees}{{^{\\large\\circ}}}NC{\\T}{\\mathsf{T}}NC{\\mathset}[1]{\\mathbb{#1}}NC{\\Real}{\\mathset{R}}NC{\\Integer}{\\mathset{Z}}NC{\\Boolean}{\\mathset{B}}NC{\\Complex}{\\mathset{C}}NC{\\un}[1]{\\,\\mathrm{#1}}$$\n'.rp(/NC/g, '\\newcommand') +
         '</span>\n'
     var MATHJAX_URL = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
@@ -4367,6 +4489,13 @@ if (! window.alreadyProcessedMarkdeep) {
             }
         });
         
+        // Add an event handler for scrolling
+        const scrollThreshold = parseInt(option('scrollThreshold'));
+        document.addEventListener('scroll', function () {
+            const b = document.body, c = b.classList, s = 'scrolled';
+            if (b.scrollTop > scrollThreshold) c.add(s); else c.remove(s);
+        });
+        
         // Hide the body while formatting
         document.body.style.visibility = 'hidden';
     }
@@ -4420,7 +4549,7 @@ if (! window.alreadyProcessedMarkdeep) {
                 // Dynamically load mathjax
                 text += '<script src="' + MATHJAX_URL +'"></script>';
             }
-            document.body.innerHTML = entag('code', escapeHTMLEntities(text));
+            document.body.innerHTML = entag('pre', escapeHTMLEntities(text));
         } else {
             document.head.innerHTML = '<meta charset="UTF-8"><meta http-equiv="content-type" content="text/html;charset=UTF-8">' + head + document.head.innerHTML;
             document.body.innerHTML = markdeepHTML;
@@ -4428,6 +4557,20 @@ if (! window.alreadyProcessedMarkdeep) {
         }
 
         document.body.style.visibility = 'visible';
+
+        var hashIndex = window.location.href.indexOf('#');
+        if (hashIndex > -1) {
+            // Scroll to the target; needed when loading is too fast (ironically)
+            setTimeout(function () {
+                var anchor = document.getElementsByName(window.location.href.substring(hashIndex + 1));
+                if (anchor.length > 0) { anchor[0].scrollIntoView(); }
+                if (window.markdeepOptions) (window.markdeepOptions.onLoad || Math.cos)();
+            }, 100);
+        } else if (window.markdeepOptions && window.markdeepOptions.onLoad) {
+            // Wait for the DOM to update
+            setTimeout(window.markdeepOptions.onLoad, 100);
+        }
+           
     };
 
     ///////////// INSERT command processing
@@ -4490,7 +4633,6 @@ if (! window.alreadyProcessedMarkdeep) {
     };
 
     source = source.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, src) {
-
         if (numIncludeChildrenLeft === 0) {
             // This is the first child observed. Prepare to receive messages from the
             // embedded children.
@@ -4524,6 +4666,6 @@ if (! window.alreadyProcessedMarkdeep) {
         setTimeout(markdeepProcessor, 1);
     }
 }
-
+    
 })();
 

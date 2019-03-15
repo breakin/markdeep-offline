@@ -1,3 +1,5 @@
+<meta charset="utf-8" lang="en"><style class="fallback">body{visibility:hidden;}</style>
+
                       **Markdeep Feature Demo**
                            Morgan McGuire
 
@@ -33,7 +35,14 @@ Text formatting:
 `_italic_`                               | _italic_
 `~~strikethrough~~`                      | ~~strikethrough~~
 <code>`inline code`</code>               | `inline code`
+`[news](https://cbc.ca)`                 | [news](https://cbc.ca)
+`https://casual-effects.com`             | https://casual-effects.com
+`morgan@casual-effects.com`              | morgan@casual-effects.com
 `5 kg/m^3`                               | 5 kg/m^3
+`5 degrees`                              | 5 degrees
+`x<sub>below</sub>`                      | x<sub>below</sub>
+`<small>size</small>`                    | <small>size</small>
+`<big>size</big>`                        | <big>size</big>
 
 You can add CSS to change the styles. See the Custom Formatting section
 for some examples.
@@ -95,6 +104,12 @@ anyway.
 
 You can also insert HTML anchor (`<a>`) tags to create arbitrary internal links.
 
+When linking to a Markdeep document from another document, you can refer to sections
+based on either a mangled version of their name or a fully-qualified version of that.
+The mangling is URI encoding of the section name with spaces removed, in all lowercase.
+For example, this section can be linked to as 
+`features.md.html#links` or `features.md.html#basicformatting/links`.
+
 Reference-style links include arbitrary formatted text in brackets
 followed by a case-insensitive symbolic name that must be defined
 elsewhere in the document:
@@ -104,7 +119,7 @@ elsewhere in the document:
 
 Put the definitions at a convenient location elsewhere in the document:
 
-~~~~~~~~~~~~none
+~~~~~~~~~~~~ none
     [nyt]: http://nytimes.com
     [google]: http://google.com
 ~~~~~~~~~~~~
@@ -322,6 +337,7 @@ Grapes
 
 Bananas
 : Only yellow.
+
 
 Schedule Lists
 ------------------------------------------------------------------------------
@@ -559,10 +575,11 @@ images are recognized and laid out as grids using HTML tables:
 ![1](robot.jpg width=100) ![2](robot.jpg width=100) ![3](robot.jpg width=100)
 ![4](robot.jpg width=100) ![5](robot.jpg width=100) ![This image has a<br/>long caption](robot.jpg width=100)
 
+
 Reference Images
 ----------------------------------------------------------------
 
-Markdeep introduces a new feature called "reference images". These have several features:
+Markdeep introduces a new feature called "reference images". These have several nice properties:
 
 * Put long image URLs elsewhere in the document for clarity
 * Indirection so that multiple images can reference a symbolic URL
@@ -570,7 +587,7 @@ Markdeep introduces a new feature called "reference images". These have several 
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-![This is a bas64 embedded reference image][hasselhoff.png]
+![This is a base64 embedded reference image][hasselhoff.png]
 
 <!-- This can appear anywhere in the document. I recommend putting it at the bottom.  -->
 [hasselhoff.png]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...
@@ -607,6 +624,21 @@ parentheses, then it _must_ be surrounded in quotation marks to make it unambigi
 Recall that URLs are not permitted to contain spaces (by their specification), so to embed
 a local image whose filename has a space, either rename the file or replace the spaces
 with `%20` in the URL version of the name.
+
+
+Audio
+------------------------------------------------------------------------------
+
+MP3, WAV, OGG, etc. audio for music and podcasts are supported using the same
+syntax as for images and video:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+![The Personal Best CBC Podcast](https://podcast-a.akamaihd.net/mp3/podcasts/personalbest-GRHHTnR3-20180415.mp3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Creates:
+![The Personal Best CBC Podcast](https://podcast-a.akamaihd.net/mp3/podcasts/personalbest-GRHHTnR3-20180415.mp3)
+
 
 
 Symbol Substitutions
@@ -732,9 +764,15 @@ blocks. Both styles receive syntax coloring and automatic programming
 language detection.
 
 You can override automatic programming language detection by putting
-the name of the language immediately following the first fence. You can
-specify a custom CSS class for a code block by placing its name after the
-language name.
+the name of the language immediately following the first fence. The
+supported languages are (capitalization ignored):
+
+`bash cs C# cpp C++ css coffeescript html XML http JSON java JavaScript Makefile`
+`markdown objectivec Objective-C PHP perl python ruby shell armasm glsl go haskell`
+`kotlin lisp lua matlab R rust scheme swift tex typescript yaml nanoscript none`
+
+You can specify a custom CSS class for a code block by placing its
+name after the language name.
 
 <pre>
 <code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ C</code>
@@ -832,15 +870,47 @@ printf("World\n");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+### Line Numbers
+
+Adding the `linenumbers` CSS class to a listing makes line numbers appear:
+
+
+<pre><code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python linenumbers</code>
+def insertionSort(data):
+...
+<code>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+</pre>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python linenumbers
+def insertionSort(data):
+    for i in range(0, len(data)):
+        j = i;
+
+        while (j > 0) and (data[j] < data[j - 1]):
+            temp = data[j]
+            data[j] = data[j - 1]
+            data[j] = temp
+            --j
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Listing [sort2]: An insertion sort with line numbers]
+
+
+
 ### Multi-code Blocks and Custom CSS 
 
 You can interlace different languages or CSS classes within a single code block, but each is required
 to specify the language in this case. This is convenient for highighting lines or showing the 
 trace of an interactive session.
 
-An example of a fenced code block with a CSS class:
+An example of a fenced code block with a CSS class and custom styling:
 
 <pre>
+&lt;<script>document.write('style&gt;')</script>
+.md code &gt; .input  { font-style: italic; }
+.md code &gt; .output { font-weight: bold; background: #FF7; margin-left: -20px; padding-left: 20px}
+&lt;<script>document.write('/style&gt;')</script>
+
 <code>~~~~~~~~~~~~~~ Python input</code>
 >>> x = [1, 2, 3, 4]
 >>> [y * 2 for y in x]
@@ -934,7 +1004,7 @@ std::vector< Capitalized > array;
 std::vector&amp;lt;Capitalized&amp;gt; array;
 ~~~~~~~~~~~~~~~~~~~~
 
-If care more about not having to reformat your code examples, then
+If you care more about not having to reformat your code examples, then
 just include them in preformatted `&lt;script&gt;` blocks:
 
 **Script Block Examples:**
@@ -1034,6 +1104,7 @@ right side for convenience:
 *             '-------------
 ****************************************
 
+Below are some more examples of diagrams.
 
 Diagram Examples
 ================================================================================
@@ -1293,15 +1364,14 @@ Unicode in Diagram
 --------------------------------------------------------------------------------
 
 ************************************************************************************************
-*                           ↖ ↗   ✶ ✹ ✩ ⓵             ⎲                ░░▒▒▓▓▉▉ ▚▚  ▢ ▢ ⬚ ⬚ ⊕   
-* ▲       ◀━━━━━━━▶         ↙ ↘   ➊ ❶ ➀ ①   ➕ ➖ ➗ ❌   ⎳       ╲   ╱             ▚▚  ▢ ▢ ⬚ ⬚ 
-*
-* ┃  ╭╌╌╌╌╌╌╌╮    ╔═══════╗    ┏━━━━━━━┓    ┏╍╍╍╍╍╍╍┓          ╲ ╱     ░░▒▒▓▓▉▉ ▚▚  ⬣ ⬣ ⎔ ⎔ ⊗   
-* ┃  ╎       ╎    ║       ║    ┃       ┃    ╏       ╏  ⎛  ⎧  ⎡  ╳      ░░▒▒▓▓▉▉ ▚▚  ⬣ ⬣ ⎔ ⎔ ⊘   
-* ┃  ╎       ╎    ║       ║    ┃       ┃    ╏       ╏⋮ ⎜  ⎨  ⎢ ╱ ╲     ░░▒▒▓▓▉▉ ▚▚  ◯ ◯ ⏣ ⏣ ⊙   
-* ▼  ╰╌╌╌╌╌╌╌╯    ╚═══════╝    ┗━━━━━━━┛ ⋱  ┗╍╍╍╍╍╍╍┛⋮ ⎝  ⎩  ⎣╱   ╲    ░░▒▒▓▓▉▉ ▚▚  ◯ ◯ ⏣ ⏣ ⊛   
-*                                          ⋱         ⋮                   ◢▉▉◣               ⊜   
-*   ∑xᵢ   𝚺xᵢ       ∫t²dt                    ⋱       ⋮                   ◥▉▉◤                   
+*                           ↖ ↗   ✶ ✹ ✩ ⓵             ⎲                ░░▒▒▓▓██ ▚▚  ▢ ▢ ⬚ ⬚ ⊕   
+* ▲       ◀━━━━━━━▶         ↙ ↘   ➊ ❶ ➀ ①   ➕ ➖ ➗ ❌   ⎳       ╲   ╱    ░░▒▒▓▓██ ▚▚  ▢ ▢ ⬚ ⬚ ⊜
+* ┃  ╭╌╌╌╌╌╌╌╮    ╔═══════╗    ┏━━━━━━━┓    ┏╍╍╍╍╍╍╍┓          ╲ ╱     ░░▒▒▓▓██ ▚▚  ⬣ ⬣ ⎔ ⎔ ⊗   
+* ┃  ╎       ╎    ║       ║    ┃       ┃    ╏       ╏  ⎛  ⎧  ⎡  ╳      ░░▒▒▓▓██ ▚▚  ⬣ ⬣ ⎔ ⎔ ⊘   
+* ┃  ╎       ╎    ║       ║    ┃       ┃    ╏       ╏⋮ ⎜  ⎨  ⎢ ╱ ╲     ░░▒▒▓▓██ ▚▚  ◯ ◯ ⏣ ⏣ ⊙   
+* ▼  ╰╌╌╌╌╌╌╌╯    ╚═══════╝    ┗━━━━━━━┛ ⋱  ┗╍╍╍╍╍╍╍┛⋮ ⎝  ⎩  ⎣╱   ╲    ░░▒▒▓▓██ ▚▚  ◯ ◯ ⏣ ⏣ ⊛   
+*                                          ⋱         ⋮                   ◢██◣                  
+*   ∑xᵢ   𝚺xᵢ       ∫t²dt                    ⋱       ⋮                   ◥██◤                   
 ************************************************************************************************
 
 
@@ -1466,13 +1536,28 @@ $$ \Lo(X, \wo) = \Le(X, \wo) + \int_\Omega \Li(X, \wi) ~ f_X(\wi, \wo) ~ | \n \c
 You can also use LaTeX equation syntax directly to obtain numbered
 equations:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \begin{equation}
 e^{i \pi} + 1 = 0
 \end{equation}
 
 \begin{equation}
+\label{linear}
 \mathbf{A}^{-1}\vec{b} = \vec{x}
 \end{equation}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\begin{equation}
+e^{i \pi} + 1 = 0
+\end{equation}
+
+\begin{equation}
+\label{linear}
+\mathbf{A}^{-1}\vec{b} = \vec{x}
+\end{equation}
+
+You can then reference those equations by name in the same way as figures, tables,
+and listings: `See eqn. [linear]` ==> See eqn. [linear].
 
 If you don't have equations in your document, then Markdeep won't
 connect to the MathJax server. Either way, it runs MathJax after 
@@ -1517,6 +1602,9 @@ need:
  `\Lo`             |  $\Lo$
  `\Lr`             |  $\Lr$
  `\Le`             |  $\Le$
+ `\thetai`         |  $\thetai$
+ `\thetao`         |  $\thetao$
+ `\int x^2 ~\d{x}` |  $\int x^2~\d{x}$
  `10\un{m/s^2}`    |  $10\un{m/s^2}$
 
 
@@ -1681,6 +1769,10 @@ translations and I'll add it (see the source code for examples).
 The second method is to manually set the `markdeepOptions.lang` field
 before you include the script in your document.
 
+When you've selected a language, keywords that you type such as
+"figure", "listing", etc., the names of days and months, and any text
+inserted by Markdeep such as "contents" will all be in that language.
+
 
 Unicode (in UTF-8 encoding)
 ===================================================
@@ -1832,6 +1924,4 @@ that appear in the document, you cannot nest a code tag inside of another code t
 likewise for pre tags.  Fortunately, it is pretty hard to imagine a case where you would want
 nested code tags.
 
-<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
-
-
+<!-- Markdeep: --><script src="markdeep.min.js"></script>

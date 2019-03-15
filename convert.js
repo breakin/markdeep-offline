@@ -5,6 +5,9 @@ function read_file_and_remove_markdeep(filename) {
 	// TODO: Make files relative to source document path
 	var content = fs.readFileSync(filename, 'utf8');
 
+	// We don't want to handle (insert)-statements using iframe so resolve them right now right here
+	content = resolve_local_files(content)
+
 	content = content.rp(/<!-- Markdeep: -->[^\n]+(\n|$)/g, function(match, filename) {
 		return ''
 	})
@@ -24,18 +27,31 @@ function local_file_handler(filename) {
 	}
 }
 
+function resolve_local_files(str) {
+  str = str.rp(/(?:^|\s)\(insert[ \t]+(\S+\.\S*)[ \t]+here\)\s/g, function(match, filename) {
+    var content = local_file_handler(filename);
+    if (content) {
+      return resolve_local_files(content, local_file_handler);
+    } else {
+      // Leave this insert to be handled client-side
+      return match;
+    }
+  });
+  return str;
+}
+
 function entag(tag, content, attribs) {
 	return '<' + tag + (attribs ? ' ' + attribs : '') + '>' + content + '</' + tag + '>';
 }
 
 var BODY_STYLESHEET = entag('style', 'body{max-width:680px;' +
-	'margin:auto;' +
-	'padding:20px;' +
-	'text-align:justify;' +
-	'line-height:140%; ' +
-	'-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-smoothing:antialiased;' +
-	'color:#222;' +
-	'font-family:Palatino,Georgia,"Times New Roman",serif}');
+    'margin:auto;' +
+    'padding:20px;' +
+    'text-align:justify;' +
+    'line-height:140%; ' +
+    '-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-smoothing:antialiased;' +
+    'color:#222;' +
+    'font-family:Palatino,Georgia,"Times New Roman",serif}');
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
