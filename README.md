@@ -35,14 +35,14 @@ Comments about my approach
 * Markdeep needs the global properties document and window. We provide it this by parsing a document using JSDOM.
 * Currently the document that document and window is constructed from is a tiny little page containing meta information. This let me reuse one JSDOM document for multiple pages to be converted. This step feels very pointless for the node.js use-case somehow.
 * It is not possible to pass a DOM element to window.markdeep.format here since JSDOM does not supply innerHTML. This only affects node.js, nothing wrong with format itself.
-* I modified markdeep.js so that the user can pass in a custom file handler to do server-side file inclusion. This bypasses the iframe-mucking that happens client-side when possible. I later realized that I could pre-process data so markdeep doesn't need to be edited, might change to that later.
+* Currently there are issues with starting tags (encoding etc). Avoid!
 
 Comments about markdeep itself
 ==============================
 * The minified version of highlight.js is causing some issues so I removed it (line 87 in markdeep.original.js). I provide the full highlight.js via npm instead
 	* The issue could very well be the issue discussed here [https://github.com/isagalaev/highlight.js/issues/1245](https://github.com/isagalaev/highlight.js/issues/1245) but the simple one word fix by entibo did not work for me...
 	* Maybe simply not loading the minified hljs block if hljs is already defined could be a workaround, but making the minified block work would be better. If sometimes using an external hljs block then maybe the set of supported languages could differ between online and offline conversion.
-* The canvas operations in measureFontSize (line 74 markdeep.original.js) requires functionality of JSDOM that is hard to install on windows. Thus I made it so the function always returns 10. Is is questionable to access a canvas anyway when running in node.js since there is no browser...
+* The canvas operations in measureFontSize requires functionality of JSDOM that is hard to install on windows. Thus I made it so the function always returns 10. Is is questionable to access a canvas anyway when running in node.js since there is no browser...
 	* It would be nice to turn canvas off since in offline mode we won't know what resolution to use anyway (unless we do markdeep->html conversion for each user)
 * If the string going into window.markdeep.format has window line endings (\r\n instead of \n) section headers are not working. In convert.js this is "fixed" by replacing all windows line endings with unix line endings.
 * Since markdeep is first parse into a DOM some tags are changed. IMG tags can't be closed so the closing / is removed. convert.js does this to minic the behavior.
