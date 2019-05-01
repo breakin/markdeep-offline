@@ -72,22 +72,9 @@ function entag(tag, content, attribs) {
 
 
 function measureFontSize(fontStack) {
-    return 10
-
-
-
-
-
-
-
-
+    return 10;
 }
 
-
-
-
-
- 
 // Lucida Console on Windows has capital V's that look like lower case, so don't use it
 var codeFontStack = "Menlo,Consolas,monospace";
 var codeFontSize  = 105.1316178 / measureFontSize(codeFontStack) + 'px';
@@ -236,7 +223,15 @@ var STYLESHEET = entag('style',
     '}' +
 
     '.md svg.diagram .opendot{' +
-    'fill:#FFF' +
+    'fill:none' +
+    '}' +
+
+    '.md svg.diagram .shadeddot{' +
+    'fill:#CCC' +
+    '}' +
+
+    '.md svg.diagram .dotteddot{' +
+    'stroke:#000;stroke-dasharray:4;fill:none' +
     '}' +
 
     '.md svg.diagram text{' +
@@ -1140,8 +1135,8 @@ var SWEDISH = {
 
         contents:  'Innehållsförteckning',
         sec:       'sek',
-        section:   'avsnitt',
-        subsection:'underavsnitt',
+        section:   'sektion',
+        subsection:'sektion',
 
         Monday:    'måndag',
         Tuesday:   'tisdag',
@@ -2276,6 +2271,7 @@ function isolated(preSpaces, postSpaces) {
     }
 }
 
+
 /**
     Performs Markdeep processing on str, which must be a string or a
     DOM element.  Returns a string that is the HTML to display for the
@@ -3227,7 +3223,7 @@ function diagramToSVG(diagramString, alignmentHint) {
     // The order of the following is based on rotation angles
     // and is used for ArrowSet.toSVG
     var ARROW_HEAD_CHARACTERS            = '>v<^';
-    var POINT_CHARACTERS                 = 'o*';
+    var POINT_CHARACTERS                 = 'o*◌○◍●';
     var JUMP_CHARACTERS                  = '()';
     var UNDIRECTED_VERTEX_CHARACTERS     = "+";
     var VERTEX_CHARACTERS                = UNDIRECTED_VERTEX_CHARACTERS + ".'";
@@ -3715,9 +3711,9 @@ function diagramToSVG(diagramString, alignmentHint) {
                 svg += '<path d="M ' + dn + ' C ' + cdn + cup + up + '" style="fill:none;"/>';
 
             } else if (isPoint(decoration.type)) {
-
+                var cls = {'*':'closed', 'o':'open', '◌':'dotted', '○':'open', '◍':'shaded', '●':'closed'}[decoration.type];
                 svg += '<circle cx="' + (C.x * SCALE) + '" cy="' + (C.y * SCALE * ASPECT) +
-                       '" r="' + (SCALE - STROKE_WIDTH) + '" class="' + ((decoration.type === '*') ? 'closed' : 'open') + 'dot"/>';
+                       '" r="' + (SCALE - STROKE_WIDTH) + '" class="' + cls + 'dot"/>';
             } else if (isGray(decoration.type)) {
                 
                 var shade = Math.round((3 - GRAY_CHARACTERS.indexOf(decoration.type)) * 63.75);

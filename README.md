@@ -9,7 +9,7 @@ Usage
 Download node.js. Run the following in a command prompt/shell when standing in the directory of this repository:
 ~~~~~~~~~~
 npm update
-node convert.js --input docs/features.md.html --output docs/features_offline.html --html
+node convert.js --input docs/features.md.html --output docs/features.offline.html --html
 ~~~~~~~~~~
 
 To recreate package.json run
@@ -22,7 +22,7 @@ npm install minimist
 
 Status
 ======
-* See result here on markdeep features document: [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features_offline.html](https://breakin.github.io/markdeep-offline/features_offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
+* See result here on markdeep features document: [docs/features.md](https://breakin.github.io/markdeep-offline/features.md) -> [docs/features.offline.html](https://breakin.github.io/markdeep-offline/features.offline.html) (reference [docs/features.md.html](https://breakin.github.io/markdeep-offline/features.md.html))
 * codeFontSize is not correct due to missing canvas operations. Thus fontSize is wrong!
 	* markdeep updated to still work
 	* Should maybe add javascript to update css dynamically client-side.

@@ -71,7 +71,7 @@ function convert(from_file) {
 		return "<img " + match.ss(5, match.length - 2) + ">";
 	});
 
-	var content = window.markdeep.format(data, false, local_file_handler);
+	var content = window.markdeep.format(data, false);
 
 	return content;
 }
@@ -120,7 +120,7 @@ JSDOM.fromFile("metapage.html").then(dom => {
 			// from markdeep.js
 			str = str + "\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n";
 		}
-		str = str + css_str + "\n\t</head>\n\t<body>\n";		
+		str = str + css_str + "\n\t</head>\n\t<body>\n";
 
 		str = str + convert(input_file);
 
